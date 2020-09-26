@@ -1,0 +1,1 @@
+$(document).ready(function(){var t=["#4fc6e1","#6658dd","#f7b84b","#f1556c","#1abc9c"],c=$("#status-chart").data("colors");c&&(t=c.split(","));var e,i=function(){$("#status-chart").sparkline([20,40,30,10,28],{type:"pie",width:"220",height:"220",sliceColors:t})};i(),$(window).resize(function(t){clearTimeout(e),e=setTimeout(function(){i()},300)})});
