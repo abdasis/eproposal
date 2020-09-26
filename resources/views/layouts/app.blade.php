@@ -9,7 +9,6 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 		<!-- App css -->
 		<link href="{{ asset('assets/css/bootstrap-material.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
@@ -23,24 +22,46 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-dropdown')
+    <body class="loading" data-layout='{"topbar": {"color": "light"}}'></body>
+        <div id="wrapper">
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+            <!-- Topbar Start -->
+            @include('includes.navbar')
+            <!-- end Topbar -->
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            <!-- ========== Left Sidebar Start ========== -->
+            @include('includes.sidebar')
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                <div class="content">
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+                        
+                        <!-- start page title -->
+                        {{ $slot }}
+                        <!-- end page title --> 
+                        
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                @include('includes.footer')
+                <!-- end Footer -->
+
+            </div>
+
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+
         </div>
-
-        @stack('modals')
         <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
         <script>
