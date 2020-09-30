@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Proposal\Index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'tahapan'], function () {
+        Route::get('tahap-1', Index::class)->name('tahap-1');
+    });
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
