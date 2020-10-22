@@ -55,10 +55,10 @@
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="index.html">Tahap 1</a>
+                                <a href="{{ route('tahap-1') }}">Tahap 1</a>
                             </li>
                             <li>
-                                <a href="dashboard-2.html">Tahap 2</a>
+                                <a href="#">Tahap 2</a>
                             </li>
                             <li>
                                 <a href="dashboard-3.html">Tahap 3</a>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "354ad3dbb2c38e167a9e69ac7d32a8f8",
+    "content-hash": "6f23e2b60e40c776c9e95b0612778a12",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1201,16 +1201,16 @@
         },
         {
             "name": "laravel/jetstream",
-            "version": "v1.3.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "1bd5454ff368efba453700091e595f9aba1d713a"
+                "reference": "5a1967bb1f0f73620313b9b9431ac122ef20c79c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/1bd5454ff368efba453700091e595f9aba1d713a",
-                "reference": "1bd5454ff368efba453700091e595f9aba1d713a",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/5a1967bb1f0f73620313b9b9431ac122ef20c79c",
+                "reference": "5a1967bb1f0f73620313b9b9431ac122ef20c79c",
                 "shasum": ""
             },
             "require": {
@@ -1259,20 +1259,20 @@
                 "laravel",
                 "tailwind"
             ],
-            "time": "2020-09-22T16:34:07+00:00"
+            "time": "2020-10-21T17:02:54+00:00"
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.6.0",
+            "version": "v2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "a38ffd5f419dbaaefc4cb81c1bdde12a02c4854e"
+                "reference": "43f05df591e5099563520ab018cca4ac383681cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/a38ffd5f419dbaaefc4cb81c1bdde12a02c4854e",
-                "reference": "a38ffd5f419dbaaefc4cb81c1bdde12a02c4854e",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/43f05df591e5099563520ab018cca4ac383681cd",
+                "reference": "43f05df591e5099563520ab018cca4ac383681cd",
                 "shasum": ""
             },
             "require": {
@@ -1319,7 +1319,7 @@
                 "laravel",
                 "sanctum"
             ],
-            "time": "2020-09-01T13:48:09+00:00"
+            "time": "2020-10-20T18:37:43+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -1582,16 +1582,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.2.7",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "2bb227d3e678bfef0c31124cfb6491929c7b65d3"
+                "reference": "0674d4cb8e598ce67df00fb95472c73e668b1416"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/2bb227d3e678bfef0c31124cfb6491929c7b65d3",
-                "reference": "2bb227d3e678bfef0c31124cfb6491929c7b65d3",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/0674d4cb8e598ce67df00fb95472c73e668b1416",
+                "reference": "0674d4cb8e598ce67df00fb95472c73e668b1416",
                 "shasum": ""
             },
             "require": {
@@ -1622,6 +1622,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
                 "psr-4": {
                     "Livewire\\": "src/"
                 }
@@ -1643,7 +1646,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-24T16:59:01+00:00"
+            "time": "2020-10-15T17:49:47+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",

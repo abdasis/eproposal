@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Proposal\Create;
 use App\Http\Livewire\Proposal\Index;
 use Illuminate\Support\Facades\Route;
 
@@ -18,9 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'tahapan'], function () {
         Route::get('tahap-1', Index::class)->name('tahap-1');
+        Route::get('tambah-proposal', Create::class)->name('tahap-1.tambah-proposal');
     });
 });
 
