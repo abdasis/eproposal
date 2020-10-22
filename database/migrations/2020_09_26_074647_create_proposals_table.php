@@ -15,6 +15,14 @@ class CreateProposalsTable extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->id();
+            $table->string('judul', 250);
+            $table->string('provinsi', 100);
+            $table->string('kabupaten', 100);
+            $table->string('kecamatan', 100);
+            $table->string('desa', 100);
+            $table->string('dusun', 100);
+            $table->string('rtrw', 100);
+            $table->longText('latar_belakang')->nullable();
             $table->timestamps();
         });
     }

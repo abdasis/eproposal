@@ -34,7 +34,7 @@
                     Tambah Proposal
                 </h5>
                 <div class="card-body">
-                    <form wire:submit.prevent>
+                    <form wire:submit.prevent = 'store'>
                         <div class="form-group">
                             <label for="judul">Judul Proposal</label>
                             <input type="text" wire:model='judul' class="form-control shadow-none @error('judul') is-invalid @enderror">
@@ -139,5 +139,13 @@
             })
         }
     });
+
+    Livewire.on('success', function(){
+        Swal.fire(
+            'Good job!',
+            'Data berhasil disimpan!',
+            'success'
+        )
+    })
     </script>
 @endpush
