@@ -9,7 +9,7 @@
                         <li class="breadcrumb-item active">Tahapan 1</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Pembuatan Proposal</h4>
+                <h4 class="page-title"> <a href="{{ url()->previous() }}"><i class="fa fa-arrow-circle-left text-info"></i></a> Pembuatan Proposal</h4>
             </div>
         </div>
     </div>

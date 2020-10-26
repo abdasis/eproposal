@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\Proposal\Create;
 use App\Http\Livewire\Proposal\Index;
+use App\Http\Livewire\Proposal\Show;
+use App\Http\Livewire\Proposal\Update;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +24,9 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'tahapan'], function () {
         Route::get('tahap-1', Index::class)->name('tahap-1');
+        Route::get('ubah-proposal/{id}', Update::class)->name('tahap-1.update-proposal');
         Route::get('tambah-proposal', Create::class)->name('tahap-1.tambah-proposal');
+        Route::get('lihat-proposal/{id}', Show::class)->name('tahap-1.lihat-proposal');
     });
 });
 

@@ -22,9 +22,19 @@
         </div>
         <div class="col-md-12">
             <div class="card">
-                <h5 class="card-header bg-white border-bottom">
-                    Daftar Proposal yang Dibuat
-                </h5>
+                <div class="card-header bg-white border-bottom">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Daftar Proposal yang Dibuat</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{{ url()->previous() }}">
+                                <button class="btn btn-light btn-sm float-right">Kembali</button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="card-body">
                     <table class="table table-bordered table-sm">
                         <thead class="thead-light">
@@ -38,14 +48,24 @@
                             </tr>
                             </thead>
                             <tbody>
+                                @foreach ($proposals  as $key => $proposal)
                                 <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td class="align-middle" scope="row">{{ $key+1 }}</td>
+                                    <td class="align-middle">{{ $proposal->judul }}</td>
+                                    <td class="align-middle">{{ $proposal->desa }}</td>
+                                    <td class="align-middle">{{ $proposal->dusun }}</td>
+                                    <td class="align-middle">{!! $proposal->latar_belakang  !!}</td>
+                                    <td class="align-middle">
+                                        <a href="{{ route('tahap-1.lihat-proposal', $proposal->id) }}">
+                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-eye"></i></button>
+                                        </a>
+                                        <a href="{{ route('tahap-1.update-proposal', $proposal->id) }}">
+                                            <button class="btn btn-sm btn-outline-warning"><i class="fa fa-user-plus"></i></button>
+                                        </a>
+                                        <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                    </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                     </table>
                 </div>
