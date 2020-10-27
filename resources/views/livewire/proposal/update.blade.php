@@ -120,7 +120,8 @@
                     <p><b>Desa:</b> {{ $desa }}</p>
                     <p><b>Dusun:</b> {{ $dusun }}</p>
                     <p><b>RT/RW:</b> {{ $rtrw }}</p>
-                    <p><b>Latar Belakang:</b> {!! $latar_belakang !!}</p>
+                    <p><b>Latar Belakang:</b></p>
+                    <p id="latar_belakang">{!! $latar_belakangs !!}</p>
                 </div>
             </div>
         </div>
@@ -135,9 +136,15 @@
         toolbar_mode: 'floating',
         height: 500,
         setup: function(editor){
+            editor.on('init', function(e) {
+                console.log($('#latar_belakang').text())
+                tinymce.activeEditor.setContent($('#latar_belakang').text())
+            });
+
             editor.on('keydown', function(e){
                 @this.set('latar_belakang', tinymce.activeEditor.getContent())
             })
+
         }
     });
 

@@ -41,6 +41,8 @@ class Update extends Component
 
     public function render()
     {
-        return view('livewire.proposal.update');
+        return view('livewire.proposal.update', [
+            'latar_belakangs' => $this->latar_belakang
+        ]);
     }
 }
