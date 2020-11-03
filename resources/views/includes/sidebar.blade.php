@@ -44,31 +44,44 @@
         <div id="sidebar-menu">
 
             <ul id="side-menu">
-
                 <li class="menu-title">Navigation</li>
                 <li>
                     <a href="#sidebarDashboards" data-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="badge badge-success badge-pill float-right">4</span>
-                        <span> Pengajuan </span>
+                        <span> Proposal </span>
                     </a>
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('tahap-1') }}">Tahap 1</a>
+                                <a href="{{ route('proposal.tambah-proposal') }}">Tulis Proposal</a>
                             </li>
                             <li>
-                                <a href="#">Tahap 2</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-3.html">Tahap 3</a>
-                            </li>
-                            <li>
-                                <a href="dashboard-4.html">Tahap 4</a>
+                                <a href="{{ route('proposal.index') }}">Semua Proposal</a>
                             </li>
                         </ul>
                     </div>
                 </li>
+                <li>
+                    <a href="{{ route('anggota.index') }}">
+                        <i class="fa fa-user-friends"></i>
+                        <span> Anggota </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('daftar-proposal') }}">
+                        <i class="fa fa-chart-line"></i>
+                        <span> Analisys Survey </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('kondisi.daftar-proposal') }}">
+                        <i class="fa fa-chart-line"></i>
+                        <span> Analisys Kondisi </span>
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="apps-calendar.html">

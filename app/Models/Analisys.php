@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Survey extends Model
+class Analisys extends Model
 {
     use HasFactory;
-    public function anggotas()
+
+    public function anggota()
     {
-        return $this->hasMany(Anggota::class);
+        return $this->belongsTo(Anggota::class);
     }
 }

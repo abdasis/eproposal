@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-md-12 mb-2">
-            <a href="{{ route('tahap-1.tambah-proposal') }}">
+            <a href="{{ route('proposal.tambah-proposal') }}">
                 <button class="btn btn-blue waves-effect"><i class="fa fa-plus mr-1"></i>Tambah Proposal</button>
             </a>
         </div>
@@ -36,7 +36,7 @@
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-sm">
+                    <table class="table table-bordered table-sm table-responsive">
                         <thead class="thead-light">
                             <tr>
                                 <th>#</th>
@@ -55,14 +55,16 @@
                                     <td class="align-middle">{{ $proposal->desa }}</td>
                                     <td class="align-middle">{{ $proposal->dusun }}</td>
                                     <td class="align-middle">{!! $proposal->latar_belakang  !!}</td>
-                                    <td class="align-middle">
-                                        <a href="{{ route('tahap-1.lihat-proposal', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-eye"></i></button>
-                                        </a>
-                                        <a href="{{ route('tahap-1.update-proposal', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-warning"><i class="fa fa-user-plus"></i></button>
-                                        </a>
-                                        <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                    <td class="align-middle text-center">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="{{ route('proposal.lihat-proposal', $proposal->id) }}">
+                                                <button class="btn btn-sm btn-outline-blue"><i class="fa fa-eye"></i></button>
+                                            </a>
+                                            <a href="{{ route('proposal.update-proposal', $proposal->id) }}">
+                                                <button class="btn btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
+                                            </a>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

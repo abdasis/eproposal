@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnggotasTable extends Migration
+class CreateTingkatKepentingansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateAnggotasTable extends Migration
      */
     public function up()
     {
-        Schema::create('anggotas', function (Blueprint $table) {
+        Schema::create('tingkat_kepentingans', function (Blueprint $table) {
             $table->id();
-            $table->string('golongan', 100);
-            $table->string('nama', 100);
-            $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateAnggotasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anggotas');
+        Schema::dropIfExists('tingkat_kepentingans');
     }
 }

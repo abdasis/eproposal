@@ -9,11 +9,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <!-- Plugins css -->
         <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
 
+        <style>
+            body{
+                background: #F0F2F5 !important;
+            }
+            .footer{
+                background: #fff !important;
+            }
+        </style>
         <!-- App css -->
         <link href="{{ asset('assets/css/bootstrap-material.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
         <link href="{{ asset('assets/css/app-material.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -74,7 +83,6 @@
         <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         @livewireScripts
         <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
         @stack('js')

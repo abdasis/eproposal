@@ -5,11 +5,11 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Stackholder</a></li>
-                        <li class="breadcrumb-item active">Daftar Stackholder</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Analisys</a></li>
+                        <li class="breadcrumb-item active">Daftar Analisys</li>
                     </ol>
                 </div>
-                <h4 class="page-title">List Stackholder</h4>
+                <h4 class="page-title">Daftar Analisys</h4>
             </div>
         </div>
     </div>
@@ -50,12 +50,16 @@
                                     <td class="align-middle" scope="row">{{ $key+1 }}</td>
                                     <td class="align-middle">{{ $proposal->judul }}</td>
                                     <td class="align-middle">{{ $proposal->created_at }}</td>
-                                    <td class="align-middle">Tahap ke-{{ $proposal->status_tahap }}</td>
+                                    <td class="align-middle">Tahap Ke-{{ $proposal->status_tahap }}</td>
                                     <td class="align-middle text-center">
-
-                                        <a href="{{ route('anggota.create', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button>
-                                        </a>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <a href="{{ route('survey.index', $proposal->id) }}">
+                                                <button class="btn btn-sm btn-outline-warning mr-1"><i class="fa fa-list"></i></button>
+                                            </a>
+                                            <a href="{{ route('survey.create', $proposal->id) }}">
+                                                <button class="btn btn-sm btn-outline-danger"><i class="fa fa-chart-line"></i></button>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach

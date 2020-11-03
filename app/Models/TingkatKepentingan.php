@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Survey extends Model
+class TingkatKepentingan extends Model
 {
     use HasFactory;
-    public function anggotas()
-    {
-        return $this->hasMany(Anggota::class);
-    }
 }
