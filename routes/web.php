@@ -14,6 +14,8 @@ use App\Http\Livewire\Proposal\Show;
 use App\Http\Livewire\Proposal\Update;
 use App\Http\Livewire\Survey\Create as SurveyCreate;
 use App\Http\Livewire\Survey\Index as SurveyIndex;
+use App\Http\Livewire\SurveyKondisi\DaftarProposal as SurveyKondisiDaftarProposal;
+use App\Http\Livewire\SurveyKondisi\IsiSurvey;
 use App\Models\Anggota;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +59,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('tambah-kondisi/{proposal_id}', KondisiCreate::class)->name('kondisi.create');
         Route::get('edit-kondisi', KondisiUpdate::class)->name('kondisi.update');
         Route::get('daftar-proposal', KondisiDaftarProposal::class)->name('kondisi.daftar-proposal');
+    });
+
+    Route::group(['prefix' => 'survey-kondisi'], function () {
+        Route::get('daftar-proposal', SurveyKondisiDaftarProposal::class)->name('survey-kondisi.daftar-proposal');
+        Route::get('jawab-survey-kondisi/{proposal_id}', IsiSurvey::class)->name('survey-kondisi.jawab-survey');
     });
 });
 

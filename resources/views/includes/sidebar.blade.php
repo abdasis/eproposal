@@ -82,6 +82,12 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('survey-kondisi.daftar-proposal') }}">
+                        <i class="fa fa-chart-line"></i>
+                        <span> Survey Kondisi </span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="apps-calendar.html">
