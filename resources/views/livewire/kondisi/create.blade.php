@@ -60,77 +60,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <h5 class="card-header bg-white border-bottom">
-                    Kondisi Baik
-                </h5>
-                <div class="card-bdoy">
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-inverse">
-                            <tr>
-                                <th>No.</th>
-                                <th>Jenis Kondisi</th>
-                                <th>Penyebab Langsung</th>
-                                <th>Option</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($kondisiBaik as $key => $baik)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $baik->kondisi }}</td>
-                                    <td>{{ $baik->penyebab_langsung }}</td>
-                                    <td>
-                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <h5 class="card-header bg-white border-bottom">
-                    Kondisi Tidak Baik
-                </h5>
-                <div class="card-bdoy">
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-inverse">
-                            <tr>
-                                <th>No.</th>
-                                <th>Jenis Kondisi</th>
-                                <th>Penyebab Langsung</th>
-                                <th>Option</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($kondisiTidakBaik as $key => $baik)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $baik->kondisi }}</td>
-                                    <td>{{ $baik->penyebab_langsung }}</td>
-                                    <td>
-                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <h5 class="card-header bg-header bg-white border-bottom">
-                    Streng
+                    KEKUATAN/STRENGTH (S)
                 </h5>
-                <div class="card-bdoy">
+                <div class="card-body">
                     <table class="table table-hover table-sm">
                         <thead class="thead-inverse">
                             <tr>
@@ -160,41 +98,9 @@
         <div class="col-md-6">
             <div class="card">
                 <h5 class="card-header bg-header bg-white border-bottom">
-                    Streng
+                    PELUANG/OPPORTUNITY (O)
                 </h5>
-                <div class="card-bdoy">
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-inverse">
-                            <tr>
-                                <th>No.</th>
-                                <th>Jenis Kondisi</th>
-                                <th>Penyebab Langsung</th>
-                                <th>Option</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($weaks as $key => $baik)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $baik->kondisi }}</td>
-                                    <td>{{ $baik->penyebab_langsung }}</td>
-                                    <td>
-                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="card">
-                <h5 class="card-header bg-header bg-white border-bottom">
-                    Streng
-                </h5>
-                <div class="card-bdoy">
+                <div class="card-body">
                     <table class="table table-hover table-sm">
                         <thead class="thead-inverse">
                             <tr>
@@ -224,9 +130,41 @@
         <div class="col-md-6">
             <div class="card">
                 <h5 class="card-header bg-header bg-white border-bottom">
-                    Streng
+                    KELEMAHAN/WEAKNES (W)
                 </h5>
-                <div class="card-bdoy">
+                <div class="card-body">
+                    <table class="table table-hover table-sm">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>No.</th>
+                                <th>Jenis Kondisi</th>
+                                <th>Penyebab Langsung</th>
+                                <th>Option</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($weaks as $key => $baik)
+                                <tr>
+                                    <td scope="row">{{ $key+1 }}</td>
+                                    <td>{{ $baik->kondisi }}</td>
+                                    <td>{{ $baik->penyebab_langsung }}</td>
+                                    <td>
+                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <h5 class="card-header bg-header bg-white border-bottom">
+                    TANTANGAN/THREAT (T)
+                </h5>
+                <div class="card-body">
                     <table class="table table-hover table-sm">
                         <thead class="thead-inverse">
                             <tr>

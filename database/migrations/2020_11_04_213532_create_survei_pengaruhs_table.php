@@ -19,6 +19,7 @@ class CreateSurveiPengaruhsTable extends Migration
             $table->string('pengurangan_dampak', 100);
             $table->string('pemanfaatan', 100);
             $table->foreignId('responden_id')->constrained()->onDelete('cascade');
+            $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

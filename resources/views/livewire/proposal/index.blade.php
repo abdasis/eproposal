@@ -21,7 +21,7 @@
             </a>
         </div>
         <div class="col-md-12">
-            <div class="card">
+            <div class="card  p-0">
                 <div class="card-header bg-white border-bottom">
                     <div class="row">
                         <div class="col-md-6">
@@ -35,42 +35,40 @@
                     </div>
 
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-sm table-responsive">
-                        <thead class="thead-light">
+                <table class="card-body table table-bordered table-sm">
+                    <thead class="thead-white">
+                        <tr>
+                            <th>#</th>
+                            <th>Judul Proposal</th>
+                            <th>Desa</th>
+                            <th>Dusun</th>
+                            <th>Potensi Lokal</th>
+                            <th>Option</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($proposals  as $key => $proposal)
                             <tr>
-                                <th>#</th>
-                                <th>Judul Proposal</th>
-                                <th>Desa</th>
-                                <th>Dusun</th>
-                                <th>Potensi Lokal</th>
-                                <th>Option</th>
+                                <td class="align-middle" scope="row">{{ $key+1 }}</td>
+                                <td class="align-middle">{{ $proposal->judul }}</td>
+                                <td class="align-middle">{{ $proposal->desa }}</td>
+                                <td class="align-middle">{{ $proposal->dusun }}</td>
+                                <td class="align-middle">{!! $proposal->latar_belakang  !!}</td>
+                                <td class="align-middle text-center">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="{{ route('proposal.lihat-proposal', $proposal->id) }}">
+                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-eye"></i></button>
+                                        </a>
+                                        <a href="{{ route('proposal.update-proposal', $proposal->id) }}">
+                                            <button class="btn btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
+                                        </a>
+                                        <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                    </div>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($proposals  as $key => $proposal)
-                                <tr>
-                                    <td class="align-middle" scope="row">{{ $key+1 }}</td>
-                                    <td class="align-middle">{{ $proposal->judul }}</td>
-                                    <td class="align-middle">{{ $proposal->desa }}</td>
-                                    <td class="align-middle">{{ $proposal->dusun }}</td>
-                                    <td class="align-middle">{!! $proposal->latar_belakang  !!}</td>
-                                    <td class="align-middle text-center">
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('proposal.lihat-proposal', $proposal->id) }}">
-                                                <button class="btn btn-sm btn-outline-blue"><i class="fa fa-eye"></i></button>
-                                            </a>
-                                            <a href="{{ route('proposal.update-proposal', $proposal->id) }}">
-                                                <button class="btn btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
-                                            </a>
-                                            <button class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>
