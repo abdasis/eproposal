@@ -92,205 +92,159 @@
                                     <th>Response</th>
                                 </tr>
                             </thead>
+                            @foreach ($kondisi_s as $key => $s)
                             <tbody>
+                                <input type="hidden">
                                 <tr>
-                                    <td rowspan="4">1</td>
+                                    <td rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $key+1 }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="align-middle" rowspan="4">Sebarapa besar</td>
-                                    <td class="align-middle" rowspan="4">Tidak ada air</td>
-                                    <td class="align-middle" rowspan="4">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
-                                    <td class="align-middle">Jauh dari gunung</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">Seberapa Besar</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $s->kondisi }}</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
+                                </tr>
+                                @foreach ($kondisi_t as $key => $t)
+                                <tr>
+                                    <td class="align-middle">{{ $t->kondisi }}</td>
                                     <td>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-1" value="1" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-1" value="1" name="nilai_st_{{ $key }}[]">
                                             <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-2" value="2" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-2" value="2" name="nilai_st_{{ $key }}[]">
                                             <label for="anggota-2"> Kurang Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-3" value="3" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-3" value="3" name="nilai_st_{{ $key }}[]">
                                             <label for="anggota-3"> Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-4" value="4" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-4" value="4" name="nilai_st_{{ $key }}[]">
                                             <label for="anggota-4"> Sangat Berpengaruh </label>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
+                            </tbody>
+                            @endforeach
 
+                            {{-- PERBANDINGAN S SAMA O  --}}
+                            @foreach ($kondisi_s as $key => $s)
+                            <tbody>
                                 <tr>
-                                    <td class="align-middle">Jauh dari gunung</td>
+                                    <td rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $key+1 }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">Seberapa Besar</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $s->kondisi }}</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
+                                </tr>
+                                @foreach ($kondisi_o as $key => $t)
+                                <tr>
+                                    <td class="align-middle">{{ $t->kondisi }}</td>
                                     <td>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-1" value="1" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-1" value="1" name="nilai_ot[]">
                                             <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-2" value="2" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-2" value="2" name="nilai_so[]">
                                             <label for="anggota-2"> Kurang Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-3" value="3" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-3" value="3" name="nilai_so[]">
                                             <label for="anggota-3"> Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="tingkat_kepentingan" type="radio" id="anggota-4" value="4" name="tingkat_kepentinga">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-4" value="4" name="nilai_so[]">
                                             <label for="anggota-4"> Sangat Berpengaruh </label>
                                         </div>
                                     </td>
                                 </tr>
+                                @endforeach
 
                             </tbody>
+                            @endforeach
 
-                            {{-- <tbody>
-                                @foreach ($kondisis = App\Models\Kondisi::where('proposal_id', $proposal->id)->where('swot', 'S')->get() as $key => $kondisi)
-                                <tr>
-                                    <td rowspan="{{ count($kondisis) + count($threats) }}">{{ $key+1 }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">Sebarapa besar</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">{{ $kondisi->kondisi }}</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
-                                </tr>
-                                @foreach ($threats = App\Models\Kondisi::where('proposal_id', $proposal->id)->where('swot', 'O')->get() as $threat)
-                                    <tr>
-                                        <td>{{ $threat->kondisi }}</td>
-                                        <td>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-1" value="1" name="tingkat_kepentinga">
-                                                <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-2" value="2" name="tingkat_kepentinga">
-                                                <label for="anggota-2"> Kurang Berpengahruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-3" value="3" name="tingkat_kepentinga">
-                                                <label for="anggota-3"> Berpengahruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-4" value="4" name="tingkat_kepentinga">
-                                                <label for="anggota-4"> Sangat Berpengaruh </label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                @endforeach
-                            </tbody>
-
+                            {{-- PERBANDINGAN O DENGAN T  --}}
+                            @foreach ($kondisi_w as $key => $s)
                             <tbody>
-                                @foreach ($kondisis = App\Models\Kondisi::where('proposal_id', $proposal->id)->where('swot', 'W')->get() as $key => $kondisi)
                                 <tr>
-                                    <td rowspan="{{ count($kondisis) + count($threats) }}">{{ $key+1 }}</td>
+                                    <td rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $key+1 }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">Sebarapa besar</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">{{ $kondisi->kondisi }}</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">Seberapa Besar</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $s->kondisi }}</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
                                 </tr>
-                                @foreach ($threats = App\Models\Kondisi::where('proposal_id', $proposal->id)->where('swot', 'T')->get() as $threat)
-                                    <tr>
-                                        <td>{{ $threat->kondisi }}</td>
-                                        <td>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-1" value="1" name="tingkat_kepentinga">
-                                                <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-2" value="2" name="tingkat_kepentinga">
-                                                <label for="anggota-2"> Kurang Berpengahruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-3" value="3" name="tingkat_kepentinga">
-                                                <label for="anggota-3"> Berpengahruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-4" value="4" name="tingkat_kepentinga">
-                                                <label for="anggota-4"> Sangat Berpengaruh </label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                @foreach ($kondisi_t as $t)
+                                <tr>
+                                    <td class="align-middle">{{ $t->kondisi }}</td>
+                                    <td>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-1" value="1" name="nilai_wt[]">
+                                            <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
+                                        </div>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-2" value="2" name="nilai_wt[]">
+                                            <label for="anggota-2"> Kurang Berpengahruh </label>
+                                        </div>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-3" value="3" name="nilai_wt[]">
+                                            <label for="anggota-3"> Berpengahruh </label>
+                                        </div>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-4" value="4" name="nilai_wt[]">
+                                            <label for="anggota-4"> Sangat Berpengaruh </label>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
-                                @endforeach
-                            </tbody>
 
+                            </tbody>
+                            @endforeach
+
+
+                            {{-- PERBANDINGAN O DENGAN W --}}
+                            @foreach ($kondisi_w as $key => $s)
                             <tbody>
-                                @foreach ($kondisis = App\Models\Kondisi::where('proposal_id', $proposal->id)->where('swot', 'W')->get() as $key => $kondisi)
                                 <tr>
-                                    <td rowspan="{{ count($kondisis) + count($threats) }}">{{ $key+1 }}</td>
+                                    <td rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $key+1 }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">Sebarapa besar</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">{{ $kondisi->kondisi }}</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisis) + count($threats) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">Seberapa Besar</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $s->kondisi }}</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
                                 </tr>
-                                @foreach ($threats = App\Models\Kondisi::where('proposal_id', $proposal->id)->where('swot', 'O')->get() as $threat)
-                                    <tr>
-                                        <td>{{ $threat->kondisi }}</td>
-                                        <td>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-1" value="1" name="tingkat_kepentinga">
-                                                <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-2" value="2" name="tingkat_kepentinga">
-                                                <label for="anggota-2"> Kurang Berpengahruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-3" value="3" name="tingkat_kepentinga">
-                                                <label for="anggota-3"> Berpengahruh </label>
-                                            </div>
-                                            <div class="radio radio-info form-check-inline">
-                                                <input wire:model="tingkat_kepentingan" type="radio" id="anggota-4" value="4" name="tingkat_kepentinga">
-                                                <label for="anggota-4"> Sangat Berpengaruh </label>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                @foreach ($kondisi_o as $t)
+                                <tr>
+                                    <td class="align-middle">{{ $t->kondisi }}</td>
+                                    <td>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-1" value="1" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
+                                            <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
+                                        </div>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-2" value="2" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
+                                            <label for="anggota-2"> Kurang Berpengahruh </label>
+                                        </div>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-3" value="3" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
+                                            <label for="anggota-3"> Berpengahruh </label>
+                                        </div>
+                                        <div class="radio radio-info form-check-inline">
+                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-4" value="4" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
+                                            <label for="anggota-4"> Sangat Berpengaruh </label>
+                                        </div>
+                                    </td>
+                                </tr>
                                 @endforeach
-                                @endforeach
-                            </tbody> --}}
+
+                            </tbody>
+                            @endforeach
 
                         </table>
-
-                        {{-- <td>
-                                        <table>
-                                            @foreach (App\Models\Kondisi::where('swot', 'T')->where('proposal_id', $proposal->id)->get() as $kondisi)
-                                            <tr>
-                                                <td>berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
-                                                <td>{{ $kondisi->kondisi }}</td>
-                                            </tr>
-                                            @endforeach
-                                        </table>
-                                    </td> --}}
-                                    {{-- <td>
-                                        <table>
-                                            @foreach (App\Models\Kondisi::where('swot', 'S')->where('proposal_id', $proposal->id)->get() as $kondisi)
-                                            <tr>
-                                                <td>
-                                                    <div class="radio radio-info form-check-inline">
-                                                        <input wire:model="tingkat_kepentingan" type="radio" id="anggota-1" value="1" name="tingkat_kepentinga">
-                                                        <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
-                                                    </div>
-                                                    <div class="radio radio-info form-check-inline">
-                                                        <input wire:model="tingkat_kepentingan" type="radio" id="anggota-2" value="2" name="tingkat_kepentinga">
-                                                        <label for="anggota-2"> Kurang Berpengahruh </label>
-                                                    </div>
-                                                    <div class="radio radio-info form-check-inline">
-                                                        <input wire:model="tingkat_kepentingan" type="radio" id="anggota-3" value="3" name="tingkat_kepentinga">
-                                                        <label for="anggota-3"> Berpengahruh </label>
-                                                    </div>
-                                                    <div class="radio radio-info form-check-inline">
-                                                        <input wire:model="tingkat_kepentingan" type="radio" id="anggota-4" value="4" name="tingkat_kepentinga">
-                                                        <label for="anggota-4"> Sangat Berpengaruh </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </table>
-                                    </td> --}}
                         <div class="form-group text-right">
                             <button class="btn btn-outline-info">Berikan Survey</button>
                             <button type="reset" class="btn btn-outline-danger">Batal</button>
