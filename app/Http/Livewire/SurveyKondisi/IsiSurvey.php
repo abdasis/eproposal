@@ -10,7 +10,10 @@ class IsiSurvey extends Component
 {
     public $proposal;
     public $nilai;
-    public $isi_survey;
+    public $response_st;
+    public $response_sw;
+    public $response_wt;
+    public $response_wo;
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);

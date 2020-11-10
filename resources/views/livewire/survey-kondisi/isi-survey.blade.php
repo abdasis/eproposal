@@ -94,7 +94,6 @@
                             </thead>
                             @foreach ($kondisi_s as $key => $s)
                             <tbody>
-                                <input type="hidden">
                                 <tr>
                                     <td rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $key+1 }}</td>
                                 </tr>
@@ -108,20 +107,20 @@
                                     <td class="align-middle">{{ $t->kondisi }}</td>
                                     <td>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-1" value="1" name="nilai_st_{{ $key }}[]">
-                                            <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
+                                            <input wire:model="response_st.{{ $s->id . $t->id }}" type="radio" value="1" name="response_st{{ $s->id . $t->id }}[]">
+                                            <label> Sangat Tidak Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-2" value="2" name="nilai_st_{{ $key }}[]">
-                                            <label for="anggota-2"> Kurang Berpengahruh </label>
+                                            <input wire:model="response_st.{{ $s->id . $t->id }}" type="radio" value="2" name="response_st{{ $s->id . $t->id }}[]">
+                                            <label> Kurang Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-3" value="3" name="nilai_st_{{ $key }}[]">
-                                            <label for="anggota-3"> Berpengahruh </label>
+                                            <input wire:model="response_st.{{ $s->id . $t->id }}" type="radio" value="3" name="response_st{{ $s->id . $t->id }}[]">
+                                            <label> Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id . $s->id }}" type="radio" id="anggota-4" value="4" name="nilai_st_{{ $key }}[]">
-                                            <label for="anggota-4"> Sangat Berpengaruh </label>
+                                            <input wire:model="response_st.{{ $s->id . $t->id }}" type="radio" value="4" name="response_st{{ $s->id . $t->id }}[]">
+                                            <label> Sangat Berpengaruh </label>
                                         </div>
                                     </td>
                                 </tr>
@@ -140,25 +139,25 @@
                                     <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $s->kondisi }}</td>
                                     <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
                                 </tr>
-                                @foreach ($kondisi_o as $key => $t)
+                                @foreach ($kondisi_o as $key => $o)
                                 <tr>
-                                    <td class="align-middle">{{ $t->kondisi }}</td>
+                                    <td class="align-middle">{{ $o->kondisi }}</td>
                                     <td>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-1" value="1" name="nilai_ot[]">
-                                            <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
+                                            <input wire:model="response_sw.{{ $o->id . $s->id }}" type="radio" value="1" name="nilai_ot_{{ $o->id . $s->id }}[]">
+                                            <label> Sangat Tidak Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-2" value="2" name="nilai_so[]">
-                                            <label for="anggota-2"> Kurang Berpengahruh </label>
+                                            <input wire:model="response_sw.{{ $o->id . $s->id }}" type="radio" value="2" name="nilai_so_{{ $o->id . $s->id }}[]">
+                                            <label> Kurang Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-3" value="3" name="nilai_so[]">
-                                            <label for="anggota-3"> Berpengahruh </label>
+                                            <input wire:model="response_sw.{{ $o->id . $s->id }}" type="radio" value="3" name="nilai_so_{{ $o->id . $s->id }}[]">
+                                            <label> Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-4" value="4" name="nilai_so[]">
-                                            <label for="anggota-4"> Sangat Berpengaruh </label>
+                                            <input wire:model="response_sw.{{ $o->id . $s->id }}" type="radio" value="4" name="nilai_so_{{ $o->id . $s->id }}[]">
+                                            <label> Sangat Berpengaruh </label>
                                         </div>
                                     </td>
                                 </tr>
@@ -168,14 +167,14 @@
                             @endforeach
 
                             {{-- PERBANDINGAN O DENGAN T  --}}
-                            @foreach ($kondisi_w as $key => $s)
+                            @foreach ($kondisi_w as $key => $w)
                             <tbody>
                                 <tr>
                                     <td rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $key+1 }}</td>
                                 </tr>
                                 <tr>
                                     <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">Seberapa Besar</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $s->kondisi }}</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $w->kondisi }}</td>
                                     <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
                                 </tr>
                                 @foreach ($kondisi_t as $t)
@@ -183,20 +182,20 @@
                                     <td class="align-middle">{{ $t->kondisi }}</td>
                                     <td>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-1" value="1" name="nilai_wt[]">
-                                            <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
+                                            <input wire:model="response_wt.{{ $t->id }}" type="radio" value="1" name="nilai_wt_{{ $t->id . $w->id }}[]">
+                                            <label> Sangat Tidak Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-2" value="2" name="nilai_wt[]">
-                                            <label for="anggota-2"> Kurang Berpengahruh </label>
+                                            <input wire:model="response_wt.{{ $t->id }}" type="radio" value="2" name="nilai_wt_{{ $t->id . $w->id }}[]">
+                                            <label> Kurang Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-3" value="3" name="nilai_wt[]">
-                                            <label for="anggota-3"> Berpengahruh </label>
+                                            <input wire:model="response_wt.{{ $t->id }}" type="radio" value="3" name="nilai_wt_{{ $t->id . $w->id }}[]">
+                                            <label> Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-4" value="4" name="nilai_wt[]">
-                                            <label for="anggota-4"> Sangat Berpengaruh </label>
+                                            <input wire:model="response_wt.{{ $t->id }}" type="radio" value="4" name="nilai_wt_{{ $t->id . $w->id }}[]">
+                                            <label> Sangat Berpengaruh </label>
                                         </div>
                                     </td>
                                 </tr>
@@ -207,35 +206,35 @@
 
 
                             {{-- PERBANDINGAN O DENGAN W --}}
-                            @foreach ($kondisi_w as $key => $s)
+                            @foreach ($kondisi_w as $key => $w)
                             <tbody>
                                 <tr>
                                     <td rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $key+1 }}</td>
                                 </tr>
                                 <tr>
                                     <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">Seberapa Besar</td>
-                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $s->kondisi }}</td>
+                                    <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">{{ $w->kondisi }}</td>
                                     <td class="align-middle" rowspan="{{ count($kondisi_t)+count($kondisi_s) }}">berpengaruh positif/mendukukung pencapaian pengurangan dampak</td>
                                 </tr>
-                                @foreach ($kondisi_o as $t)
+                                @foreach ($kondisi_o as $o)
                                 <tr>
-                                    <td class="align-middle">{{ $t->kondisi }}</td>
+                                    <td class="align-middle">{{ $o->kondisi }}</td>
                                     <td>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-1" value="1" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
-                                            <label for="anggota-1"> Sangat Tidak Berpengaruh </label>
+                                            <input wire:model="response_wo.{{ $o->id }}" type="radio" value="1" name="nilai_wo_{{ $o->id . $w->id }}[]">
+                                            <label> Sangat Tidak Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-2" value="2" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
-                                            <label for="anggota-2"> Kurang Berpengahruh </label>
+                                            <input wire:model="response_wo.{{ $o->id }}" type="radio" value="2" name="nilai_wo_{{ $o->id . $w->id }}[]">
+                                            <label> Kurang Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-3" value="3" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
-                                            <label for="anggota-3"> Berpengahruh </label>
+                                            <input wire:model="response_wo.{{ $o->id }}" type="radio" value="3" name="nilai_wo_{{ $o->id . $w->id }}[]">
+                                            <label> Berpengahruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
-                                            <input wire:model="nilai.{{ $t->id }}" type="radio" id="anggota-4" value="4" name="tingkat_kepentingan_{{ $s->id }}_{{ $t->id }}">
-                                            <label for="anggota-4"> Sangat Berpengaruh </label>
+                                            <input wire:model="response_wo.{{ $o->id }}" type="radio" value="4" name="nilai_wo_{{ $t->id . $w->id }}[]">
+                                            <label> Sangat Berpengaruh </label>
                                         </div>
                                     </td>
                                 </tr>
