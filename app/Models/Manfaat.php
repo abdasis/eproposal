@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TingkatKepentingan extends Model
+class Manfaat extends Model
 {
     use HasFactory;
 
-    public function surveyKondisi()
+    public function nilaiKondisi()
     {
         return $this->belongsTo(SurveyKondisi::class);
     }
-
 }

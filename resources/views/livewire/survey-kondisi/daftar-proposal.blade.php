@@ -53,7 +53,7 @@
                                     <td class="align-middle">Tahap Ke-{{ $proposal->status_tahap }}</td>
                                     <td class="align-middle text-center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('kondisi.index', $proposal->id) }}">
+                                            <a href="{{ route('survey-kondisi.input-nilai', $proposal->id) }}">
                                                 <button class="btn btn-sm btn-outline-warning mr-1"><i class="fa fa-list"></i></button>
                                             </a>
                                             <a href="{{ route('survey-kondisi.jawab-survey', $proposal->id) }}">

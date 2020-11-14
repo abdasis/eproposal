@@ -22,6 +22,9 @@
             .footer{
                 background: #fff !important;
             }
+            .navbar-custom{
+                background: #19b5fe !important;
+            }
         </style>
         <!-- App css -->
         <link href="{{ asset('assets/css/bootstrap-material.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
