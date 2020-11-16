@@ -12,10 +12,18 @@ use App\Http\Livewire\Proposal\Create;
 use App\Http\Livewire\Proposal\Index;
 use App\Http\Livewire\Proposal\Show;
 use App\Http\Livewire\Proposal\Update;
+use App\Http\Livewire\Strategi\Create as StrategiCreate;
+use App\Http\Livewire\Strategi\DaftarProposal as StrategiDaftarProposal;
+use App\Http\Livewire\Strategi\Index as StrategiIndex;
+use App\Http\Livewire\Strategi\Show as StrategiShow;
+use App\Http\Livewire\Strategi\Update as StrategiUpdate;
 use App\Http\Livewire\Survey\Create as SurveyCreate;
 use App\Http\Livewire\Survey\Index as SurveyIndex;
 use App\Http\Livewire\SurveyKondisi\DaftarProposal as SurveyKondisiDaftarProposal;
 use App\Http\Livewire\SurveyKondisi\IsiSurvey;
+use App\Http\Livewire\Tujuan\Create as TujuanCreate;
+use App\Http\Livewire\Tujuan\Index as TujuanIndex;
+use App\Http\Livewire\Tujuan\Update as TujuanUpdate;
 use App\Models\Anggota;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +66,21 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/', KondisiIndex::class)->name('kondisi.index');
         Route::get('tambah-kondisi/{proposal_id}', KondisiCreate::class)->name('kondisi.create');
         Route::get('edit-kondisi', KondisiUpdate::class)->name('kondisi.update');
+        Route::get('daftar-proposal', KondisiDaftarProposal::class)->name('kondisi.daftar-proposal');
+    });
+
+    Route::group(['prefix' => 'strategi'], function () {
+        Route::get('/', StrategiIndex::class)->name('strategi.index');
+        Route::get('/daftar-proposal', StrategiDaftarProposal::class)->name('strategi.daftar-proposal');
+        Route::get('tambah-strategi/{proposal_id}', StrategiCreate::class)->name('strategi.create');
+        Route::get('edit-strategi', StrategiUpdate::class)->name('stretegi.update');
+        Route::get('show-strategi/{strategi_id}', StrategiShow::class)->name('strategi.show');
+    });
+
+    Route::group(['prefix' => 'tujuan'], function () {
+        Route::get('/', TujuanIndex::class)->name('tujuan.index');
+        Route::get('tambah-tujuan/{proposal_id}', TujuanCreate::class)->name('tujuan.create');
+        Route::get('edit-tujuan', TujuanUpdate::class)->name('tujuan.update');
         Route::get('daftar-proposal', KondisiDaftarProposal::class)->name('kondisi.daftar-proposal');
     });
 

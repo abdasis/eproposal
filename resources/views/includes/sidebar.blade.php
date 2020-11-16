@@ -90,6 +90,21 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('strategi.daftar-proposal') }}">
+                        <i class="fa fa-chart-line"></i>
+                        <span> Strategi </span>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="{{ route('strategi.daftar-proposal') }}">
+                        <i class="fa fa-chart-line"></i>
+                        <span> Indicator Tujuan </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="apps-calendar.html">
                         <i class="mdi mdi-cog"></i>
                         <span> Pengaturan </span>

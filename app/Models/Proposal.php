@@ -18,4 +18,9 @@ class Proposal extends Model
     {
         return $this->hasMany(Responden::class);
     }
+
+    public function strategi()
+    {
+        return $this->hasOne(Strategi::class);
+    }
 }
