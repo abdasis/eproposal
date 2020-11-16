@@ -11,6 +11,6 @@ class Manfaat extends Model
 
     public function nilaiKondisi()
     {
-        return $this->belongsTo(SurveyKondisi::class);
+        return $this->belongsToMany(SurveyKondisi::class);
     }
 }

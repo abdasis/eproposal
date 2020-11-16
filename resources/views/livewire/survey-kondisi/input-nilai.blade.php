@@ -96,40 +96,36 @@
                         <thead class="thead-white">
                             <tr>
                                 <th rowspan="2">Pengaruh</th>
-                                <th colspan="3" class="text-center">Terhadap Pengurangan Dampak</th>
-                                <th colspan="3" class="text-center">Terhadap Pemanfaatan</th>
+                                <th colspan="{{ count($threats) }}" class="text-center">Terhadap Pengurangan Dampak</th>
+                                <th colspan="{{ count($opportunities) }}" class="text-center">Terhadap Pemanfaatan</th>
                                 <th rowspan="2">Total Skor</th>
                                 <th rowspan="2">Option</th>
                             </tr>
                             <tr>
-                                <th>T1</th>
-                                <th>T2</th>
-                                <th>T3</th>
+                                @foreach ($threats as $key => $t)
+                                    <th>T{{ $key+1 }}</th>
+                                @endforeach
 
-                                <th>O1</th>
-                                <th>O2</th>
-                                <th>O3</th>
+                                @foreach ($opportunities as $key => $o)
+                                    <th>O{{ $key+1 }}</th>
+                                @endforeach
                             </tr>
                             </thead>
                             <tbody>
+                                @foreach ($surveyKondisis as $kondisi)
                                 <tr>
-                                    <td>S1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td >{{ $kondisi->pengaruh }}</td>
+                                    {{ dd($kondisi->nilaiKondisi) }}
+                                    <td>{{ $kondisi->nilaiKondisi[0]->nilai }}</td>
+                                    <td>{{ $kondisi->nilaiKondisi[0]->nilai }}</td>
+                                    <td>{{ $kondisi->nilaiKondisi[0]->nilai }}</td>
+                                    <td>{{ $kondisi->nilaiKondisi[0]->nilai }}</td>
+
+
                                 </tr>
-                                <tr>
-                                    <td>S2</td>
-                                </tr>
-                                <tr>
-                                    <td>S3</td>
-                                </tr>
-                                <tr>
+                                @endforeach
+
+                                {{-- <tr>
                                     <th>Total Skor S</th>
                                 </tr>
                                 <tr>
@@ -146,7 +142,7 @@
                                 </tr>
                                 <tr>
                                     <th>Total Skor W-S</th>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                     </table>
                 </div>

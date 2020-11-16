@@ -48,9 +48,12 @@ class InputNilai extends Component
         $kondisi = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->latest()->get();
         $weakness = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->latest()->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
+        $oppotunity = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'O')->latest()->get();
         return view('livewire.survey-kondisi.input-nilai', [
             'kondisis' => $kondisi,
+            'opportunities' => $oppotunity,
             'threats' => $threat,
+            'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->get()
         ]);
     }
 }

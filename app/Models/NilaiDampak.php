@@ -11,6 +11,6 @@ class NilaiDampak extends Model
 
     public function surveyKondisi()
     {
-        return $this->belongsTo(SurveyKondisi::class);
+        return $this->belongsToMany(SurveyKondisi::class);
     }
 }
