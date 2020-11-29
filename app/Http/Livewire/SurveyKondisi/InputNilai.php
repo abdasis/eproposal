@@ -53,7 +53,9 @@ class InputNilai extends Component
             'kondisis' => $kondisi,
             'opportunities' => $oppotunity,
             'threats' => $threat,
+            'weakness' => $weakness,
             'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->get()
         ]);
     }
 }
+

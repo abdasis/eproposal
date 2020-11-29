@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Strategi extends Model
 {
     use HasFactory;
+
+    public function proposal()
+    {
+        return $this->belongsTo(Proposal::class);
+    }
 }

@@ -60,11 +60,11 @@ class Create extends Component
     public function render()
     {
         return view('livewire.anggota.create', [
-            'pemerintah' => Anggota::where('golongan', 'Pihak Pemerintah')->latest()->get(),
-            'pengusaha' => Anggota::where('golongan', 'Pihak Pengusaha / Swasta')->latest()->get(),
-            'individu' => Anggota::where('golongan', 'Pihak Individu Masyarakat')->latest()->get(),
-            'masyarakat' => Anggota::where('golongan', 'Pihak Lembaga/Organisasi di Masyarakat')->latest()->get(),
-            'akademisi' => Anggota::where('golongan', 'Pihak Akademisi')->latest()->get(),
+            'pemerintah' => Anggota::where('proposal_id', $this->proposal->id)->where('golongan', 'Pihak Pemerintah')->latest()->get(),
+            'pengusaha' => Anggota::where('proposal_id', $this->proposal->id)->where('golongan', 'Pihak Pengusaha / Swasta')->latest()->get(),
+            'individu' => Anggota::where('proposal_id', $this->proposal->id)->where('golongan', 'Pihak Individu Masyarakat')->latest()->get(),
+            'masyarakat' => Anggota::where('proposal_id', $this->proposal->id)->where('golongan', 'Pihak Lembaga/Organisasi di Masyarakat')->latest()->get(),
+            'akademisi' => Anggota::where('proposal_id', $this->proposal->id)->where('golongan', 'Pihak Akademisi')->latest()->get(),
         ]);
     }
 }

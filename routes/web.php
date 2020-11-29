@@ -4,6 +4,9 @@ use App\Http\Livewire\Analisys\DaftarProposal;
 use App\Http\Livewire\Anggota\Create as AnggotaCreate;
 use App\Http\Livewire\Anggota\Index as AnggotaIndex;
 use App\Http\Livewire\Anggota\Update as AnggotaUpdate;
+use App\Http\Livewire\IndikatorTujuan\Create as IndikatorTujuanCreate;
+use App\Http\Livewire\IndikatorTujuan\DaftarProposal as IndikatorTujuanDaftarProposal;
+use App\Http\Livewire\IndikatorTujuan\Index as IndikatorTujuanIndex;
 use App\Http\Livewire\Kondisi\Create as KondisiCreate;
 use App\Http\Livewire\Kondisi\DaftarProposal as KondisiDaftarProposal;
 use App\Http\Livewire\Kondisi\Index as KondisiIndex;
@@ -82,13 +85,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/', TujuanIndex::class)->name('tujuan.index');
         Route::get('tambah-tujuan/{proposal_id}', TujuanCreate::class)->name('tujuan.create');
         Route::get('edit-tujuan', TujuanUpdate::class)->name('tujuan.update');
-        Route::get('daftar-proposal', KondisiDaftarProposal::class)->name('kondisi.daftar-proposal');
+        Route::get('daftar-proposal', KondisiDaftarProposal::class)->name('tujuan.daftar-proposal');
     });
 
     Route::group(['prefix' => 'survey-kondisi'], function () {
         Route::get('daftar-proposal', SurveyKondisiDaftarProposal::class)->name('survey-kondisi.daftar-proposal');
         Route::get('jawab-survey-kondisi/{proposal_id}', IsiSurvey::class)->name('survey-kondisi.jawab-survey');
         Route::get('input-nilai/{proposal_id}', InputNilai::class)->name('survey-kondisi.input-nilai');
+    });
+
+    Route::group(['prefix' => 'indikator-tujuan'], function () {
+        Route::get('/', IndikatorTujuanIndex::class)->name('indikator-tujuan.index');
+        Route::get('daftar-proposal', IndikatorTujuanDaftarProposal::class)->name('indikator.daftar-proposal');
+        Route::get('tambah', IndikatorTujuanCreate::class)->name('indikator.tambah');
     });
 });
 
