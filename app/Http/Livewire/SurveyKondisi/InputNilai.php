@@ -39,8 +39,7 @@ class InputNilai extends Component
         $nilaiManfaat->nilai = $this->nilai_manfaat;
         $pengaruh->nilaiManfaat()->save($nilaiManfaat);
 
-
-
+        $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data Berhasil disimpan']);
 
     }
     public function render()

@@ -95,10 +95,8 @@
                         <span> Strategi </span>
                     </a>
                 </li>
-
-
                 <li>
-                    <a href="{{ route('strategi.daftar-proposal') }}">
+                    <a href="{{ route('indikator.daftar-proposal') }}">
                         <i class="fa fa-chart-line"></i>
                         <span> Indicator Tujuan </span>
                     </a>

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class IndikatorTujuan extends Model
 {
     use HasFactory;
+
+    public function targetThreat()
+    {
+        return $this->hasMany(TargetThreat::class);
+    }
 }

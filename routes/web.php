@@ -95,9 +95,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 
     Route::group(['prefix' => 'indikator-tujuan'], function () {
-        Route::get('/', IndikatorTujuanIndex::class)->name('indikator-tujuan.index');
+        Route::get('/tujuan/{proposal_id}', IndikatorTujuanIndex::class)->name('indikator-tujuan.index');
         Route::get('daftar-proposal', IndikatorTujuanDaftarProposal::class)->name('indikator.daftar-proposal');
-        Route::get('tambah', IndikatorTujuanCreate::class)->name('indikator.tambah');
+        Route::get('tambah/', IndikatorTujuanCreate::class)->name('indikator.tambah');
     });
 });
 
