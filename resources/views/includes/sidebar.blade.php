@@ -103,6 +103,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('indikator-kegiatan.daftar-proposal') }}">
+                        <i class="fa fa-chart-line"></i>
+                        <span> Indikator Kegiatan </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="apps-calendar.html">
                         <i class="mdi mdi-cog"></i>
                         <span> Pengaturan </span>

@@ -4,6 +4,8 @@ use App\Http\Livewire\Analisys\DaftarProposal;
 use App\Http\Livewire\Anggota\Create as AnggotaCreate;
 use App\Http\Livewire\Anggota\Index as AnggotaIndex;
 use App\Http\Livewire\Anggota\Update as AnggotaUpdate;
+use App\Http\Livewire\IndikatorKegiatan\DaftarProposal as IndikatorKegiatanDaftarProposal;
+use App\Http\Livewire\IndikatorKegiatan\Index as IndikatorKegiatanIndex;
 use App\Http\Livewire\IndikatorTujuan\Create as IndikatorTujuanCreate;
 use App\Http\Livewire\IndikatorTujuan\DaftarProposal as IndikatorTujuanDaftarProposal;
 use App\Http\Livewire\IndikatorTujuan\Index as IndikatorTujuanIndex;
@@ -98,6 +100,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/tujuan/{proposal_id}', IndikatorTujuanIndex::class)->name('indikator-tujuan.index');
         Route::get('daftar-proposal', IndikatorTujuanDaftarProposal::class)->name('indikator.daftar-proposal');
         Route::get('tambah/', IndikatorTujuanCreate::class)->name('indikator.tambah');
+    });
+
+    Route::group(['prefix' => 'indikator-kegiatan'], function () {
+        Route::get('daftar-proposal', IndikatorKegiatanDaftarProposal::class)->name('indikator-kegiatan.daftar-proposal');
+        Route::get('tambah', IndikatorKegiatanIndex::class)->name('indikator-kegiatan.index');
     });
 });
 
