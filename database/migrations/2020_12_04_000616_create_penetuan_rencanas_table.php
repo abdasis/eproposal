@@ -15,6 +15,7 @@ class CreatePenetuanRencanasTable extends Migration
     {
         Schema::create('penetuan_rencanas', function (Blueprint $table) {
             $table->id();
+            $table->string('nomor_kegiatan', 100)->nullable();
             $table->longText('sub_kegiatan')->nullable();
             $table->longText('sumber_daya')->nullable();
             $table->string('penanggung_jawab', 100);
