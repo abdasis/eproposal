@@ -36,18 +36,17 @@
 
                         <div class="form-group">
                             <label for="">Nomor Kegiatan</label>
-                            <textarea wire:model='nomor_kegiatan' class="form-control shadow-none" id="" cols="30" rows="10"></textarea>
+                            <input type="number" wire:model='nomor_kegiatan' class="form-control shadow-none" >
                         </div>
 
                         <div class="form-group">
                           <label for="">Kegaiatan Untuk Mencapai Tujuan Prioritas</label>
-                          <textarea class="form-control" wire:model="kegiatan" id="" rows="3"></textarea>
+                          <textarea class="form-control shadow-none" wire:model="kegiatan" id="" rows="3"></textarea>
                         </div>
 
                         <div class="form-group">
                           <label for="">Indikator Kinerja Kegiatan</label>
-                          <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
-                          <small id="helpId" class="text-muted">Help text</small>
+                          <input type="text" wire:model="kinerja_kegiatan" id="" class="form-control shadow-none" placeholder="" aria-describedby="helpId">
                         </div>
 
                         <div class="form-group">
@@ -55,22 +54,18 @@
                           <input type="text" name="" wire:model='nilai_awal' id="" class="form-control shadow-none" placeholder="" aria-describedby="helpId">
                         </div>
 
+                        @foreach ($threats as $key => $threat)
                         <div class="form-group row">
                             <div class="col-md-7">
                                 <label for="">Pilih Streng</label>
-                                <select class="custom-select shadow-none" wire:model='threat' name="" id="">
-                                    <option selected>Pilih Streng</option>
-                                    @foreach ($threats as $key => $threat)
-                                        <option value="{{ $threat->jenis_kondisi }}">{{ $threat->jenis_kondisi }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" disabled value="{{ $threat->jenis_kondisi }}" class="form-control shadow-none bg-light">
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir'>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.{{ $key }}'>
                             </div>
                         </div>
-
+                        @endforeach
 
                         <div class="form-group">
                             <button class="btn btn-blue font-weight-bold shadow-none">SIMPAN NILAI</button>
@@ -89,37 +84,35 @@
                     <table class="table table-sm table-bordered">
                         <thead class="thead-default">
                             <tr>
-                                <th rowspan="4">No.</th>
-                                <th rowspan="4">Tujuan Prioritas</th>
-                                <th rowspan="4">Indikator Kinerja</th>
-                                <th colspan="4">Nilai Indikator</th>
+                                <th class="align-middle" rowspan="4">No.</th>
+                                <th class="align-middle" rowspan="4">Tujuan Prioritas</th>
+                                <th class="align-middle" rowspan="4">No Kegiatan</th>
+                                <th class="align-middle" rowspan="4">Kegiatan</th>
+                                <th class="align-middle" rowspan="4">Indikator Kinerja</th>
+                                <th class="align-middle" colspan="4">Nilai Indikator</th>
                             </tr>
                             <tr>
-                                <th rowspan="2" >Nilai Awal</th>
-                                <th colspan="3"> Nilai Target</th>
+                                <th class="align-middle" rowspan="2" >Nilai Awal</th>
+                                <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
                             </tr>
                             <tr>
-                                <th>T1</th>
-                                <th>T2</th>
-                                <th>T3</th>
+                                @foreach ($threats as $key => $threat)
+                                <th>T{{ $key+1 }}</th>
+                                @endforeach
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($indikatorTujuan->unique('tujuan_prioritas') as $key => $indikator)
+                                @foreach ($indikatorKegiatan as $key => $kegiatan)
                                 <tr>
                                     <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $indikator->tujuan_prioritas }}</td>
-                                    <td>{{ $indikator->indikator_kinerja }}</td>
-                                    <td>{{ $indikator->nilai_awal }}</td>
-                                    <tr>
-                                        <table>
-                                            <tr>
-                                                @foreach ($indikator->targetThreat->where('target_threat', $indikator->tujuan_prioritas) as $targetThreat)
-                                                    <td>{{ dd($targetThreat->tujuan_prioritas) }}</td>
-                                                @endforeach
-                                            </tr>
-                                        </table>
-                                    </tr>
+                                    <td>{{ $kegiatan->tujuan_prioritas }}</td>
+                                    <td>{{ $kegiatan->no_kegiatan }}</td>
+                                    <td>{{ $kegiatan->kegiaatan }}</td>
+                                    <td>{{ $kegiatan->indikator_kinerja }}</td>
+                                    <td>{{ $kegiatan->nilai_awal }}</td>
+                                    @foreach (json_decode($kegiatan->nilai_target) as $targetThreat)
+                                        <td>{{ $targetThreat }}</td>
+                                    @endforeach
                                 </tr>
                                 @endforeach
                             </tbody>

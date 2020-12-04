@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTargetThreatsTable extends Migration
+class CreatePenetuanRencanasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateTargetThreatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('target_threats', function (Blueprint $table) {
+        Schema::create('penetuan_rencanas', function (Blueprint $table) {
             $table->id();
-            $table->string('target_threats', 100);
-            $table->string('nilai', 100)->nullable();
-            $table->foreignId('indikator_tujuan_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateTargetThreatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('target_threats');
+        Schema::dropIfExists('penetuan_rencanas');
     }
 }

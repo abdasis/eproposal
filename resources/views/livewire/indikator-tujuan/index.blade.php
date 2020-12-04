@@ -45,21 +45,18 @@
                           <input type="text" name="" wire:model='nilai_awal' id="" class="form-control shadow-none" placeholder="" aria-describedby="helpId">
                         </div>
 
+                        @foreach ($threats as $key => $threat)
                         <div class="form-group row">
                             <div class="col-md-7">
                                 <label for="">Pilih Streng</label>
-                                <select class="custom-select shadow-none" wire:model='threat' name="" id="">
-                                    <option selected>Pilih Streng</option>
-                                    @foreach ($threats as $key => $threat)
-                                        <option value="{{ $threat->jenis_kondisi }}">{{ $threat->jenis_kondisi }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" disabled value="{{ $threat->jenis_kondisi }}" class="form-control shadow-none bg-light">
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir'>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.{{ $key }}'>
                             </div>
                         </div>
+                        @endforeach
 
 
                         <div class="form-group">
@@ -86,12 +83,12 @@
                             </tr>
                             <tr>
                                 <th rowspan="2" >Nilai Awal</th>
-                                <th colspan="3"> Nilai Target</th>
+                                <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
                             </tr>
                             <tr>
-                                <th>T1</th>
-                                <th>T2</th>
-                                <th>T3</th>
+                                @foreach ($threats as $key => $threat)
+                                <th>T{{ $key+1 }}</th>
+                                @endforeach
                             </tr>
                             </thead>
                             <tbody>
@@ -101,15 +98,9 @@
                                     <td>{{ $indikator->tujuan_prioritas }}</td>
                                     <td>{{ $indikator->indikator_kinerja }}</td>
                                     <td>{{ $indikator->nilai_awal }}</td>
-                                    <tr>
-                                        <table>
-                                            <tr>
-                                                @foreach ($indikator->targetThreat->where('target_threat', $indikator->tujuan_prioritas) as $targetThreat)
-                                                    <td>{{ dd($targetThreat->tujuan_prioritas) }}</td>
-                                                @endforeach
-                                            </tr>
-                                        </table>
-                                    </tr>
+                                    @foreach (json_decode($indikator->nilai_target) as $targetThreat)
+                                        <td>{{ $targetThreat }}</td>
+                                    @endforeach
                                 </tr>
                                 @endforeach
                             </tbody>

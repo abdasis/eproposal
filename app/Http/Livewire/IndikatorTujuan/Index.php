@@ -20,16 +20,14 @@ class Index extends Component
 
     public function store()
     {
+
         $indikatorTujuan = new IndikatorTujuan();
         $indikatorTujuan->tujuan_prioritas = $this->tujuan;
         $indikatorTujuan->indikator_kinerja = $this->indikator_tujuan;
+        $indikatorTujuan->nilai_target = json_encode($this->nilai_akhir);
         $indikatorTujuan->nilai_awal = $this->nilai_awal;
-        $indikatorTujuan->save();
 
-        $threat = new TargetThreat();
-        $threat->target_threats = $this->threat;
-        $threat->nilai = $this->nilai_akhir;
-        $indikatorTujuan->targetThreat()->save($threat);
+        $indikatorTujuan->save();
 
         $this->formReset();
         $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data Berhasil disimpan']);

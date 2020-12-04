@@ -104,7 +104,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'indikator-kegiatan'], function () {
         Route::get('daftar-proposal', IndikatorKegiatanDaftarProposal::class)->name('indikator-kegiatan.daftar-proposal');
-        Route::get('tambah', IndikatorKegiatanIndex::class)->name('indikator-kegiatan.index');
+        Route::get('tambah/{proposal_id}', IndikatorKegiatanIndex::class)->name('indikator-kegiatan.index');
     });
 });
 
