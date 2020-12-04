@@ -21,6 +21,7 @@ class CreateIndikatorKegiatansTable extends Migration
             $table->longText('indikator_kinerja')->nullable();
             $table->string('nilai_awal', 100)->nullable();
             $table->string('nilai_target', 100)->nullable();
+            $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

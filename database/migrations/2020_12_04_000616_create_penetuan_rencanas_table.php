@@ -15,6 +15,11 @@ class CreatePenetuanRencanasTable extends Migration
     {
         Schema::create('penetuan_rencanas', function (Blueprint $table) {
             $table->id();
+            $table->longText('sub_kegiatan')->nullable();
+            $table->longText('sumber_daya')->nullable();
+            $table->string('penanggung_jawab', 100);
+            $table->longText('jadwal')->nullable();
+            $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

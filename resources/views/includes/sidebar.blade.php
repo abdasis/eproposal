@@ -110,6 +110,14 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('rencana.daftar-proposal') }}">
+                        <i class="fa fa-calendar-check"></i>
+                        <span> Penentuan Rencana </span>
+                    </a>
+                </li>
+
+
+                <li>
                     <a href="apps-calendar.html">
                         <i class="mdi mdi-cog"></i>
                         <span> Pengaturan </span>

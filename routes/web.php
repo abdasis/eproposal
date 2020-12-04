@@ -13,6 +13,8 @@ use App\Http\Livewire\Kondisi\Create as KondisiCreate;
 use App\Http\Livewire\Kondisi\DaftarProposal as KondisiDaftarProposal;
 use App\Http\Livewire\Kondisi\Index as KondisiIndex;
 use App\Http\Livewire\Kondisi\Update as KondisiUpdate;
+use App\Http\Livewire\PenentuanRencana\DaftarProposal as PenentuanRencanaDaftarProposal;
+use App\Http\Livewire\PenentuanRencana\Index as PenentuanRencanaIndex;
 use App\Http\Livewire\Proposal\Create;
 use App\Http\Livewire\Proposal\Index;
 use App\Http\Livewire\Proposal\Show;
@@ -105,6 +107,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'indikator-kegiatan'], function () {
         Route::get('daftar-proposal', IndikatorKegiatanDaftarProposal::class)->name('indikator-kegiatan.daftar-proposal');
         Route::get('tambah/{proposal_id}', IndikatorKegiatanIndex::class)->name('indikator-kegiatan.index');
+    });
+
+    Route::group(['prefix' => 'penentuan-rencana'], function () {
+        Route::get('daftar-proposal', PenentuanRencanaDaftarProposal::class)->name('rencana.daftar-proposal');
+        Route::get('tambah/{proposal_id}', PenentuanRencanaIndex::class)->name('rencana.index');
     });
 });
 

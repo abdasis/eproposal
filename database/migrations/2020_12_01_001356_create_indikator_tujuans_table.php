@@ -19,6 +19,7 @@ class CreateIndikatorTujuansTable extends Migration
             $table->string('indikator_kinerja', 100)->nullable();
             $table->string('nilai_awal', 100)->nullable();
             $table->longText('nilai_target')->nullable();
+            $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
