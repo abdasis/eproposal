@@ -75,12 +75,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('kondisi.daftar-proposal') }}">
-                        <i class="fa fa-chart-line"></i>
-                        <span> Analisys Kondisi </span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="{{ route('survey-kondisi.daftar-proposal') }}">
