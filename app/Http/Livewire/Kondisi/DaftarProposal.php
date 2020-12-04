@@ -10,7 +10,7 @@ class DaftarProposal extends Component
     public function render()
     {
         return view('livewire.kondisi.daftar-proposal', [
-            'proposals' => Proposal::latest()->get()
+            'proposals' => Proposal::where('status_tahap', 3)->latest()->get()
         ]);
     }
 }

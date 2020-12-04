@@ -16,6 +16,10 @@ class CreateSurveyKondisisTable extends Migration
         Schema::create('survey_kondisis', function (Blueprint $table) {
             $table->id();
             $table->string('pengaruh', 100);
+            $table->string('swot', 1);
+            $table->string('nilai_dampak', 100);
+            $table->string('nilai_manfaat', 100);
+            $table->string('total', 100);
             $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

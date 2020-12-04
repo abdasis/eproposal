@@ -24,21 +24,25 @@ class InputNilai extends Component
 
     public function store()
     {
+
+        $totalT = [];
+        $totalO = [];
+        foreach ($this->nilai_dampak as $key =>  $nilaiDampak) {
+            $totalT[$key] = $nilaiDampak;
+        }
+
+        foreach ($this->nilai_manfaat as $key =>  $nilaiManfaat) {
+            $totalO[$key] = $nilaiManfaat;
+        }
+
         $pengaruh = new SurveyKondisi();
         $pengaruh->pengaruh = $this->kondisi;
+        $pengaruh->nilai_dampak = json_encode($this->nilai_dampak);
+        $pengaruh->nilai_manfaat = json_encode($this->nilai_manfaat);
+        $pengaruh->total = array_sum($totalT) + array_sum($totalO);
         $pengaruh->proposal_id = $this->proposal->id;
+        $pengaruh->swot = $this->kondisi[0];
         $pengaruh->save();
-
-        $nilaiDampak = new NilaiDampak();
-        $nilaiDampak->dampak = $this->dampak;
-        $nilaiDampak->nilai = $this->nilai_dampak;
-        $pengaruh->nilaiKondisi()->save($nilaiDampak);
-
-        $nilaiManfaat = new Manfaat();
-        $nilaiManfaat->manfaat = $this->manfaat;
-        $nilaiManfaat->nilai = $this->nilai_manfaat;
-        $pengaruh->nilaiManfaat()->save($nilaiManfaat);
-
         $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data Berhasil disimpan']);
 
     }
@@ -48,12 +52,19 @@ class InputNilai extends Component
         $weakness = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->latest()->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
         $oppotunity = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'O')->latest()->get();
+        $totalS = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->sum('total');
+        $totalW = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->sum('total');
+        $totalSW = $totalS+$totalW;
+
         return view('livewire.survey-kondisi.input-nilai', [
             'kondisis' => $kondisi,
             'opportunities' => $oppotunity,
             'threats' => $threat,
             'weakness' => $weakness,
-            'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->get()
+            'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->get(),
+            'totalS' => $totalS,
+            'totalW' => $totalW,
+            'totalSW' => $totalSW
         ]);
     }
 }

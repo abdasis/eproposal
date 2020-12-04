@@ -28,47 +28,41 @@
                                 <option selected>Pilih Streng</option>
                                 <optgroup label="Strenght">
                                     @foreach ($kondisis as $key => $kondisi)
-                                        <option value="{{ $kondisi->kondisi }}">S{{ $key+1 }} - {{ $kondisi->kondisi }}</option>
+                                        <option value="S{{ $key+1 }} - {{ $kondisi->kondisi }}">S{{ $key+1 }} - {{ $kondisi->kondisi }}</option>
                                     @endforeach
                                 </optgroup>
                                 <optgroup label="Weakness">
                                     @foreach ($weakness as $key => $w)
-                                        <option value="{{ $w->kondisi }}">W{{ $key+1 }} - {{ $w->kondisi }}</option>
+                                        <option value="W{{ $key+1 }} - {{ $w->kondisi }}">W{{ $key+1 }} - {{ $w->kondisi }}</option>
                                     @endforeach
                                 </optgroup>
                             </select>
                         </div>
+                        @foreach ($threats as $key => $threat)
                         <div class="form-group row">
-                            <div class="col-md-8">
-                                <label for="">Pilih Threat</label>
-                                <select class="custom-select shadow-none" wire:model='dampak' name="" id="">
-                                    <option selected>Pilih Streng</option>
-                                    @foreach ($threats as $key => $threat)
-                                        <option value="{{ $threat->kondisi }}">T{{ $key+1 }} - {{ $threat->kondisi }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="col-md-7">
+                                <label for="">T{{ $key+1 }}</label>
+                                <input type="text" disabled value="{{ $threat->jenis_kondisi }}" class="form-control shadow-none bg-light">
                             </div>
-                            <div class="col-md-4">
-                                <label for="">Nilai Threat</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_dampak'>
+                            <div class="col-md-5">
+                                <label for="">Nilai</label>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_dampak.{{ $key }}'>
                             </div>
                         </div>
+                        @endforeach
 
+                        @foreach ($opportunities as $key => $opportunity)
                         <div class="form-group row">
-                            <div class="col-md-8">
-                                <label for="">Pilih Opportunity</label>
-                                <select class="custom-select shadow-none" wire:model='manfaat' name="" id="">
-                                    <option selected>Pilih Streng</option>
-                                    @foreach ($opportunities as $key => $opportunity)
-                                        <option value="{{ $opportunity->kondisi }}">O{{ $key+1 }} - {{ $opportunity->kondisi }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="col-md-7">
+                                <label for="">W{{ $key+1 }}</label>
+                                <input type="text" disabled value="{{ $opportunity->jenis_kondisi }}" class="form-control shadow-none bg-light">
                             </div>
-                            <div class="col-md-4">
-                                <label for="">Nilai Threat</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_manfaat'>
+                            <div class="col-md-5">
+                                <label for="">Nilai</label>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_manfaat.{{ $key }}'>
                             </div>
                         </div>
+                        @endforeach
 
                         <div class="form-group">
                             <button class="btn btn-blue font-weight-bold shadow-none">SIMPAN NILAI</button>
@@ -99,9 +93,9 @@
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-sm table-responsive">
+                    <table class="table table-bordered table-sm">
                         <thead class="thead-white">
-                            {{-- <tr>
+                            <tr>
                                 <th rowspan="2">Pengaruh</th>
                                 <th colspan="{{ count($threats) }}" class="text-center">Terhadap Pengurangan Dampak</th>
                                 <th colspan="{{ count($opportunities) }}" class="text-center">Terhadap Pemanfaatan</th>
@@ -116,9 +110,9 @@
                                 @foreach ($opportunities as $key => $o)
                                     <th>O{{ $key+1 }}</th>
                                 @endforeach
-                            </tr> --}}
+                            </tr>
 
-                            <tr>
+                            {{-- <tr>
                                 <td>NO</td>
                                 <th>PENGARUH</th>
                                 <th>TERHADAP PENGURANGAN DAMPAK</th>
@@ -127,38 +121,36 @@
                                 <th>NILAI</th>
                                 <th>TOTAL THREAT</th>
                                 <th>TOTAL STRENGHT</th>
-                            </tr>
+                            </tr> --}}
 
                             </thead>
                             <tbody>
                                 @foreach ($surveyKondisis as $key => $kondisi)
                                     <tr>
-                                        <td>{{ $key+1 }}</td>
                                         <td>{{ $kondisi->pengaruh }}</td>
-                                        <td>T{{ $key+1 }}</td>
-                                        <td>{{ $kondisi->nilaiKondisi[0]->nilai }}</td>
-                                        <td>O{{ $key+1 }}</td>
-                                        <td>{{ $kondisi->nilaiManfaat[0]->nilai }}</td>
+                                        @foreach (json_decode($kondisi->nilai_dampak) as $dampak)
+                                            <td>{{ $dampak }}</td>
+                                        @endforeach
+                                        @foreach (json_decode($kondisi->nilai_manfaat) as $manfaat)
+                                            <td>{{ $manfaat }}</td>
+                                        @endforeach
+                                        <td>{{ $kondisi->total }}</td>
+
                                     </tr>
+
                                 @endforeach
                                 <tr>
                                     <th>Total Skor S</th>
-                                </tr>
-                                {{-- <tr>
-                                    <td>W1</td>
-                                </tr>
-                                <tr>
-                                    <td>W2</td>
-                                </tr>
-                                <tr>
-                                    <td>W3</td>
+                                    <td>{{ $totalS }}</td>
                                 </tr>
                                 <tr>
                                     <th>Total Skor W</th>
+                                    <td>{{ $totalW }}</td>
                                 </tr>
                                 <tr>
                                     <th>Total Skor W-S</th>
-                                </tr> --}}
+                                    <td>{{ $totalSW }}</td>
+                                </tr>
                             </tbody>
                     </table>
                 </div>
@@ -166,3 +158,15 @@
         </div>
     </div>
 </div>
+
+@push('js')
+    <script>
+        Livewire.on('success', params => {
+            Swal.fire(
+                params['title'],
+                params['message'],
+                'success'
+            )
+        })
+    </script>
+@endpush
