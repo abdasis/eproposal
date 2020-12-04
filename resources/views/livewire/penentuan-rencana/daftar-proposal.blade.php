@@ -53,7 +53,7 @@
                                     <td class="align-middle">Tahap Ke-{{ $proposal->status_tahap }}</td>
                                     <td class="align-middle text-center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="{{ route('indikator-kegiatan.index', $proposal->id) }}">
+                                            <a href="{{ route('rencana.index', $proposal->id) }}">
                                                 <button class="btn btn-sm btn-outline-success"><i class="fa fa-edit"></i></button>
                                             </a>
                                         </div>

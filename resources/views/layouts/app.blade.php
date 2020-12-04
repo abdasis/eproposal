@@ -82,12 +82,12 @@
         <!-- END wrapper -->
 
         <!-- Vendor js -->
-        <script src="{{ mix('js/app.js') }}"></script>
+        @livewireScripts
+        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
         <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
-        @livewireScripts
-        <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js" data-turbolinks-eval="false"></script>
+
         @stack('js')
 
     </body>
