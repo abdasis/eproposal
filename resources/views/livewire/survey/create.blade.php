@@ -103,11 +103,11 @@
                                         </div>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model='tingkat_pengaruh.{{ $key }}' type="radio" id="pengaruh-{{ $anggota->id }}-2" value="2" name="tingkat_pengaruh_{{ $anggota->id }}">
-                                            <label for="pengaruh-{{ $anggota->id }}-2"> Kurang Berpengahruh </label>
+                                            <label for="pengaruh-{{ $anggota->id }}-2"> Kurang Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model='tingkat_pengaruh.{{ $key }}' type="radio" id="pengaruh-{{ $anggota->id }}-3" value="3" name="tingkat_pengaruh_{{ $anggota->id }}">
-                                            <label for="pengaruh-{{ $anggota->id }}-3"> Berpengahruh </label>
+                                            <label for="pengaruh-{{ $anggota->id }}-3"> Berpengaruh </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model='tingkat_pengaruh.{{ $key }}' type="radio" id="pengaruh-{{ $anggota->id }}-4" value="4" name="tingkat_pengaruh_{{ $anggota->id }}">
@@ -145,19 +145,19 @@
                                     <td>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model="tingkat_kepentingan.{{ $key }}" type="radio" id="anggota-{{ $anggota->id }}-1" value="1" name="tingkat_kepentingan{{ $anggota->id }}">
-                                            <label for="anggota-{{ $anggota->id }}-1"> Sangat Tidak Berpengaruh </label>
+                                            <label for="anggota-{{ $anggota->id }}-1"> Sangat Tidak Berkepentingan </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model="tingkat_kepentingan.{{ $key }}" type="radio" id="anggota-{{ $anggota->id }}-2" value="2" name="tingkat_kepentingan{{ $anggota->id }}">
-                                            <label for="anggota-{{ $anggota->id }}-2"> Kurang Berpengahruh </label>
+                                            <label for="anggota-{{ $anggota->id }}-2"> Kurang Berkepentingan </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model="tingkat_kepentingan.{{ $key }}" type="radio" id="anggota-{{ $anggota->id }}-3" value="3" name="tingkat_kepentingan{{ $anggota->id }}">
-                                            <label for="anggota-{{ $anggota->id }}-3"> Berpengahruh </label>
+                                            <label for="anggota-{{ $anggota->id }}-3"> Berkepentingan </label>
                                         </div>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model="tingkat_kepentingan.{{ $key }}" type="radio" id="anggota-{{ $anggota->id }}-4" value="4" name="tingkat_kepentingan{{ $anggota->id }}">
-                                            <label for="anggota-{{ $anggota->id }}-4"> Sangat Berpengaruh </label>
+                                            <label for="anggota-{{ $anggota->id }}-4"> Sangat Berkepentingan </label>
                                         </div>
                                     </td>
                                 </tr>

@@ -52,7 +52,7 @@ class Index extends Component
         return view('livewire.indikator-tujuan.index', [
             'strategies' => $strategi,
             'threats' => $threat,
-            'indikatorTujuan' => IndikatorTujuan::all(),
+            'indikatorTujuan' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->latest()->get(),
         ]);
     }
 }
