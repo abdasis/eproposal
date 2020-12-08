@@ -39,6 +39,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Judul Proposal</th>
+                                <th>Link Survey</th>
                                 <th>Dibuat Pada</th>
                                 <th>Tahapan</th>
                                 <th>Option</th>
@@ -49,6 +50,7 @@
                                 <tr>
                                     <td class="align-middle" scope="row">{{ $key+1 }}</td>
                                     <td class="align-middle">{{ $proposal->judul }}</td>
+                                    <td class="align-middle text-success">{{ route('survey.create', $proposal->id) }}</td>
                                     <td class="align-middle">{{ $proposal->created_at }}</td>
                                     <td class="align-middle">Tahap Ke-{{ $proposal->status_tahap }}</td>
                                     <td class="align-middle text-center">
