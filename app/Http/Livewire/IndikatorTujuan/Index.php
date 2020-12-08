@@ -26,7 +26,7 @@ class Index extends Component
         $indikatorTujuan->indikator_kinerja = $this->indikator_tujuan;
         $indikatorTujuan->nilai_target = json_encode($this->nilai_akhir);
         $indikatorTujuan->nilai_awal = $this->nilai_awal;
-
+        $indikatorTujuan->proposal_id = $this->proposal->id;
         $indikatorTujuan->save();
 
         $this->formReset();
