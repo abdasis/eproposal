@@ -32,6 +32,7 @@ class Index extends Component
             $indikatorKegiatan->indikator_kinerja = Str::ucfirst($this->kinerja_kegiatan);
             $indikatorKegiatan->nilai_awal = $this->nilai_awal;
             $indikatorKegiatan->nilai_target = json_encode($this->nilai_akhir);
+            $indikatorKegiatan->proposal_id = $this->proposal->id;
             $getKegiatan->indikatorKegiatan()->save($indikatorKegiatan);
             $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
        }else{
@@ -45,6 +46,7 @@ class Index extends Component
            $indikatorKegiatan->indikator_kinerja = Str::ucfirst($this->kinerja_kegiatan);
            $indikatorKegiatan->nilai_awal = $this->nilai_awal;
            $indikatorKegiatan->nilai_target = json_encode($this->nilai_akhir);
+           $indikatorKegiatan->proposal_id = $this->proposal->id;
            $kegiatan->indikatorKegiatan()->save($indikatorKegiatan);
            $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
        }
