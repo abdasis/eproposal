@@ -11,7 +11,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.anggota.index', [
-            'proposals' => Proposal::latest()->get()
+            'proposals' => Proposal::where('status_tahap', 1)->latest()->get()
         ]);
     }
 }
