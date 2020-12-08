@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'survey'], function () {
         Route::get('/', DaftarProposal::class)->name('daftar-proposal');
         Route::get('daftar-survey/{proposal_id}', SurveyIndex::class)->name('survey.index');
-        Route::get('tambah-survey/{proposal_id}', SurveyCreate::class)->name('survey.create');
+        Route::get('tambah-survey/{proposal_id}', SurveyCreate::class)->name('survey.create')->withoutMiddleware('auth');
     });
 
     Route::group(['prefix' => 'kondisi'], function () {

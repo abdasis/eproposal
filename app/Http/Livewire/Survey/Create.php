@@ -12,7 +12,7 @@ class Create extends Component
 {
     public $proposal;
     public  $nama, $usia, $jenis_kelamin, $pekerjaan, $status, $pendidikan;
-    public $tingkat_kepentingan, $tingkat_pengaruh, $anggota_id;
+    public $tingkat_kepentingan, $tingkat_pengaruh, $anggota_id, $nama_anggota;
 
 
     public function mount($proposal_id)
@@ -20,6 +20,7 @@ class Create extends Component
         $this->proposal = Proposal::find($proposal_id);
         foreach ($this->proposal->anggotas as $key => $anggota) {
             $this->anggota_id[$key] = $anggota->id;
+            $this->nama_anggota[$key]  = $anggota->nama;
         }
     }
 
@@ -42,6 +43,7 @@ class Create extends Component
             $analisys->tingkat_pengaruh = $this->tingkat_pengaruh[$key];
             $analisys->proposal_id = $this->proposal->id;
             $analisys->anggota_id = $this->anggota_id[$key];
+            $analisys->nama_anggota = $this->nama_anggota[$key];
             $analisys->responden_id = $responden_id->id;
             $analisys->save();
         }

@@ -34,7 +34,7 @@
                                 @foreach ($analisies as $key => $analisys)
                                 <tr>
                                     <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $analisys->anggota_id }}</td>
+                                    <td>{{ $analisys->nama_anggota }}</td>
                                     <td>{{ $analisys->tingkat_kepentingan }}</td>
                                     <td>{{ $analisys->tingkat_pengaruh }}</td>
                                 </tr>

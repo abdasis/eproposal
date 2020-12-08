@@ -16,10 +16,10 @@ class Index extends Component
 
     public function render()
     {
-        $anggota = Anggota::where('proposal_id', $this->proposal_id)->get();
-        $analisies = Analisys::where('anggota_id', $anggota->id)->get();
-        // $analisies = Anggota::with('analisys:tingkat_kepentingan')->get();
-        dd($analisies);
+        $analisies = Analisys::groupBy('nama_anggota')
+        ->selectRaw('sum(tingkat_pengaruh) as tingkat_pengaruh, sum(tingkat_kepentingan) as tingkat_kepentingan,nama_anggota')
+        ->get();
+        // dd($analisies);
         return view('livewire.survey.index', [
             'analisies' => $analisies
         ]);

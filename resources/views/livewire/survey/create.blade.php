@@ -93,6 +93,7 @@
                                     <td scope="row">{{ $key+1 }}</td>
                                     <td>
                                         <input type="hidden" wire:model='anggota_id.{{ $key }}'>
+                                        <input type="hidden" wire:model='nama_anggota.{{ $key }}' value="{{ $anggota->nama }}">
                                         {{ $anggota->nama }}
                                     </td>
                                     <td>
@@ -136,8 +137,11 @@
                                 <tr>
                                     <td scope="row">{{ $key+1 }}</td>
                                     <td>
+
                                         <input type="hidden" wire:model='anggota_id.{{ $key }}'>
+                                        <input type="hidden" wire:model='nama_anggota.{{ $key }}' value="{{ $anggota->nama }}">
                                         {{ $anggota->nama }}</td>
+
                                     <td>
                                         <div class="radio radio-info form-check-inline">
                                             <input wire:model="tingkat_kepentingan.{{ $key }}" type="radio" id="anggota-{{ $anggota->id }}-1" value="1" name="tingkat_kepentingan{{ $anggota->id }}">

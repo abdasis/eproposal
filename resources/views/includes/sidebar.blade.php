@@ -2,7 +2,8 @@
 
     <div class="h-100" data-simplebar>
 
-        <!-- User box -->
+       @auth
+            <!-- User box -->
         <div class="user-box text-center">
             <img src="{{ url('/') }}/assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
                 class="rounded-circle avatar-md">
@@ -124,6 +125,7 @@
         <!-- End Sidebar -->
 
         <div class="clearfix"></div>
+       @endauth
 
     </div>
     <!-- Sidebar -left -->
