@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class IndikatorKegiatan extends Model
 {
     use HasFactory;
+    public function tujuan()
+    {
+        return $this->belongsTo(IndikatorTujuan::class);
+    }
+
+    public function kegiatan()
+    {
+        return $this->belongsTo(Kegiatan::class);
+    }
 }

@@ -4,10 +4,12 @@ namespace App\Http\Livewire\IndikatorKegiatan;
 
 use App\Models\IndikatorKegiatan;
 use App\Models\IndikatorTujuan;
+use App\Models\Kegiatan;
 use App\Models\Kondisi;
 use App\Models\Proposal;
 use App\Models\Strategi;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Index extends Component
 {
@@ -20,15 +22,32 @@ class Index extends Component
 
     public function store()
     {
-        $indikatorKegiatan = new IndikatorKegiatan();
-        $indikatorKegiatan->tujuan_prioritas = $this->tujuan_prioritas;
-        $indikatorKegiatan->no_kegiatan = $this->nomor_kegiatan;
-        $indikatorKegiatan->kegiaatan = $this->kegiatan;
-        $indikatorKegiatan->indikator_kinerja = $this->kinerja_kegiatan;
-        $indikatorKegiatan->nilai_awal = $this->nilai_awal;
-        $indikatorKegiatan->nilai_target = json_encode($this->nilai_akhir);
-        $indikatorKegiatan->save();
-        $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
+
+       $getKegiatan = Kegiatan::where('nama_kegiatan', Str::ucfirst($this->tujuan_prioritas))->first();
+       if ($getKegiatan) {
+            $indikatorKegiatan = new IndikatorKegiatan();
+            $indikatorKegiatan->tujuan_prioritas = Str::ucfirst($this->tujuan_prioritas);
+            $indikatorKegiatan->no_kegiatan = $this->nomor_kegiatan;
+            $indikatorKegiatan->kegiaatan = Str::ucfirst($this->kegiatan);
+            $indikatorKegiatan->indikator_kinerja = Str::ucfirst($this->kinerja_kegiatan);
+            $indikatorKegiatan->nilai_awal = $this->nilai_awal;
+            $indikatorKegiatan->nilai_target = json_encode($this->nilai_akhir);
+            $getKegiatan->indikatorKegiatan()->save($indikatorKegiatan);
+            $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
+       }else{
+            $kegiatan = new Kegiatan();
+           $kegiatan->nama_kegiatan = $this->tujuan_prioritas;
+           $kegiatan->save();
+           $indikatorKegiatan = new IndikatorKegiatan();
+           $indikatorKegiatan->tujuan_prioritas = Str::ucfirst($this->tujuan_prioritas);
+           $indikatorKegiatan->no_kegiatan = $this->nomor_kegiatan;
+           $indikatorKegiatan->kegiaatan = Str::ucfirst($this->kegiatan);
+           $indikatorKegiatan->indikator_kinerja = Str::ucfirst($this->kinerja_kegiatan);
+           $indikatorKegiatan->nilai_awal = $this->nilai_awal;
+           $indikatorKegiatan->nilai_target = json_encode($this->nilai_akhir);
+           $kegiatan->indikatorKegiatan()->save($indikatorKegiatan);
+           $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
+       }
     }
 
 
@@ -39,7 +58,7 @@ class Index extends Component
         return view('livewire.indikator-kegiatan.index', [
             'strategies' => $strategi,
             'threats' => $threat,
-            'indikatorKegiatan' => IndikatorKegiatan::latest()->get(),
+            'indikatorKegiatan' => Kegiatan::latest()->get(),
         ]);
     }
 }

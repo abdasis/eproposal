@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <form wire:submit.prevent='store'>
                         <div class="form-group">
-                            <label for="">Tujuan Priorita</label>
+                            <label for="">Tujuan Prioritas</label>
                             <select class="custom-select shadow-none" wire:model='tujuan_prioritas' name="" id="">
                                 <option selected>Pilih Tujuan</option>
                                 @foreach ($strategies as $key => $strategi)
@@ -35,18 +35,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="">Nomor Kegiatan</label>
-                            <input type="number" wire:model='nomor_kegiatan' class="form-control shadow-none" >
-                        </div>
-
-                        <div class="form-group">
                           <label for="">Kegaiatan Untuk Mencapai Tujuan Prioritas</label>
                           <textarea class="form-control shadow-none" wire:model="kegiatan" id="" rows="3"></textarea>
+                          <small>Jika terdapat beberapa kegiatan pisahkan dengan tanda koma (,)</small>
                         </div>
 
                         <div class="form-group">
                           <label for="">Indikator Kinerja Kegiatan</label>
-                          <input type="text" wire:model="kinerja_kegiatan" id="" class="form-control shadow-none" placeholder="" aria-describedby="helpId">
+                          <textarea wire:model='kinerja_kegiatan' id="" cols="30" rows="3" placeholder="Masukan nama kegiatan" class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -104,16 +100,20 @@
                             <tbody>
                                 @foreach ($indikatorKegiatan as $key => $kegiatan)
                                 <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $kegiatan->tujuan_prioritas }}</td>
-                                    <td>{{ $kegiatan->no_kegiatan }}</td>
-                                    <td>{{ $kegiatan->kegiaatan }}</td>
-                                    <td>{{ $kegiatan->indikator_kinerja }}</td>
-                                    <td>{{ $kegiatan->nilai_awal }}</td>
-                                    @foreach (json_decode($kegiatan->nilai_target) as $targetThreat)
-                                        <td>{{ $targetThreat }}</td>
-                                    @endforeach
+                                    <td rowspan="3" scope="row">{{ $key+1 }}</td>
+                                    <td rowspan="3">{{ $kegiatan->nama_kegiatan }}</td>
                                 </tr>
+                                @foreach ($kegiatan->indikatorKegiatan as $key => $indikatorKegiatan)
+                                    <tr>
+                                        <td>{{ $key+1 }}</td>
+                                        <td>{{ $indikatorKegiatan->kegiaatan }}</td>
+                                        <td>{{ $indikatorKegiatan->indikator_kinerja }}</td>
+                                        <td>{{ $indikatorKegiatan->nilai_awal }}</td>
+                                        @foreach (json_decode($indikatorKegiatan->nilai_target) as $target)
+                                            <td>{{ $target }}</td>
+                                        @endforeach
+                                    </tr>
+                                @endforeach
                                 @endforeach
                             </tbody>
                     </table>
