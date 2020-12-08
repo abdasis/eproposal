@@ -70,6 +70,14 @@
                     </a>
                 </li>
 
+
+                <li>
+                    <a href="{{ route('daftar-proposal') }}">
+                        <i class="fa fa-chart-line"></i>
+                        <span> Survey Anggota </span>
+                    </a>
+                </li>
+
                 <li>
                     <a href="{{ route('kondisi.daftar-proposal') }}">
                         <i class="fa fa-chart-line"></i>
