@@ -60,7 +60,7 @@
                         <div class="form-group row">
                             <div class="col-md-7">
                                 <label for="">Pilih Streng</label>
-                                <input type="text" disabled value="{{ $threat->kondisi }}" class="form-control shadow-none bg-light">
+                                <input type="text" disabled value="{{ $threat->penyebab_langsung }}" class="form-control shadow-none bg-light">
                             </div>
                             <div class="col-md-5">
                                 <label for="">Jadwal</label>
