@@ -3,15 +3,18 @@
 namespace App\Http\Livewire\PenentuanRencana;
 
 use App\Models\IndikatorKegiatan;
+use App\Models\Kegiatan;
 use App\Models\Kondisi;
 use App\Models\PenetuanRencana;
 use App\Models\Proposal;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Index extends Component
 {
     public $proposal;
     public $sub_kegiatan, $nomor_kegiatan, $sumber_daya, $penanggung_jawab, $jadwal;
+    public $noKegiatans;
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);
@@ -30,13 +33,20 @@ class Index extends Component
         $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil disimpan!']);
     }
 
+    public function updated($propertySubKegiatan)
+    {
+        // dd($propertySubKegiatan);
+        $kegiatan = Kegiatan::where('nama_kegiatan', $this->sub_kegiatan)->first();
+        // dd($kegiatan);
+        $this->noKegiatans = IndikatorKegiatan::where('kegiatan_id', $kegiatan->id)->get();
+    }
+
     public function render()
     {
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
         return view('livewire.penentuan-rencana.index',[
-            'indikatorKegiatan' => IndikatorKegiatan::latest()->get(),
+            'indikatorKegiatan' => Kegiatan::latest()->get(),
             'penentuanRencana' => PenetuanRencana::latest()->get(),
-
             'threats' => $threat,
         ]);
     }

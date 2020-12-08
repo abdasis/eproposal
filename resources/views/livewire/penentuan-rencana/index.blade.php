@@ -21,25 +21,30 @@
                 </h5>
                 <div class="card-body">
                     <form wire:submit.prevent='store'>
-                        <div class="form-group">
-                          <label for="">Nomor Kegiatan</label>
-                            <select class="custom-select shadow-none" wire:model='nomor_kegiatan' required>
-                                <option selected>PILIH NOMOR KEGIATAN</option>
-                                @foreach ($indikatorKegiatan as $key => $kegiatan)
-                                   <option value="{{ $kegiatan->no_kegiatan }}">{{ $kegiatan->no_kegiatan }}</option>
-                                @endforeach
-                            </select>
-                        </div>
 
                         <div class="form-group">
                             <label for="">Judul Kegiatan</label>
                             <select class="custom-select shadow-none" required wire:model='sub_kegiatan'>
                                 <option selected >PILIH JUDUL KEGIATAN</option>
                                 @foreach ($indikatorKegiatan as $key => $kegiatan)
-                                   <option value="{{ $kegiatan->indikator_kinerja }}">{{ $kegiatan->indikator_kinerja }}</option>
+                                   <option value="{{ $kegiatan->nama_kegiatan }}">{{ $kegiatan->nama_kegiatan }}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group">
+                          <label for="">Nomor Kegiatan</label>
+                            <select class="custom-select shadow-none" wire:model='nomor_kegiatan' required>
+                                <option selected>PILIH NOMOR KEGIATAN</option>
+                                @if ($noKegiatans)
+                                    @foreach ($noKegiatans as $key => $no)
+                                        <option value="{{ $key+1 }}">{{ $key+1 }} - {{ $no->kegiaatan }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
+
+
 
                         <div class="form-group">
                           <label for="">Penanggung Jawab</label>
