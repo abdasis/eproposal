@@ -122,14 +122,14 @@
                         <div class="alert alert-info">
                             Survey tentang Pihak Terkait “<b>{{ $proposal->judul }}</b>”
                             Saat ini kami sedang menyusun Rencana Aksi Strategis “<b>{{ $proposal->judul }}</b>” untuk mengembangkan perekonomian masyarakat di “{{ $proposal->provinsi }}, {{ $proposal->kabupaten }}, {{ $proposal->kecamatan }}, {{ $proposal->desa }}, {{ $proposal->dusun }}, {{ $proposal->rtrw }}”. Mohon kesediaan Bapak/Ibu/Sdr/i untuk memberikan pendapat tentang pihak-pihak yang harus terlibat langsung dalam proses penyusunan rencana pembangunan tersebut, dengan cara mengisi kuesiner ini. Terima kasih kami sampaikan atas perhatian dan perkenan Bapak/Ibu/Sdr/I berpatisipasi dalam survei ini.
-                        </div>
+                        </div>z
 
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>No.</th>
                                     <th>Jabatan / Nama lembaga/Individu</th>
-                                    <th>Tingkat Pengaruh</th>
+                                    <th>Tingkat Kepentingan</th>
                                 </tr>
                             </thead>
                             <tbody>
