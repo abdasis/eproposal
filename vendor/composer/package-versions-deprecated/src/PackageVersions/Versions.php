@@ -35,6 +35,7 @@ final class Versions
     const VERSIONS          = array (
   'asm89/stack-cors' => 'v2.0.2@8d8f88b3b3830916be94292c1fbce84433efb1aa',
   'bacon/bacon-qr-code' => '2.0.3@3e9d791b67d0a2912922b7b7c7312f4b37af41e4',
+  'barryvdh/laravel-dompdf' => 'v0.8.7@30310e0a675462bf2aa9d448c8dcbf57fbcc517d',
   'brick/math' => '0.9.1@283a40c901101e66de7061bd359252c013dcc43c',
   'clue/stream-filter' => 'v1.5.0@aeb7d8ea49c7963d3b581378955dbf5bc49aa320',
   'composer/package-versions-deprecated' => '1.11.99@c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855',
@@ -42,6 +43,7 @@ final class Versions
   'dnoegel/php-xdg-base-dir' => 'v0.1.1@8f8a6e48c5ecb0f991c2fdcf5f154a47d85f9ffd',
   'doctrine/inflector' => '2.0.3@9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
   'doctrine/lexer' => '1.2.1@e864bbf5904cb8f5bb334f99209b48018522f042',
+  'dompdf/dompdf' => 'v0.8.6@db91d81866c69a42dad1d2926f61515a1e3f42c5',
   'dragonmantank/cron-expression' => 'v3.0.2@48212cdc0a79051d50d7fc2f0645c5a321caf926',
   'egulias/email-validator' => '2.1.23@5fa792ad1853ae2bc60528dd3e5cbf4542d3c1df',
   'fideloper/proxy' => '4.4.1@c073b2bd04d1c90e04dc1b787662b558dd65ade0',
@@ -69,6 +71,8 @@ final class Versions
   'nikic/php-parser' => 'v4.10.2@658f1be311a230e0907f5dfe0213742aff0596de',
   'opis/closure' => '3.6.0@c547f8262a5fa9ff507bd06cc394067b83a75085',
   'paragonie/constant_time_encoding' => 'v2.3.0@47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2',
+  'phenx/php-font-lib' => '0.5.2@ca6ad461f032145fff5971b5985e5af9e7fa88d8',
+  'phenx/php-svg-lib' => 'v0.3.3@5fa61b65e612ce1ae15f69b3d223cb14ecc60e32',
   'php-http/client-common' => '2.3.0@e37e46c610c87519753135fb893111798c69076a',
   'php-http/discovery' => '1.12.0@4366bf1bc39b663aa87459bd725501d2f1988b6c',
   'php-http/httplug' => '2.2.0@191a0a1b41ed026b717421931f8d3bd2514ffbf9',
@@ -88,6 +92,7 @@ final class Versions
   'ralouphie/getallheaders' => '3.0.3@120b605dfeb996808c31b6477290a714d356e822',
   'ramsey/collection' => '1.1.1@24d93aefb2cd786b7edd9f45b554aea20b28b9b1',
   'ramsey/uuid' => '4.1.1@cd4032040a750077205918c86049aa0f43d22947',
+  'sabberworm/php-css-parser' => '8.3.1@d217848e1396ef962fb1997cf3e2421acba7f796',
   'sentry/sdk' => '3.0.0@908ea3fd0e7a19ccf4b53d1c247c44231595d008',
   'sentry/sentry' => '3.0.3@e9f9cc24150da81f54f80611c565778d957c0aa3',
   'sentry/sentry-laravel' => '2.2.0@f4c663b6510e793a180dee6b3a7c95c339f7fd8a',
@@ -165,7 +170,7 @@ final class Versions
   'sebastian/version' => '3.0.2@c6c1022351a901512170118436c764e473f6de8c',
   'theseer/tokenizer' => '1.2.0@75a63c33a8577608444246075ea0af0d052e452a',
   'webmozart/assert' => '1.9.1@bafc69caeb4d49c39fd0779086c03a3738cbb389',
-  'laravel/laravel' => 'dev-master@b693081ffd13358904d719b8e6e9391f97e83b7b',
+  'laravel/laravel' => 'dev-master@d005acaa2fecee4d3c4a6f0a123f4a85c313e909',
 );
 
     private function __construct()
