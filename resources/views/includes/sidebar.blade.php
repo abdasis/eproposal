@@ -68,10 +68,11 @@
                         <span> Anggota </span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="{{ route('daftar-proposal') }}">
+                    <a href="{{ route('kondisi.daftar-proposal') }}">
                         <i class="fa fa-chart-line"></i>
-                        <span> Analisys Survey </span>
+                        <span> Analisys Kondisi </span>
                     </a>
                 </li>
 
