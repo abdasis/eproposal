@@ -28,6 +28,7 @@
                                 <th>Jabatan / Nama lembaga/Individu</th>
                                 <th>Rata-rata tingkat pengaruh</th>
                                 <th>Rata-rata tingkat kepentingan</th>
+                                <th>Total</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -37,6 +38,7 @@
                                     <td>{{ $analisys->nama_anggota }}</td>
                                     <td>{{ $analisys->tingkat_kepentingan }}</td>
                                     <td>{{ $analisys->tingkat_pengaruh }}</td>
+                                    <td>{{ $analisys->total }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
