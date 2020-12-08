@@ -11,7 +11,7 @@ class DaftarProposal extends Component
     public function render()
     {
         return view('livewire.strategi.daftar-proposal', [
-            'proposals' => Proposal::latest()->get()
+            'proposals' => Proposal::where('status_tahap', 4)->latest()->get()
         ]);
     }
 }

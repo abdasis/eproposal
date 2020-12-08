@@ -56,9 +56,6 @@
                                             <a href="{{ route('survey-kondisi.input-nilai', $proposal->id) }}">
                                                 <button class="btn btn-sm btn-outline-warning mr-1"><i class="fa fa-list"></i></button>
                                             </a>
-                                            <a href="{{ route('survey-kondisi.jawab-survey', $proposal->id) }}">
-                                                <button class="btn btn-sm btn-outline-success"><i class="fa fa-chart-line"></i></button>
-                                            </a>
                                         </div>
                                     </td>
                                 </tr>
