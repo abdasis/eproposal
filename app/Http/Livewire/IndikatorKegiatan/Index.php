@@ -38,6 +38,7 @@ class Index extends Component
        }else{
             $kegiatan = new Kegiatan();
            $kegiatan->nama_kegiatan = $this->tujuan_prioritas;
+           $kegiatan->proposal_id = $this->proposal->id;
            $kegiatan->save();
            $indikatorKegiatan = new IndikatorKegiatan();
            $indikatorKegiatan->tujuan_prioritas = Str::ucfirst($this->tujuan_prioritas);
@@ -60,7 +61,7 @@ class Index extends Component
         return view('livewire.indikator-kegiatan.index', [
             'strategies' => $strategi,
             'threats' => $threat,
-            'indikatorKegiatan' => Kegiatan::latest()->get(),
+            'indikatorKegiatan' => Kegiatan::where('proposal_id')->latest()->get(),
         ]);
     }
 }
