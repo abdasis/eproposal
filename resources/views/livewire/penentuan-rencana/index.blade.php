@@ -27,7 +27,7 @@
                             <select class="custom-select shadow-none" required wire:model='sub_kegiatan'>
                                 <option selected >PILIH JUDUL KEGIATAN</option>
                                 @foreach ($indikatorKegiatan as $key => $kegiatan)
-                                   <option value="{{ $kegiatan->kegiatan }}">{{ $kegiatan->kegiatan }}</option>
+                                   <option value="{{ $kegiatan->kegiaatan }}">{{ $kegiatan->kegiaatan }}</option>
                                 @endforeach
                             </select>
                         </div>
