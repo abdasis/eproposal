@@ -36,11 +36,14 @@
                           <label for="">Nomor Kegiatan</label>
                             <select class="custom-select shadow-none" wire:model='nomor_kegiatan' required>
                                 <option selected>PILIH NOMOR KEGIATAN</option>
-                                @if ($noKegiatans)
+                                @foreach ($indikatorKegiatan as $key => $kegiatan)
+                                   <option value="{{ $key+1 }}">{{ $key+1 }}</option>
+                                @endforeach
+                                {{-- @if ($noKegiatans)
                                     @foreach ($noKegiatans as $key => $no)
                                         <option value="{{ $key+1 }}">{{ $key+1 }} - {{ $no->kegiaatan }}</option>
                                     @endforeach
-                                @endif
+                                @endif --}}
                             </select>
                         </div>
 
