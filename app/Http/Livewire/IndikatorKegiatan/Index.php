@@ -61,7 +61,7 @@ class Index extends Component
         return view('livewire.indikator-kegiatan.index', [
             'strategies' => $strategi,
             'threats' => $threat,
-            'indikatorKegiatan' => Kegiatan::where('proposal_id')->latest()->get(),
+            'indikatorKegiatan' => Kegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
         ]);
     }
 }
