@@ -45,7 +45,7 @@ class Index extends Component
     {
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
         return view('livewire.penentuan-rencana.index',[
-            'indikatorKegiatan' => Kegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
+            'indikatorKegiatan' => IndikatorKegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
             'penentuanRencana' => PenetuanRencana::where('proposal_id', $this->proposal->id)->latest()->get(),
             'threats' => $threat,
         ]);
