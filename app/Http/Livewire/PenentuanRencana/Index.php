@@ -33,13 +33,13 @@ class Index extends Component
         $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil disimpan!']);
     }
 
-    public function updated($propertySubKegiatan)
-    {
-        // dd($propertySubKegiatan);
-        $kegiatan = Kegiatan::where('nama_kegiatan', $this->sub_kegiatan)->first();
-        // dd($kegiatan);
-        $this->noKegiatans = IndikatorKegiatan::where('kegiatan_id', $kegiatan->id)->get();
-    }
+    // public function updated($propertySubKegiatan)
+    // {
+    //     // dd($propertySubKegiatan);
+    //     $kegiatan = Kegiatan::where('nama_kegiatan', $this->sub_kegiatan)->first();
+    //     // dd($kegiatan);
+    //     $this->noKegiatans = IndikatorKegiatan::where('kegiatan_id', $kegiatan->id)->get();
+    // }
 
     public function render()
     {
