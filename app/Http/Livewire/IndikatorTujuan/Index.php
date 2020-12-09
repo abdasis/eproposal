@@ -46,13 +46,13 @@ class Index extends Component
 
     public function render()
     {
-        $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
+        $strategi = Strategi::where('proposal_id', $this->proposal->id)->first();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
 
         return view('livewire.indikator-tujuan.index', [
             'strategies' => $strategi,
             'threats' => $threat,
-            'indikatorTujuan' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->first(),
+            'indikatorTujuan' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->latest()->get(),
         ]);
     }
 }
