@@ -49,8 +49,7 @@
                 <li>
                     <a href="#sidebarDashboards" data-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="badge badge-success badge-pill float-right">4</span>
-                        <span> Proposal </span>
+                        <span> Proyel PEL </span>
                     </a>
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
