@@ -5,11 +5,11 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Stackholder</a></li>
-                        <li class="breadcrumb-item active">Daftar Stackholder</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Stakeholders</a></li>
+                        <li class="breadcrumb-item active">Daftar Stakeholders</li>
                     </ol>
                 </div>
-                <h4 class="page-title">List Stackholder</h4>
+                <h4 class="page-title">List Stakeholders</h4>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 <div class="card-header bg-white border-bottom">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Daftar Proposal yang Dibuat</h5>
+                            <h5>Daftar Proyek PEL yang Dibuat</h5>
                         </div>
                         <div class="col-md-6">
                             <a href="{{ url()->previous() }}">
@@ -33,35 +33,31 @@
                     </div>
 
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-sm">
-                        <thead class="thead-ligth">
+                <table class="table card-body table-bordered table-sm">
+                    <thead class="thead-ligth bg-light">
+                        <tr>
+                            <th class="text-center">No.</th>
+                            <th>Judul Proyek PEL</th>
+                            <th>Dibuat Pada</th>
+                            <th>Option</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($proposals  as $key => $proposal)
                             <tr>
-                                <th>#</th>
-                                <th>Judul Proposal</th>
-                                <th>Dibuat Pada</th>
-                                <th>Tahapan</th>
-                                <th>Option</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($proposals  as $key => $proposal)
-                                <tr>
-                                    <td class="align-middle" scope="row">{{ $key+1 }}</td>
-                                    <td class="align-middle">{{ $proposal->judul }}</td>
-                                    <td class="align-middle">{{ $proposal->created_at }}</td>
-                                    <td class="align-middle">Tahap ke-{{ $proposal->status_tahap }}</td>
-                                    <td class="align-middle text-center">
+                                <td class="align-middle text-center" scope="row">{{ $key+1 }}</td>
+                                <td class="align-middle">{{ $proposal->judul }}</td>
+                                <td class="align-middle">{{ $proposal->created_at }}</td>
+                                <td class="align-middle text-center">
 
-                                        <a href="{{ route('anggota.create', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                                    <a href="{{ route('anggota.create', $proposal->id) }}">
+                                        <button class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>

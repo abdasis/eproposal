@@ -49,15 +49,15 @@
                 <li>
                     <a href="#sidebarDashboards" data-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span> Proyel PEL </span>
+                        <span> Proyek PEL </span>
                     </a>
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('proposal.tambah-proposal') }}">Tulis Proposal</a>
+                                <a href="{{ route('proposal.tambah-proposal') }}">Tambah</a>
                             </li>
                             <li>
-                                <a href="{{ route('proposal.index') }}">Semua Proposal</a>
+                                <a href="{{ route('proposal.index') }}">Semua</a>
                             </li>
                         </ul>
                     </div>
@@ -65,7 +65,7 @@
                 <li>
                     <a href="{{ route('anggota.index') }}">
                         <i class="fa fa-user-friends"></i>
-                        <span> Anggota </span>
+                        <span> Daftar Stakeholders </span>
                     </a>
                 </li>
 
@@ -73,7 +73,7 @@
                 <li>
                     <a href="{{ route('daftar-proposal') }}">
                         <i class="fa fa-chart-line"></i>
-                        <span> Survey Anggota </span>
+                        <span> Analisis Stakeholders </span>
                     </a>
                 </li>
 

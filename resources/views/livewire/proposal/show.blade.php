@@ -25,12 +25,9 @@
                     <div class="card-text">
                         <h5>Latar Belakang</h5>
                         <p>{!! $proposal->latar_belakang !!}</p>
+                        <p>Dokumen ini adalah Rencana Aksi Strategis untuk “{{ $proposal->judul }}” yang disusun secara partisipatif oleh pihak-pihak terkait di “{{ $proposal->dusun }}, {{ $proposal->desa }}, {{ $proposal->kecamatan }}, {{ $proposal->kabupaten }}, {{ $proposal->provinsi }}, {{ $proposal->rtrw }}”</p>
                     </div>
-                    <div class="card-text lokasi">
-                        <h5>Lokasi</h5>
-                        <p>{{ $proposal->dusun }}, {{ $proposal->desa }}, {{ $proposal->kecamatan }}, {{ $proposal->kabupaten }}, {{ $proposal->provinsi }}, {{ $proposal->rtrw }}</p>
-                    </div>
-                    <table class="table table-bordered table-sm">
+                    {{-- <table class="table table-bordered table-sm">
                         <thead class="thead-default">
                             <tr>
                                 <th>No</th>
@@ -246,7 +243,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                    </table>
+                    </table> --}}
                 </div>
             </div>
         </div>

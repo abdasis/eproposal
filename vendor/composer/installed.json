@@ -1249,7 +1249,8 @@
             "data",
             "faker",
             "fixtures"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "graham-campbell/result-type",
@@ -1630,6 +1631,65 @@
             "http",
             "psr-17",
             "psr-7"
+        ]
+    },
+    {
+        "name": "jantinnerezo/livewire-alert",
+        "version": "2.0.2",
+        "version_normalized": "2.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jantinnerezo/livewire-alert.git",
+            "reference": "d9c9afd0d235c3a6f3c7986dad98cbc7ec62804b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jantinnerezo/livewire-alert/zipball/d9c9afd0d235c3a6f3c7986dad98cbc7ec62804b",
+            "reference": "d9c9afd0d235c3a6f3c7986dad98cbc7ec62804b",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+            "livewire/livewire": "^2.0",
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "orchestra/testbench": "^3.0 || ^4.0 || ^5.0",
+            "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+        },
+        "time": "2020-11-14T14:33:53+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Jantinnerezo\\LivewireAlert\\LivewireAlertServiceProvider"
+                ],
+                "aliases": {
+                    "LivewireAlert": "Jantinnerezo\\LivewireAlert\\LivewireAlertFacade"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Jantinnerezo\\LivewireAlert\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jantinn Erezo",
+                "email": "erezojantinn@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "homepage": "https://github.com/jantinnerezo/livewire-alert",
+        "keywords": [
+            "jantinnerezo",
+            "livewire-alert"
         ]
     },
     {

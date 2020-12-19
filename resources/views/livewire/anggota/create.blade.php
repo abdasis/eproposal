@@ -6,10 +6,10 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Stakeholders</a></li>
-                        <li class="breadcrumb-item active">Tambah Stackholder</li>
+                        <li class="breadcrumb-item active">Tambah Stakeholders</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Tambah Stackholder</h4>
+                <h4 class="page-title">Tambah Stakeholders</h4>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card">
                 <h5 class="card-header bg-white border-bottom">
-                    Tambah Stackholder
+                    Tambah Stakeholders
                 </h5>
                 <div class="card-body">
                     <form wire:submit.prevent='store'>

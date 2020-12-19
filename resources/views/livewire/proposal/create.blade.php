@@ -36,7 +36,7 @@
                 <div class="card-body">
                     <form wire:submit.prevent = 'store'>
                         <div class="form-group">
-                            <label for="judul">Judul Proposal</label>
+                            <label for="judul">Judul Proyek PEL</label>
                             <input type="text" wire:model='judul' class="form-control shadow-none @error('judul') is-invalid @enderror">
                             <div class="small text-muted">
                                 (Tuliskan judul / topik PEL yang akan disusun. Misalya: “Pengembangan Ekonomi Rumahtangga melalui Pengelolaan Sampah Domestik”; “Pengembangan Produk Pisang Dusun Suka Makmur”; “Pengembangan Kerajinan Gerabah Desa Suka Usaha”; dst.)
