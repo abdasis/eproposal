@@ -20,6 +20,7 @@ class CreateIndikatorTujuansTable extends Migration
             $table->string('nilai_awal', 100)->nullable();
             $table->longText('nilai_target')->nullable();
             $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
+            $table->foreignId('tujuan_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

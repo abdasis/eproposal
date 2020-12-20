@@ -18,4 +18,9 @@ class IndikatorTujuan extends Model
     {
         return $this->hasMany(IndikatorKegiatan::class);
     }
+
+    public function tujuan()
+    {
+        return $this->belongsTo(Tujuan::class);
+    }
 }

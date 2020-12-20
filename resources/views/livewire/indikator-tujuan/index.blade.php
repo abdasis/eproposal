@@ -45,11 +45,22 @@
                           <input type="text" name="" wire:model='nilai_awal' id="" class="form-control shadow-none" placeholder="" aria-describedby="helpId">
                         </div>
 
-                        @foreach ($threats as $key => $threat)
                         <div class="form-group row">
                             <div class="col-md-7">
-                                <label for="">Pilih Streng</label>
-                                <input type="text" disabled value="{{ $threat->kondisi }}" class="form-control shadow-none bg-light">
+                                <label for="">Priode | <span wire:click='add({{ $i }})' class="text-success cursor-pointer"><i class="fa fa-plus-square"></i> Tambah Priode <span wire:loading wire:target="add" class="text-warning"> Loading...</span> </button>
+                                </label>
+                                <input type="text" class="form-control shadow-none bg-light" disabled value="Semester 1">
+                            </div>
+                            <div class="col-md-5">
+                                <label for="">Nilai</label>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.0'>
+                            </div>
+                        </div>
+                        @foreach ($input_priode as $key => $value)
+                        <div class="form-group row">
+                            <div class="col-md-7">
+                                <label for="">Priode | <span wire:click='remove({{ $key }})' class="text-danger cursor-pointer"><i class="fa fa-minus-square"></i> Hapus Priode <span wire:loading wire:target="remove" class="text-warning"> Loading...</span></label>
+                                <input type="text" class="form-control shadow-none bg-light" disabled value="Semester {{ $value }}">
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
@@ -79,7 +90,7 @@
                                 <th rowspan="4">No.</th>
                                 <th rowspan="4">Tujuan Prioritas</th>
                                 <th rowspan="4">Indikator Kinerja</th>
-                                <th colspan="4">Nilai Indikator</th>
+                                <th colspan="7">Nilai Indikator</th>
                             </tr>
                             <tr>
                                 <th rowspan="2" >Nilai Awal</th>
@@ -94,14 +105,20 @@
                             <tbody>
                                 @foreach ($indikatorTujuan->unique('tujuan_prioritas') as $key => $indikator)
                                 <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $indikator->tujuan_prioritas }}</td>
-                                    <td>{{ $indikator->indikator_kinerja }}</td>
-                                    <td>{{ $indikator->nilai_awal }}</td>
-                                    @foreach (json_decode($indikator->nilai_target) as $targetThreat)
+                                    <td rowspan="{{ count($indikator->indikators)+1 }}" scope="row">{{ $key+1 }}</td>
+                                    <td rowspan="{{ count($indikator->indikators)+1 }}">
+                                        {{ $indikator->tujuan }}
+                                    </td>
+                                </tr>
+                                @foreach ($indikator->indikators as $indikatortujuan)
+                                <tr>
+                                    <td>{{ $indikatortujuan->indikator_kinerja }}</td>
+                                    <td>{{ $indikatortujuan->nilai_awal }}</td>
+                                    @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
                                         <td>{{ $targetThreat }}</td>
                                     @endforeach
                                 </tr>
+                                @endforeach
                                 @endforeach
                             </tbody>
                     </table>

@@ -15,9 +15,23 @@ class Index extends Component
 {
     public $proposal;
     public $tujuan_prioritas, $nomor_kegiatan, $kegiatan,  $kinerja_kegiatan, $nilai_awal, $nilai_akhir;
+    public $input_priode = [];
+    public $i = 1;
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);
+    }
+
+    public function add($i)
+    {
+        $i = $i+1;
+        $this->i = $i;
+        array_push($this->input_priode, $i);
+    }
+
+    public function remove($i)
+    {
+        unset($this->input_priode[$i]);
     }
 
     public function store()
@@ -37,19 +51,19 @@ class Index extends Component
             $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
        }else{
             $kegiatan = new Kegiatan();
-           $kegiatan->nama_kegiatan = $this->tujuan_prioritas;
-           $kegiatan->proposal_id = $this->proposal->id;
-           $kegiatan->save();
-           $indikatorKegiatan = new IndikatorKegiatan();
-           $indikatorKegiatan->tujuan_prioritas = Str::ucfirst($this->tujuan_prioritas);
-           $indikatorKegiatan->no_kegiatan = $this->nomor_kegiatan;
-           $indikatorKegiatan->kegiaatan = Str::ucfirst($this->kegiatan);
-           $indikatorKegiatan->indikator_kinerja = Str::ucfirst($this->kinerja_kegiatan);
-           $indikatorKegiatan->nilai_awal = $this->nilai_awal;
-           $indikatorKegiatan->nilai_target = json_encode($this->nilai_akhir);
-           $indikatorKegiatan->proposal_id = $this->proposal->id;
-           $kegiatan->indikatorKegiatan()->save($indikatorKegiatan);
-           $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
+            $kegiatan->nama_kegiatan = $this->tujuan_prioritas;
+            $kegiatan->proposal_id = $this->proposal->id;
+            $kegiatan->save();
+            $indikatorKegiatan = new IndikatorKegiatan();
+            $indikatorKegiatan->tujuan_prioritas = Str::ucfirst($this->tujuan_prioritas);
+            $indikatorKegiatan->no_kegiatan = $this->nomor_kegiatan;
+            $indikatorKegiatan->kegiaatan = Str::ucfirst($this->kegiatan);
+            $indikatorKegiatan->indikator_kinerja = Str::ucfirst($this->kinerja_kegiatan);
+            $indikatorKegiatan->nilai_awal = $this->nilai_awal;
+            $indikatorKegiatan->nilai_target = json_encode($this->nilai_akhir);
+            $indikatorKegiatan->proposal_id = $this->proposal->id;
+            $kegiatan->indikatorKegiatan()->save($indikatorKegiatan);
+            $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil di simpan']);
        }
     }
 

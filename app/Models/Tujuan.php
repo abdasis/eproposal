@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tujuan extends Model
 {
     use HasFactory;
+    public function indikators()
+    {
+        return $this->hasMany(IndikatorTujuan::class);
+    }
 }
