@@ -54,7 +54,7 @@ class InputNilai extends Component
         $oppotunity = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'O')->latest()->get();
         $totalS = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->sum('total');
         $totalW = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->sum('total');
-        $totalSW = $totalS+$totalW;
+        $totalSW = $totalS-$totalW;
 
         return view('livewire.survey-kondisi.input-nilai', [
             'kondisis' => $kondisi,

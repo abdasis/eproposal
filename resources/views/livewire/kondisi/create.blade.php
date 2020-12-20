@@ -25,7 +25,7 @@
                     <form wire:submit.prevent='store'>
                         <div class="form-group">
                             <label for="jenis_kondisi">Jenis Kondisi</label>
-                            <select class="custom-select" wire:model="jenis_kondisi" id="jenis_kondisi">
+                            <select class="custom-select shadow-none" wire:model="jenis_kondisi" id="jenis_kondisi">
                                 <option selected>Pilih Kondisi</option>
                                 <option value="Baik">Baik</option>
                                 <option value="Tidak Baik">Tidak Baik</option>
@@ -33,18 +33,18 @@
                         </div>
 
                         <div class="form-group">
-                          <label for="kondisi">Kondisi</label>
-                          <input type="text" wire:model="kondisi" id="kondisi" class="form-control" placeholder="Masukan Kondisi" aria-describedby="helpId">
+                          <label for="kondisi">Analisis Prioritisasi Tujuan</label>
+                          <input type="text" wire:model="kondisi" id="kondisi" class="form-control shadow-none" placeholder="Masukan Kondisi" aria-describedby="helpId">
                         </div>
 
                         <div class="form-group">
                           <label for="penyebab_langsung">Penyebab Langsung</label>
-                          <input type="text" wire:model="penyebab_langsung" id="penyebab_langsung" class="form-control" placeholder="Masukan Penyebab Langsun" aria-describedby="helpId">
+                          <input type="text" wire:model="penyebab_langsung" id="penyebab_langsung" class="form-control shadow-none" placeholder="Masukan Penyebab Langsun" aria-describedby="helpId">
                         </div>
 
                         <div class="form-group">
                             <label for="swot">S, W, O dan T</label>
-                            <select class="custom-select" wire:model="swot" id="swot">
+                            <select class="custom-select shadow-none" wire:model="swot" id="swot">
                                 <option selected>Pilih S, W, O dan T</option>
                                 <option value="S">S</option>
                                 <option value="W">W</option>
@@ -68,30 +68,28 @@
                 <h5 class="card-header bg-header bg-white border-bottom">
                     KEKUATAN/STRENGTH (S)
                 </h5>
-                <div class="card-body">
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-inverse">
+                <table class="table card-body table-hover table-sm">
+                    <thead class="thead-inverse bg-light">
+                        <tr>
+                            <th class="text-center">No.</th>
+                            <th>Jenis Kondisi</th>
+                            <th>Penyebab Langsung</th>
+                            <th>Option</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($strengs as $key => $baik)
                             <tr>
-                                <th>No.</th>
-                                <th>Jenis Kondisi</th>
-                                <th>Penyebab Langsung</th>
-                                <th>Option</th>
+                                <td class="text-center" scope="row">{{ $key+1 }}</td>
+                                <td>{{ $baik->kondisi }}</td>
+                                <td>{{ $baik->penyebab_langsung }}</td>
+                                <td>
+                                    <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($strengs as $key => $baik)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $baik->kondisi }}</td>
-                                    <td>{{ $baik->penyebab_langsung }}</td>
-                                    <td>
-                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
 
@@ -100,30 +98,28 @@
                 <h5 class="card-header bg-header bg-white border-bottom">
                     PELUANG/OPPORTUNITY (O)
                 </h5>
-                <div class="card-body">
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-inverse">
+                <table class="table card-body table-hover table-sm">
+                    <thead class="thead-inverse bg-light">
+                        <tr>
+                            <th class="text-center">No.</th>
+                            <th>Jenis Kondisi</th>
+                            <th>Penyebab Langsung</th>
+                            <th>Option</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($peluang as $key => $baik)
                             <tr>
-                                <th>No.</th>
-                                <th>Jenis Kondisi</th>
-                                <th>Penyebab Langsung</th>
-                                <th>Option</th>
+                                <td class="text-center" scope="row">{{ $key+1 }}</td>
+                                <td>{{ $baik->kondisi }}</td>
+                                <td>{{ $baik->penyebab_langsung }}</td>
+                                <td>
+                                    <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($peluang as $key => $baik)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $baik->kondisi }}</td>
-                                    <td>{{ $baik->penyebab_langsung }}</td>
-                                    <td>
-                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
 
@@ -132,30 +128,28 @@
                 <h5 class="card-header bg-header bg-white border-bottom">
                     KELEMAHAN/WEAKNES (W)
                 </h5>
-                <div class="card-body">
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-inverse">
+                <table class="table card-body table-hover table-sm">
+                    <thead class="thead-inverse bg-light">
+                        <tr>
+                            <th class="text-center">No.</th>
+                            <th>Jenis Kondisi</th>
+                            <th>Penyebab Langsung</th>
+                            <th>Option</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($weaks as $key => $baik)
                             <tr>
-                                <th>No.</th>
-                                <th>Jenis Kondisi</th>
-                                <th>Penyebab Langsung</th>
-                                <th>Option</th>
+                                <td class="text-center" scope="row">{{ $key+1 }}</td>
+                                <td>{{ $baik->kondisi }}</td>
+                                <td>{{ $baik->penyebab_langsung }}</td>
+                                <td>
+                                    <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($weaks as $key => $baik)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $baik->kondisi }}</td>
-                                    <td>{{ $baik->penyebab_langsung }}</td>
-                                    <td>
-                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
 
@@ -164,30 +158,28 @@
                 <h5 class="card-header bg-header bg-white border-bottom">
                     TANTANGAN/THREAT (T)
                 </h5>
-                <div class="card-body">
-                    <table class="table table-hover table-sm">
-                        <thead class="thead-inverse">
+                <table class="table card-body table-hover table-sm">
+                    <thead class="thead-inverse bg-light">
+                        <tr>
+                            <th class="text-center">No.</th>
+                            <th>Jenis Kondisi</th>
+                            <th>Penyebab Langsung</th>
+                            <th>Option</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($tantangan as $key => $baik)
                             <tr>
-                                <th>No.</th>
-                                <th>Jenis Kondisi</th>
-                                <th>Penyebab Langsung</th>
-                                <th>Option</th>
+                                <td class="text-center" scope="row">{{ $key+1 }}</td>
+                                <td>{{ $baik->kondisi }}</td>
+                                <td>{{ $baik->penyebab_langsung }}</td>
+                                <td>
+                                    <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($tantangan as $key => $baik)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $baik->kondisi }}</td>
-                                    <td>{{ $baik->penyebab_langsung }}</td>
-                                    <td>
-                                        <button wire:click='deleteKondisi({{ $baik->id }})' class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>

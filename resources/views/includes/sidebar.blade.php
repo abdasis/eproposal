@@ -80,7 +80,7 @@
                 <li>
                     <a href="{{ route('kondisi.daftar-proposal') }}">
                         <i class="fa fa-chart-line"></i>
-                        <span> Analisys Kondisi </span>
+                        <span> Analisis Prioritisasi </span>
                     </a>
                 </li>
 
@@ -95,7 +95,7 @@
                 <li>
                     <a href="{{ route('strategi.daftar-proposal') }}">
                         <i class="fa fa-chart-line"></i>
-                        <span> Strategi </span>
+                        <span> Tujuan/Strategi Prioritas </span>
                     </a>
                 </li>
                 <li>

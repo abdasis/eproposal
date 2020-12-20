@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card">
                 <h5 class="card-header bg-white border-bottom">
-                    INPUT NILAI
+                    {{ Str::ucfirst("Input Nilai dari Hasil Survei Prioritisasi Tujuan") }}
                 </h5>
                 <div class="card-body">
                     <form wire:submit.prevent='store'>
@@ -40,11 +40,11 @@
                         </div>
                         @foreach ($threats as $key => $threat)
                         <div class="form-group row">
-                            <div class="col-md-7">
+                            <div class="col-md-9">
                                 <label for="">T{{ $key+1 }}</label>
-                                <input type="text" disabled value="{{ $threat->jenis_kondisi }}" class="form-control shadow-none bg-light">
+                                <input type="text" disabled value="{{ $threat->kondisi }}" class="form-control shadow-none bg-light">
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <label for="">Nilai</label>
                                 <input type="text" class="form-control shadow-none" wire:model='nilai_dampak.{{ $key }}'>
                             </div>
@@ -53,11 +53,11 @@
 
                         @foreach ($opportunities as $key => $opportunity)
                         <div class="form-group row">
-                            <div class="col-md-7">
-                                <label for="">W{{ $key+1 }}</label>
-                                <input type="text" disabled value="{{ $opportunity->jenis_kondisi }}" class="form-control shadow-none bg-light">
+                            <div class="col-md-9">
+                                <label for="">O{{ $key+1 }}</label>
+                                <input type="text" disabled value="{{ $opportunity->kondisi }}" class="form-control shadow-none bg-light">
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <label for="">Nilai</label>
                                 <input type="text" class="form-control shadow-none" wire:model='nilai_manfaat.{{ $key }}'>
                             </div>
@@ -79,12 +79,9 @@
                 <div class="card-header bg-white border-bottom">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Data Nilai Strength</h5>
+                            <h5>Hasil Survey Prioritisasi Tujuan</h5>
                         </div>
                         <div class="col-md-6">
-                            <a href="{{ url()->previous() }}">
-                                <button class="btn btn-light btn-sm float-right">Kembali</button>
-                            </a>
                             <a href="{{ url()->previous() }}">
                                 <button class="btn btn-light btn-sm float-right">Kembali</button>
                             </a>
@@ -92,68 +89,66 @@
                     </div>
 
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-sm">
-                        <thead class="thead-white">
+                <table class="table card-body table-bordered table-sm">
+                    <thead class="thead-white">
+                        <tr>
+                            <th rowspan="2">Pengaruh</th>
+                            <th colspan="{{ count($threats) }}" class="text-center">Terhadap Pengurangan Dampak</th>
+                            <th colspan="{{ count($opportunities) }}" class="text-center">Terhadap Pemanfaatan</th>
+                            <th rowspan="2">Total Skor</th>
+                            <th rowspan="2">Option</th>
+                        </tr>
+                        <tr>
+                            @foreach ($threats as $key => $t)
+                                <th>T{{ $key+1 }}</th>
+                            @endforeach
+
+                            @foreach ($opportunities as $key => $o)
+                                <th>O{{ $key+1 }}</th>
+                            @endforeach
+                        </tr>
+
+                        {{-- <tr>
+                            <td>NO</td>
+                            <th>PENGARUH</th>
+                            <th>TERHADAP PENGURANGAN DAMPAK</th>
+                            <th>NILAI</th>
+                            <th>TERHADAP PEMANFAATAN</th>
+                            <th>NILAI</th>
+                            <th>TOTAL THREAT</th>
+                            <th>TOTAL STRENGHT</th>
+                        </tr> --}}
+
+                        </thead>
+                        <tbody>
+                            @foreach ($surveyKondisis as $key => $kondisi)
+                                <tr>
+                                    <td>{{ $kondisi->pengaruh }}</td>
+                                    @foreach (json_decode($kondisi->nilai_dampak) as $dampak)
+                                        <td>{{ $dampak }}</td>
+                                    @endforeach
+                                    @foreach (json_decode($kondisi->nilai_manfaat) as $manfaat)
+                                        <td>{{ $manfaat }}</td>
+                                    @endforeach
+                                    <td>{{ $kondisi->total }}</td>
+
+                                </tr>
+
+                            @endforeach
                             <tr>
-                                <th rowspan="2">Pengaruh</th>
-                                <th colspan="{{ count($threats) }}" class="text-center">Terhadap Pengurangan Dampak</th>
-                                <th colspan="{{ count($opportunities) }}" class="text-center">Terhadap Pemanfaatan</th>
-                                <th rowspan="2">Total Skor</th>
-                                <th rowspan="2">Option</th>
+                                <th>Total Skor S</th>
+                                <td>{{ $totalS }}</td>
                             </tr>
                             <tr>
-                                @foreach ($threats as $key => $t)
-                                    <th>T{{ $key+1 }}</th>
-                                @endforeach
-
-                                @foreach ($opportunities as $key => $o)
-                                    <th>O{{ $key+1 }}</th>
-                                @endforeach
+                                <th>Total Skor W</th>
+                                <td>{{ $totalW }}</td>
                             </tr>
-
-                            {{-- <tr>
-                                <td>NO</td>
-                                <th>PENGARUH</th>
-                                <th>TERHADAP PENGURANGAN DAMPAK</th>
-                                <th>NILAI</th>
-                                <th>TERHADAP PEMANFAATAN</th>
-                                <th>NILAI</th>
-                                <th>TOTAL THREAT</th>
-                                <th>TOTAL STRENGHT</th>
-                            </tr> --}}
-
-                            </thead>
-                            <tbody>
-                                @foreach ($surveyKondisis as $key => $kondisi)
-                                    <tr>
-                                        <td>{{ $kondisi->pengaruh }}</td>
-                                        @foreach (json_decode($kondisi->nilai_dampak) as $dampak)
-                                            <td>{{ $dampak }}</td>
-                                        @endforeach
-                                        @foreach (json_decode($kondisi->nilai_manfaat) as $manfaat)
-                                            <td>{{ $manfaat }}</td>
-                                        @endforeach
-                                        <td>{{ $kondisi->total }}</td>
-
-                                    </tr>
-
-                                @endforeach
-                                <tr>
-                                    <th>Total Skor S</th>
-                                    <td>{{ $totalS }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Skor W</th>
-                                    <td>{{ $totalW }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Skor W-S</th>
-                                    <td>{{ $totalSW }}</td>
-                                </tr>
-                            </tbody>
-                    </table>
-                </div>
+                            <tr>
+                                <th>Total Skor S-W</th>
+                                <td>{{ $totalSW }}</td>
+                            </tr>
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>

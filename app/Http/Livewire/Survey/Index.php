@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Survey;
 
 use App\Models\Analisys;
 use App\Models\Anggota;
+use App\Models\Responden;
 use Livewire\Component;
 use Psy\CodeCleaner\AssignThisVariablePass;
 
@@ -22,7 +23,8 @@ class Index extends Component
         ->get();
         // dd($analisies);
         return view('livewire.survey.index', [
-            'analisies' => $analisies
+            'analisies' => $analisies,
+            'repondenCount' => Responden::where('proposal_id', $this->proposal_id)->count()
         ]);
     }
 }

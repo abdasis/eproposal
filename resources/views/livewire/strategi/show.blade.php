@@ -32,21 +32,19 @@
                 </h5>
                 <div class="card-body">
                     <p>Berdasarkan hasil survei di atas dapat diketahui bahwa:</p>
-                    <table class="table table-borderless table-sm">
+                    <table class="table table-bordered table-sm">
                         <tbody>
                             <tr>
                                 <th colspan="5">Killer weakness proyek “{{ $proposal->judul }}” adalah:</th>
                             </tr>
                             <tr>
-                                <td scope="row">{{ $strategi->killerweakness1 }}</td>
                                 <td>KW 1</td>
                                 <td>{{ $strategi->kw1 }}</td>
                                 <td>Tujuan Prioritas 1</td>
                                 <td>{{ $strategi->tujuan_1 }}</td>
                             </tr>
                             <tr>
-                                <td scope="row">{{ $strategi->killerweakness2 }}</td>
-                                <td>KW 1</td>
+                                <td>KW 2</td>
                                 <td>{{ $strategi->kw2 }}</td>
                                 <td>Tujuan Prioritas 1</td>
                                 <td>{{ $strategi->tujuan_2 }}</td>
@@ -57,16 +55,14 @@
                             </tr>
 
                             <tr>
-                                <td scope="row">{{ $strategi->killerweakness3 }}</td>
-                                <td>SW 1</td>
+                                <td>S-W 1</td>
                                 <td>{{ $strategi->sw1 }}</td>
                                 <td>Tujuan Prioritas 1</td>
                                 <td>{{ $strategi->tujuan_3 }}</td>
                             </tr>
 
                             <tr>
-                                <td scope="row">{{ $strategi->killerweakness4 }}</td>
-                                <td>SW 1</td>
+                                <td>S-W 2</td>
                                 <td>{{ $strategi->sw2 }}</td>
                                 <td>Tujuan Prioritas 1</td>
                                 <td>{{ $strategi->tujuan_4 }}</td>

@@ -20,28 +20,26 @@
                 <h5 class="card-header bg-white border-bottom">
                     List Semua Survey
                 </h5>
-                <div class="card-body">
-                    <table class="table table-bordered table-sm">
-                        <thead class="thead-default">
+                <table class="table table-bordered table-sm card-body">
+                    <thead class="thead-default bg-light">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th>Jabatan / Nama lembaga/Individu</th>
+                            <th>Rata-rata tingkat pengaruh</th>
+                            <th>Rata-rata tingkat kepentingan</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($analisies as $key => $analisys)
                             <tr>
-                                <th>No</th>
-                                <th>Jabatan / Nama lembaga/Individu</th>
-                                <th>Rata-rata tingkat pengaruh</th>
-                                <th>Rata-rata tingkat kepentingan</th>
+                                <td class="text-center" scope="row">{{ $key+1 }}</td>
+                                <td>{{ $analisys->nama_anggota }}</td>
+                                <td>{{ round($analisys->tingkat_kepentingan/$repondenCount,1) }}</td>
+                                <td>{{ round($analisys->tingkat_pengaruh/$repondenCount,1) }}</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($analisies as $key => $analisys)
-                                <tr>
-                                    <td scope="row">{{ $key+1 }}</td>
-                                    <td>{{ $analisys->nama_anggota }}</td>
-                                    <td>{{ $analisys->tingkat_kepentingan }}</td>
-                                    <td>{{ $analisys->tingkat_pengaruh }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>

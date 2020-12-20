@@ -15,9 +15,9 @@ class CreateKondisisTable extends Migration
     {
         Schema::create('kondisis', function (Blueprint $table) {
             $table->id();
-            $table->string('jenis_kondisi', 100);
-            $table->string('kondisi', 100);
-            $table->string('penyebab_langsung', 100);
+            $table->string('jenis_kondisi', 250);
+            $table->string('kondisi', 250);
+            $table->string('penyebab_langsung', 250);
             $table->string('swot', 1);
             $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
