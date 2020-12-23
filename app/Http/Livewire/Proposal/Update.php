@@ -35,7 +35,6 @@ class Update extends Component
         $proposal->rtrw = $this->rtrw;
         $proposal->save();
         $this->emit('success', $proposal);
-        $this->resetInput();
     }
 
 
