@@ -42,7 +42,7 @@
                         <div class="form-group row">
                             <div class="col-md-9">
                                 <label for="">T{{ $key+1 }}</label>
-                                <input type="text" disabled value="{{ $threat->kondisi }}" class="form-control shadow-none bg-light">
+                                <input type="text" disabled value="T{{ $key+1 }}" class="form-control shadow-none bg-light">
                             </div>
                             <div class="col-md-3">
                                 <label for="">Nilai</label>
@@ -55,7 +55,7 @@
                         <div class="form-group row">
                             <div class="col-md-9">
                                 <label for="">O{{ $key+1 }}</label>
-                                <input type="text" disabled value="{{ $opportunity->kondisi }}" class="form-control shadow-none bg-light">
+                                <input type="text" disabled value="O{{ $key+1 }}" class="form-control shadow-none bg-light">
                             </div>
                             <div class="col-md-3">
                                 <label for="">Nilai</label>
@@ -131,7 +131,10 @@
                                         <td>{{ $manfaat }}</td>
                                     @endforeach
                                     <td>{{ $kondisi->total }}</td>
-
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-danger shadow-none" wire:click='delete({{ $kondisi->id }})'><i class="fa fa-trash-alt"></i></button>
+                                        <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
+                                    </td>
                                 </tr>
 
                             @endforeach

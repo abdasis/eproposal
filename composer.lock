@@ -1245,6 +1245,10 @@
                 "jantinnerezo",
                 "livewire-alert"
             ],
+            "support": {
+                "issues": "https://github.com/jantinnerezo/livewire-alert/issues",
+                "source": "https://github.com/jantinnerezo/livewire-alert/tree/2.0.2"
+            },
             "time": "2020-11-14T14:33:53+00:00"
         },
         {
@@ -8740,5 +8744,5 @@
         "php": "^7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

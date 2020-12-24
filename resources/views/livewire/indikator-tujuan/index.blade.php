@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.{{ $key }}'>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.{{ $value }}'>
                             </div>
                         </div>
                         @endforeach
@@ -91,14 +91,17 @@
                                 <th rowspan="4">Tujuan Prioritas</th>
                                 <th rowspan="4">Indikator Kinerja</th>
                                 <th colspan="7">Nilai Indikator</th>
+                                <th rowspan="4">Option</th>
                             </tr>
                             <tr>
-                                <th rowspan="2" >Nilai Awal</th>
-                                <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
+                                <th rowspan="2" class="align-middle" >Nilai Awal</th>
+                                <th class="align-middle text-center" colspan="12"> Nilai Target</th>
                             </tr>
                             <tr>
-                                @foreach ($threats as $key => $threat)
-                                <th>T{{ $key+1 }}</th>
+                                @foreach ($indikatorTujuan as  $indikator)
+                                    @foreach ($indikator->indikators as $key => $value)
+                                        <td>Semester {{ $key+1 }}</td>
+                                    @endforeach
                                 @endforeach
                             </tr>
                             </thead>
@@ -112,7 +115,8 @@
                                 </tr>
                                 @foreach ($indikator->indikators as $indikatortujuan)
                                 <tr>
-                                    <td>{{ $indikatortujuan->indikator_kinerja }}</td>
+                                    <td>{{ $indikatortujuan->indikator_kinerja }} <button class="btn btn-sm btn-white text-danger shadow-none" wire:click='delete({{ $indikatortujuan->id }})'><i class="fa fa-minus"></i></button></td>
+                                    <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
                                     <td>{{ $indikatortujuan->nilai_awal }}</td>
                                     @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
                                         <td>{{ $targetThreat }}</td>

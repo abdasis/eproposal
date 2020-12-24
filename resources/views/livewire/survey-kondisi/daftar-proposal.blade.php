@@ -23,7 +23,7 @@
                 <div class="card-header bg-white border-bottom">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Daftar Proposal yang Dibuat</h5>
+                            <h5>Daftar Projek PEL yang Dibuat</h5>
                         </div>
                         <div class="col-md-6">
                             <a href="{{ url()->previous() }}">
@@ -34,9 +34,9 @@
 
                 </div>
                 <table class="table card-body table-bordered table-sm">
-                    <thead class="thead-white">
+                    <thead class="thead-white bg-light">
                         <tr>
-                            <th>#</th>
+                            <th>No.</th>
                             <th>Judul Proposal</th>
                             <th>Dibuat Pada</th>
                             <th>Tahapan</th>

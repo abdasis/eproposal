@@ -16,6 +16,7 @@ class Index extends Component
     public $tujuan, $indikator_tujuan, $nilai_awal, $nilai_akhir, $threat;
     public $input_priode = [];
     public $i = 1;
+    public $indikatorTujuan_id;
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);
@@ -74,11 +75,34 @@ class Index extends Component
         $this->nilai_akhir = null;
     }
 
+    public function delete($id)
+    {
+        $this->indikatorTujuan_id = $id;
+        $this->confirm('Apakah anda yakin?', [
+            'text' => 'Data yang dihapus tidak dapat di kembalikan!'
+        ]);
+
+        return;
+    }
+
+    public function onCancelledCallBack()
+    {
+        return;
+    }
+
+    public function onConfirmedAction()
+    {
+        $indikator = IndikatorTujuan::where('id', $this->indikatorTujuan_id)->first();
+        $indikator->delete();
+        $this->alert('success', 'Data berhasil dihapus');
+    }
+
 
     public function render()
     {
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
+
         return view('livewire.indikator-tujuan.index', [
             'strategies' => $strategi,
             'threats' => $threat,

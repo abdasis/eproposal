@@ -17,6 +17,7 @@ class InputNilai extends Component
     public $kondisi;
     public $dampak, $nilai_dampak;
     public $manfaat, $nilai_manfaat;
+    public $surveyKondisi;
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);
@@ -46,6 +47,27 @@ class InputNilai extends Component
         $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data Berhasil disimpan']);
 
     }
+    public function delete($id)
+    {
+        $this->confirm('Apakah anda yakin?', [
+            'text' => 'Data yang dihapus tidak dapat di kembalikan'
+        ]);
+
+        $this->surveyKondisi = $id;
+        return;
+    }
+    public function onCancelledCallBack()
+    {
+        return;
+    }
+
+    public function onConfirmedAction()
+    {
+        $kondisi = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('id', $this->surveyKondisi)->first();
+        $kondisi->delete();
+        $this->alert('success', 'Data berhasil dihapus!');
+
+    }
     public function render()
     {
         $kondisi = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->latest()->get();
@@ -61,7 +83,7 @@ class InputNilai extends Component
             'opportunities' => $oppotunity,
             'threats' => $threat,
             'weakness' => $weakness,
-            'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->get(),
+            'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->orderBy('pengaruh', 'asc')->get(),
             'totalS' => $totalS,
             'totalW' => $totalW,
             'totalSW' => $totalSW

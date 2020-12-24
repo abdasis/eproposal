@@ -87,48 +87,46 @@
         <div class="col-md-12">
             <div class="card">
                 <h5 class="card-header">Data Nilai</h5>
-                <div class="card-body">
-                    <table class="table table-sm table-bordered">
-                        <thead class="thead-default">
+                <table class="table card-body table-sm table-bordered">
+                    <thead class="thead-default">
+                        <tr>
+                            <th class="align-middle" rowspan="4">No.</th>
+                            <th class="align-middle" rowspan="4">Tujuan Prioritas</th>
+                            <th class="align-middle" rowspan="4">No Kegiatan</th>
+                            <th class="align-middle" rowspan="4">Kegiatan</th>
+                            <th class="align-middle" rowspan="4">Indikator Kinerja</th>
+                            <th class="align-middle" colspan="4">Nilai Indikator</th>
+                        </tr>
+                        <tr>
+                            <th class="align-middle" rowspan="2" >Nilai Awal</th>
+                            <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
+                        </tr>
+                        <tr>
+                            @foreach ($threats as $key => $threat)
+                            <th>Semester {{ $key+1 }}</th>
+                            @endforeach
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($indikatorKegiatan as $key => $kegiatan)
                             <tr>
-                                <th class="align-middle" rowspan="4">No.</th>
-                                <th class="align-middle" rowspan="4">Tujuan Prioritas</th>
-                                <th class="align-middle" rowspan="4">No Kegiatan</th>
-                                <th class="align-middle" rowspan="4">Kegiatan</th>
-                                <th class="align-middle" rowspan="4">Indikator Kinerja</th>
-                                <th class="align-middle" colspan="4">Nilai Indikator</th>
+                                <td rowspan="3" scope="row">{{ $key+1 }}</td>
+                                <td rowspan="3">{{ $kegiatan->nama_kegiatan }}</td>
                             </tr>
-                            <tr>
-                                <th class="align-middle" rowspan="2" >Nilai Awal</th>
-                                <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
-                            </tr>
-                            <tr>
-                                @foreach ($threats as $key => $threat)
-                                <th>Semester {{ $key+1 }}</th>
-                                @endforeach
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($indikatorKegiatan as $key => $kegiatan)
+                            @foreach ($kegiatan->indikatorKegiatan as $key => $indikatorKegiatan)
                                 <tr>
-                                    <td rowspan="3" scope="row">{{ $key+1 }}</td>
-                                    <td rowspan="3">{{ $kegiatan->nama_kegiatan }}</td>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $indikatorKegiatan->kegiaatan }}</td>
+                                    <td>{{ $indikatorKegiatan->indikator_kinerja }}</td>
+                                    <td>{{ $indikatorKegiatan->nilai_awal }}</td>
+                                    @foreach (json_decode($indikatorKegiatan->nilai_target) as $target)
+                                        <td>{{ $target }}</td>
+                                    @endforeach
                                 </tr>
-                                @foreach ($kegiatan->indikatorKegiatan as $key => $indikatorKegiatan)
-                                    <tr>
-                                        <td>{{ $key+1 }}</td>
-                                        <td>{{ $indikatorKegiatan->kegiaatan }}</td>
-                                        <td>{{ $indikatorKegiatan->indikator_kinerja }}</td>
-                                        <td>{{ $indikatorKegiatan->nilai_awal }}</td>
-                                        @foreach (json_decode($indikatorKegiatan->nilai_target) as $target)
-                                            <td>{{ $target }}</td>
-                                        @endforeach
-                                    </tr>
-                                @endforeach
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>
