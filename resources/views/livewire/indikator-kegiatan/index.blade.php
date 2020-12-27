@@ -102,33 +102,38 @@
                             <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
                         </tr>
                         <tr>
-                            @foreach ($getMaxNilaiTarget as $key => $kegiatan)
-                                <th>Semester {{ $key+1 }}</th>
+                            @foreach ($getMaxNilaiTarget as $key => $item)
+                                 <th>Semester {{ $key+1 }}</th>
                             @endforeach
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($indikatorKegiatan as $key => $kegiatan)
+                            @foreach ($indikatorKegiatan->unique('nama_kegiatan') as $key => $kegiatan)
                             <tr>
-                                <td rowspan="3" scope="row">{{ $key+1 }}</td>
-                                <td rowspan="3">{{ $kegiatan->nama_kegiatan }}</td>
+                                <td  rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}" scope="row">{{ $key+1 }}</td>
+                                <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}">{{ $kegiatan->nama_kegiatan }}</td>
                             </tr>
-                            @foreach ($kegiatan->indikatorKegiatan as $key => $indikatorKegiatan)
+                            @foreach ($kegiatan->indikatorKegiatan as $keykegiatan => $dataKegiatan)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $indikatorKegiatan->kegiaatan }}</td>
-                                    <td>{{ $indikatorKegiatan->indikator_kinerja }}</td>
-                                    <td>{{ $indikatorKegiatan->nilai_awal }}</td>
-                                    @foreach (json_decode($indikatorKegiatan->nilai_target) as $target)
-                                        <td>{{ $target }}</td>
+                                    <td>{{ $keykegiatan+1 }}</td>
+                                    <td>
+                                        {{ $dataKegiatan->kegiaatan }}
+                                        <button class="btn btn-sm btn-white text-danger shadow-none" wire:click='delete({{ $dataKegiatan->id }})'><i class="fa fa-minus"></i></button>
+                                    </td>
+                                    <td>
+                                        {{ $dataKegiatan->indikator_kinerja }}
+                                    </td>
+                                    <td>{{ $dataKegiatan->nilai_awal }}</td>
+                                    @foreach (json_decode($dataKegiatan->nilai_target) as $target)
+                                    <td>{{ $target }}</td>
                                     @endforeach
                                 </tr>
                             @endforeach
                             @endforeach
                         </tbody>
                 </table>
-                <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
             </div>
+            <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
         </div>
     </div>
 </div>
