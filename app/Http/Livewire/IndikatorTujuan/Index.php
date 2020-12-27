@@ -24,7 +24,7 @@ class Index extends Component
 
     public function add($i)
     {
-        $i = $i+1;
+        $i = $i + 1;
         $this->i = $i;
         array_push($this->input_priode, $i);
     }
@@ -47,7 +47,7 @@ class Index extends Component
             $indikatorTujuan->proposal_id = $this->proposal->id;
             $getTujuan->indikators()->save($indikatorTujuan);
             $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data Berhasil disimpan']);
-        }else{
+        } else {
             $tujuan = new Tujuan();
             $tujuan->tujuan = $this->tujuan;
             $tujuan->proposal_id = $this->proposal->id;
@@ -60,9 +60,7 @@ class Index extends Component
             $indikatorTujuan->proposal_id = $this->proposal->id;
             $tujuan->indikators()->save($indikatorTujuan);
             $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data Berhasil disimpan']);
-
         }
-
     }
 
     public function formReset()
@@ -100,6 +98,14 @@ class Index extends Component
 
     public function render()
     {
+        $getTujuan = IndikatorTujuan::where('proposal_id', $this->proposal->id)->max('nilai_target');
+        $tujuan = IndikatorTujuan::where('nilai_target', $getTujuan)->first();
+        if (!empty($tujuan)) {
+            $getMaxNilaiTarget = json_decode($tujuan->nilai_target);
+        } else {
+            $getMaxNilaiTarget = [];
+        }
+
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
 
@@ -107,7 +113,8 @@ class Index extends Component
             'strategies' => $strategi,
             'threats' => $threat,
             'indikatorTujuan' => Tujuan::where('proposal_id', $this->proposal->id)->latest()->get(),
-            'countPriode' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->max('nilai_target')
+            'countPriode' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->max('nilai_target'),
+            'getMaxNilaiTarget' => $getMaxNilaiTarget,
         ]);
     }
 }

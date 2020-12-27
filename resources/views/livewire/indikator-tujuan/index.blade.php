@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.0'>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.1'>
                             </div>
                         </div>
                         @foreach ($input_priode as $key => $value)
@@ -93,16 +93,12 @@
                                 <th colspan="7">Nilai Indikator</th>
                             </tr>
                             <tr>
-                                <th rowspan="2" class="align-middle" >Nilai Awal</th>
-                                <th class="align-middle text-center" colspan="12"> Nilai Target</th>
+                                <th class="align-middle" rowspan="2" >Nilai Awal</th>
+                                <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target</th>
                             </tr>
                             <tr>
-                                @foreach ($indikatorTujuan as  $indikator)
-                                    @foreach ($indikator->indikators as $dataIndikator)
-                                        @foreach (json_decode($dataIndikator->nilai_target) as $key => $target)
-                                             <td>Semester {{ $key+1 }}</td>
-                                        @endforeach
-                                    @endforeach
+                                 @foreach ($getMaxNilaiTarget as $key => $item)
+                                    <th>Semester {{ $key }}</th>
                                 @endforeach
                             </tr>
                             </thead>
