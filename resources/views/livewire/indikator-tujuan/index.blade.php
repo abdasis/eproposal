@@ -114,7 +114,7 @@
                                 </tr>
                                 @foreach ($indikator->indikators as $indikatortujuan)
                                 <tr>
-<button class="btn btn-sm btn-white text-danger shadow-none" wire:click='delete({{ $indikatortujuan->id }})'><i class="fa fa-minus"></i></button>                                    <td>{{ $indikatortujuan->indikator_kinerja }} </td>
+                                    <td>{{ $indikatortujuan->indikator_kinerja }} <button class="btn btn-sm btn-white text-danger shadow-none" wire:click='delete({{ $indikatortujuan->id }})'><i class="fa fa-minus"></i></button> </td>
                                     <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
                                     <td>{{ $indikatortujuan->nilai_awal }}</td>
                                     @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
