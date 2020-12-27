@@ -119,7 +119,9 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $indikatorKegiatan->kegiaatan }}</td>
-                                    <td>{{ $indikatorKegiatan->indikator_kinerja }}</td>
+                                    <td>{{ $indikatorKegiatan->indikator_kinerja }} <button class="btn btn-sm btn-white text-danger shadow-none" wire:click='delete({{ $indikatorKegiatan->id }})'><i class="fa fa-minus"></i></button></td>
+                                    <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
+
                                     <td>{{ $indikatorKegiatan->nilai_awal }}</td>
                                     @foreach (json_decode($indikatorKegiatan->nilai_target) as $target)
                                         <td>{{ $target }}</td>
