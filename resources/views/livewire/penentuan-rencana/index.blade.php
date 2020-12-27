@@ -88,7 +88,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            @foreach ($dataPenentuanRencana as $rencana)
+            @foreach ($dataPenentuanRencana->unique('sub_kegiatan') as $rencana)
                 <div class="card">
                 <h5 class="card-header">Data Nilai</h5>
                 <div class="card-body">
@@ -110,7 +110,7 @@
                             <tbody>
                                 @foreach ($rencana->dataSubKegiatan as $key => $subkegiatan)
                                 <tr>
-                                    <td scope="row">{{ $subkegiatan->key+1 }}</td>
+                                    <td scope="row">{{ $key+1 }}</td>
                                     <td>{{ $subkegiatan->judul_kegiatan }}</td>
                                     <td>
                                         <ul>
@@ -135,6 +135,25 @@
                                 @endforeach
                             </tbody>
                     </table>
+                    <div class="row">
+                        <div class="col-md-12">
+                            Tempat, Tanggal Menyusun
+                        </div>
+                        <div class="col-md-4">
+                            <div class="tanda_tangan_kepala_desa mb-5">
+                                Mengetahui, <br>
+                                Kepala Desa
+                            </div>
+                            ............................
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div class="mb-5">
+                                Ketua Penyusun
+                            </div>
+                            ............................
+                        </div>
+                    </div>
                 </div>
             </div>
             @endforeach

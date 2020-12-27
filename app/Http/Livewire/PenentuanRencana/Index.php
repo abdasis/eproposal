@@ -18,6 +18,7 @@ class Index extends Component
     public $judul_kegiatan, $nomor_kegiatan, $sumber_daya, $penanggung_jawab, $jadwal_pelaksanaan;
     public $sub_kegiatan;
     public $noKegiatans;
+    public $subKegiatanId;
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);
@@ -25,6 +26,7 @@ class Index extends Component
 
     public function delete($id)
     {
+        $this->subKegiatanId = $id;
         $this->confirm('Apakah anda yakin?', [
             'text' => 'Data yang dihapus tidak dapat dikembalikan'
         ]);
@@ -34,6 +36,13 @@ class Index extends Component
 
     public function onCancelledCallBack()
     {
+    }
+
+    public function onConfirmedAction()
+    {
+        $subKegiatan = SubKegiatan::find($this->subKegiatanId);
+        $subKegiatan->delete();
+        $this->alert('success', 'Data berhasil dihapus');
     }
 
     public function store()
@@ -48,7 +57,6 @@ class Index extends Component
                 $subKegiatan->penanggung_jawab = json_encode(explode(',', $this->penanggung_jawab));
                 $subKegiatan->jadwal = $this->jadwal_pelaksanaan;
                 $getPenentuanRencana->dataSubKegiatan()->save($subKegiatan);
-                $this->reset();
                 $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil disimpan!']);
             } else {
                 $penentuanRencana = new PenetuanRencana();
@@ -66,7 +74,6 @@ class Index extends Component
                 $subKegiatan->penanggung_jawab = json_encode(explode(',', $this->penanggung_jawab));
                 $subKegiatan->jadwal = $this->jadwal_pelaksanaan;
                 $penentuanRencana->dataSubKegiatan()->save($subKegiatan);
-                $this->reset();
                 $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data berhasil disimpan!']);
             }
 
@@ -89,7 +96,7 @@ class Index extends Component
     {
         return view('livewire.penentuan-rencana.index', [
             'indikatorKegiatan' => IndikatorKegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
-            'dataPenentuanRencana' => PenetuanRencana::where('proposal_id', $this->proposal->id)->latest()->get(),
+            'dataPenentuanRencana' => PenetuanRencana::where('proposal_id', $this->proposal->id)->whereHas('dataSubKegiatan')->latest()->get(),
         ]);
     }
 }
