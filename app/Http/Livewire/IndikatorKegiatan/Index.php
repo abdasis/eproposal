@@ -103,6 +103,7 @@ class Index extends Component
             $getMaxNilaiTarget = [];
         }
 
+
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
         return view('livewire.indikator-kegiatan.index', [

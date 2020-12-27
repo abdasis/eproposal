@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.0'>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.1'>
                             </div>
                         </div>
                         @foreach ($input_priode as $key => $value)
@@ -95,22 +95,22 @@
                             <th class="align-middle" rowspan="4">No Kegiatan</th>
                             <th class="align-middle" rowspan="4">Kegiatan</th>
                             <th class="align-middle" rowspan="4">Indikator Kinerja</th>
-                            <th class="align-middle" colspan="4">Nilai Indikator</th>
+                            <th class="align-middle" colspan="{{ end($getMaxNilaiTarget)+1 }}">Nilai Indikator</th>
                         </tr>
                         <tr>
                             <th class="align-middle" rowspan="2" >Nilai Awal</th>
-                            <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
+                            <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target</th>
                         </tr>
                         <tr>
                             @foreach ($getMaxNilaiTarget as $key => $item)
-                                 <th>Semester {{ $key+1 }}</th>
+                                 <th>Semester {{ $key }}</th>
                             @endforeach
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach ($indikatorKegiatan->unique('nama_kegiatan') as $key => $kegiatan)
+                            @foreach ($indikatorKegiatan->unique('nama_kegiatan') as $keyIndikator => $kegiatan)
                             <tr>
-                                <td  rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}" scope="row">{{ $key+1 }}</td>
+                                <td  rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}" scope="row">{{ $keyIndikator+1 }}</td>
                                 <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}">{{ $kegiatan->nama_kegiatan }}</td>
                             </tr>
                             @foreach ($kegiatan->indikatorKegiatan as $keykegiatan => $dataKegiatan)
