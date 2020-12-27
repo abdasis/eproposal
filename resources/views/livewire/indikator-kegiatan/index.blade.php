@@ -102,9 +102,11 @@
                             <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
                         </tr>
                         <tr>
-                            @foreach ($indikatorKegiatan as $key => $kegiatan)
-                                @foreach ($kegiatan->indikatorKegiatan as $key => $dataKegiatan)
-                                    <th>Semester {{ $key+1 }}</th>
+                            @foreach ($indikatorKegiatan as $kegiatan)
+                                @foreach ($kegiatan->indikatorKegiatan as $dataKegiatan)
+                                    @foreach (json_decode($dataKegiatan->nilai_target) as $key => $target)
+                                        <th>Semester {{ $key+1 }}</th>
+                                    @endforeach
                                 @endforeach
                             @endforeach
                         </tr>

@@ -36,6 +36,13 @@ class InputNilai extends Component
             $totalO[$key] = $nilaiManfaat;
         }
 
+        $getSurvey = SurveyKondisi::where('proposal_id', $this->proposal->id)->latest()->get();
+        if (!empty($getSurvey)) {
+            dd('tidak kososng');
+        }
+
+        dd();
+
         $pengaruh = new SurveyKondisi();
         $pengaruh->pengaruh = $this->kondisi;
         $pengaruh->nilai_dampak = json_encode($this->nilai_dampak);
@@ -45,7 +52,6 @@ class InputNilai extends Component
         $pengaruh->swot = $this->kondisi[0];
         $pengaruh->save();
         $this->emit('success', ['title' => 'Berhasil', 'message' => 'Data Berhasil disimpan']);
-
     }
     public function delete($id)
     {
@@ -66,7 +72,6 @@ class InputNilai extends Component
         $kondisi = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('id', $this->surveyKondisi)->first();
         $kondisi->delete();
         $this->alert('success', 'Data berhasil dihapus!');
-
     }
     public function render()
     {
@@ -76,7 +81,7 @@ class InputNilai extends Component
         $oppotunity = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'O')->latest()->get();
         $totalS = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->sum('total');
         $totalW = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->sum('total');
-        $totalSW = $totalS-$totalW;
+        $totalSW = $totalS - $totalW;
 
         return view('livewire.survey-kondisi.input-nilai', [
             'kondisis' => $kondisi,
@@ -90,4 +95,3 @@ class InputNilai extends Component
         ]);
     }
 }
-
