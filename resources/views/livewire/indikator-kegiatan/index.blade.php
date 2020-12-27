@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.0'>
+                                <input type="date" class="form-control shadow-none" wire:model='nilai_akhir.0'>
                             </div>
                         </div>
                         @foreach ($input_priode as $key => $value)
@@ -69,13 +69,13 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.{{ $value }}'>
+                                <input type="date" class="form-control shadow-none" wire:model='nilai_akhir.{{ $value }}'>
                             </div>
                         </div>
                         @endforeach
 
                         <div class="form-group">
-                            <button class="btn btn-blue font-weight-bold shadow-none">SIMPAN NILAI</button>
+                            <button class="btn btn-blue font-weight-bold shadow-none">SIMPAN DATA</button>
                         </div>
                     </form>
                 </div>
@@ -102,8 +102,10 @@
                             <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
                         </tr>
                         <tr>
-                            @foreach ($threats as $key => $threat)
-                            <th>Semester {{ $key+1 }}</th>
+                            @foreach ($indikatorKegiatan as $key => $kegiatan)
+                                @foreach ($kegiatan->indikatorKegiatan as $key => $dataKegiatan)
+                                    <th>Semester {{ $key+1 }}</th>
+                                @endforeach
                             @endforeach
                         </tr>
                         </thead>
