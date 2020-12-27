@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="date" class="form-control shadow-none" wire:model='nilai_akhir.0'>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.0'>
                             </div>
                         </div>
                         @foreach ($input_priode as $key => $value)
@@ -64,7 +64,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="date" class="form-control shadow-none" wire:model='nilai_akhir.{{ $value }}'>
+                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.{{ $value }}'>
                             </div>
                         </div>
                         @endforeach
