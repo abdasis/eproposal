@@ -97,7 +97,7 @@
 
                         <div class="form-group" wire:ignore>
                             <label for="">Latar Belakang</label>
-                            <textarea wire:model='latar_belakarang' class="form-control"></textarea>
+                            <textarea wire:model='latar_belakang' id="" class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -120,8 +120,6 @@
                     <p><b>Desa:</b> {{ $desa }}</p>
                     <p><b>Dusun:</b> {{ $dusun }}</p>
                     <p><b>RT/RW:</b> {{ $rtrw }}</p>
-                    <p><b>Latar Belakang:</b></p>
-                    <p id="latar_belakang">{!! $latar_belakangs !!}</p>
                 </div>
             </div>
         </div>
@@ -132,19 +130,18 @@
    <script>
     tinymce.init({
         selector: 'textarea',
-        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+        plugins: 'advlist lists autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
+        toolbar: 'undo redo | formatselect | ' +
+        'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | help',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
         height: 500,
         setup: function(editor){
-            editor.on('init', function(e) {
-                console.log($('#latar_belakang').text())
-                tinymce.activeEditor.setContent($('#latar_belakang').text())
-            });
-
-            editor.on('keydown', function(e){
+            editor.on('keyup', function(e){
                 @this.set('latar_belakang', tinymce.activeEditor.getContent())
             })
-
         }
     });
 

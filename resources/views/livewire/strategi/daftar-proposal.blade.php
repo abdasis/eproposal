@@ -33,41 +33,39 @@
                     </div>
 
                 </div>
-                <div class="card-body">
-                    <table class="table table-bordered table-sm">
-                        <thead class="thead-light">
+                <table class="table card-body table-bordered table-sm">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Judul Proposal</th>
+                            <th>Dibuat Pada</th>
+                            <th>Tahapan</th>
+                            <th>Option</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($proposals  as $key => $proposal)
                             <tr>
-                                <th>#</th>
-                                <th>Judul Proposal</th>
-                                <th>Dibuat Pada</th>
-                                <th>Tahapan</th>
-                                <th>Option</th>
+                                <td class="align-middle" scope="row">{{ $key+1 }}</td>
+                                <td class="align-middle">{{ $proposal->judul }}</td>
+                                <td class="align-middle">{{ $proposal->created_at }}</td>
+                                <td class="align-middle">Tahap Ke-{{ $proposal->status_tahap }}</td>
+                                <td class="align-middle text-center">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        @if (!empty($proposal->strategi))
+                                        <a href="{{ route('strategi.show', $proposal->strategi->id) }}">
+                                            <button class="btn btn-sm btn-outline-warning mr-1"><i class="fa fa-eye"></i></button>
+                                        </a>
+                                        @endif
+                                        <a href="{{ route('strategi.create', $proposal->id) }}">
+                                            <button class="btn btn-sm btn-outline-success"><i class="fa fa-chart-line"></i></button>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($proposals  as $key => $proposal)
-                                <tr>
-                                    <td class="align-middle" scope="row">{{ $key+1 }}</td>
-                                    <td class="align-middle">{{ $proposal->judul }}</td>
-                                    <td class="align-middle">{{ $proposal->created_at }}</td>
-                                    <td class="align-middle">Tahap Ke-{{ $proposal->status_tahap }}</td>
-                                    <td class="align-middle text-center">
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            @if (!empty($proposal->strategi))
-                                            <a href="{{ route('strategi.show', $proposal->strategi->id) }}">
-                                                <button class="btn btn-sm btn-outline-warning mr-1"><i class="fa fa-eye"></i></button>
-                                            </a>
-                                            @endif
-                                            <a href="{{ route('strategi.create', $proposal->id) }}">
-                                                <button class="btn btn-sm btn-outline-success"><i class="fa fa-chart-line"></i></button>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                    </table>
-                </div>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
         </div>
     </div>

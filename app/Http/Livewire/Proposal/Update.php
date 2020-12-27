@@ -23,7 +23,8 @@ class Update extends Component
         $this->rtrw = $proposal->rtrw;
         $this->proposal_id = $proposal->id;
     }
-    public function update(){
+    public function update()
+    {
         $proposal = Proposal::find($this->proposal_id);
         $proposal->judul = $this->judul;
         $proposal->latar_belakang = $this->latar_belakang;
@@ -40,8 +41,6 @@ class Update extends Component
 
     public function render()
     {
-        return view('livewire.proposal.update', [
-            'latar_belakangs' => $this->latar_belakang
-        ]);
+        return view('livewire.proposal.update');
     }
 }

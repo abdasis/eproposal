@@ -130,11 +130,16 @@
    <script>
     tinymce.init({
         selector: 'textarea',
-        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+        plugins: 'advlist lists autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
+        toolbar: 'undo redo | formatselect | ' +
+        'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | help',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
         height: 500,
         setup: function(editor){
-            editor.on('keydown', function(e){
+            editor.on('keyup', function(e){
                 @this.set('latar_belakang', tinymce.activeEditor.getContent())
             })
         }

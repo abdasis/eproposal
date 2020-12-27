@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePenetuanRencanasTable extends Migration
+class CreateSubKegiatansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreatePenetuanRencanasTable extends Migration
      */
     public function up()
     {
-        Schema::create('penetuan_rencanas', function (Blueprint $table) {
+        Schema::create('sub_kegiatans', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_kegiatan', 100)->nullable();
             $table->longText('judul_kegiatan')->nullable();
-            $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
+            $table->longText('sumber_daya')->nullable();
+            $table->string('penanggung_jawab', 100);
+            $table->longText('jadwal')->nullable();
+            $table->foreignId('penetuan_rencana_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreatePenetuanRencanasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penetuan_rencanas');
+        Schema::dropIfExists('sub_kegiatans');
     }
 }

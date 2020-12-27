@@ -35,10 +35,10 @@
                     </div>
 
                 </div>
-                <table class="card-body table table-bordered table-sm">
-                    <thead class="thead-white">
+                <table class="card-body table table-sm">
+                    <thead class="thead-white bg-light">
                         <tr>
-                            <th>#</th>
+                            <th>No.</th>
                             <th>Judul Proposal</th>
                             <th>Desa</th>
                             <th>Dusun</th>
@@ -55,14 +55,14 @@
                                 <td class="align-middle">{{ $proposal->dusun }}</td>
                                 <td class="align-middle">{{ Str::limit(strip_tags($proposal->latar_belakang), 150, '...') }}</td>
                                 <td class="align-middle text-center">
-                                    <div class="btn-group-justified flex-col" role="group" aria-label="Basic example">
+                                    <div class="btn-group-justified" role="group" aria-label="Basic example">
                                         <a href="{{ route('proposal.lihat-proposal', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-eye"></i></button>
+                                            <button class="btn btn-sm mb-1 btn-outline-blue"><i class="fa fa-eye"></i></button>
                                         </a>
                                         <a href="{{ route('proposal.update-proposal', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-warning"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-sm mb-1 btn-outline-warning"><i class="fa fa-edit"></i></button>
                                         </a>
-                                        <button class="btn btn-sm btn-danger"><i class="fa fa-trash-alt"></i></button>
+                                        <button class="btn btn-sm mb-1 shadow-none btn-danger"><i class="fa fa-trash-alt"></i></button>
                                     </div>
                                 </td>
                             </tr>

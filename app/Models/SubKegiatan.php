@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PenetuanRencana extends Model
+class SubKegiatan extends Model
 {
     use HasFactory;
-    public function dataSubKegiatan()
+    public function penentuanRencana()
     {
-        return $this->hasMany(SubKegiatan::class);
+        return $this->belongsTo(PenetuanRencana::class);
     }
 }
