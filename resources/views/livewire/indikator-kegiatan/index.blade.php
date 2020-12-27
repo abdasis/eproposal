@@ -102,12 +102,8 @@
                             <th class="align-middle" colspan="{{ count($threats) }}"> Nilai Target</th>
                         </tr>
                         <tr>
-                            @foreach ($indikatorKegiatan as $kegiatan)
-                                @foreach ($kegiatan->indikatorKegiatan as $dataKegiatan)
-                                    @foreach (json_decode($dataKegiatan->nilai_target) as $key => $target)
-                                        <th>Semester {{ $key+1 }}</th>
-                                    @endforeach
-                                @endforeach
+                            @foreach ($getMaxNilaiTarget as $key => $kegiatan)
+                                <th>Semester {{ $key+1 }}</th>
                             @endforeach
                         </tr>
                         </thead>
@@ -121,9 +117,7 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $indikatorKegiatan->kegiaatan }}</td>
-                                    <td>{{ $indikatorKegiatan->indikator_kinerja }} <button class="btn btn-sm btn-white text-danger shadow-none" wire:click='delete({{ $indikatorKegiatan->id }})'><i class="fa fa-minus"></i></button></td>
-                                    <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
-
+                                    <td>{{ $indikatorKegiatan->indikator_kinerja }}</td>
                                     <td>{{ $indikatorKegiatan->nilai_awal }}</td>
                                     @foreach (json_decode($indikatorKegiatan->nilai_target) as $target)
                                         <td>{{ $target }}</td>
@@ -133,6 +127,7 @@
                             @endforeach
                         </tbody>
                 </table>
+                <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
             </div>
         </div>
     </div>

@@ -95,12 +95,21 @@ class Index extends Component
 
     public function render()
     {
+        $getKegiatan = IndikatorKegiatan::where('proposal_id', $this->proposal->id)->max('nilai_target');
+        $kegiatan = IndikatorKegiatan::where('nilai_target', $getKegiatan)->first();
+        if (!empty($kegiatan)) {
+            $getMaxNilaiTarget = json_decode($kegiatan->nilai_target);
+        } else {
+            $getMaxNilaiTarget = [];
+        }
+
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
         return view('livewire.indikator-kegiatan.index', [
             'strategies' => $strategi,
             'threats' => $threat,
             'indikatorKegiatan' => Kegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
+            'getMaxNilaiTarget' => $getMaxNilaiTarget,
         ]);
     }
 }
