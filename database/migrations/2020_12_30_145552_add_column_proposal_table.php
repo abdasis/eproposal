@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProposalId extends Migration
+class AddColumnProposalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddProposalId extends Migration
      */
     public function up()
     {
-        Schema::table('kegiatans', function (Blueprint $table) {
-            // $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
+        Schema::table('proposals', function (Blueprint $table) {
+            $table->longText('permasalahaan');
+            $table->longText('potensi')->nullable();
         });
     }
 
@@ -25,6 +26,8 @@ class AddProposalId extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('proposals');
+        Schema::table('proposals', function (Blueprint $table) {
+            //
+        });
     }
 }

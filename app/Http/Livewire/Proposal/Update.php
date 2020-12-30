@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Update extends Component
 {
-    public $judul, $latar_belakang, $provinsi, $kabupaten, $kecamatan, $desa, $dusun, $rtrw, $proposal_id;
+    public $judul, $latar_belakang, $provinsi, $kabupaten, $kecamatan, $desa, $dusun, $rtrw, $proposal_id, $permasalahan, $potensi;
 
 
     public function mount($id)
@@ -29,6 +29,8 @@ class Update extends Component
         $proposal->judul = $this->judul;
         $proposal->latar_belakang = $this->latar_belakang;
         $proposal->provinsi = $this->provinsi;
+        $proposal->potensi = $this->potensi;
+        $proposal->permasalahaan = $this->permasalahan;
         $proposal->kecamatan = $this->kecamatan;
         $proposal->kabupaten = $this->kabupaten;
         $proposal->desa = $this->desa;

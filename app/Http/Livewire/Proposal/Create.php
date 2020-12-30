@@ -7,13 +7,16 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $judul, $latar_belakang, $provinsi, $kabupaten, $kecamatan, $desa, $dusun, $rtrw;
+    public $judul, $latar_belakang, $provinsi, $kabupaten, $kecamatan, $desa, $dusun, $rtrw, $permasalahan, $potensi;
 
-    public function store(){
+    public function store()
+    {
         $proposal = new Proposal();
         $proposal->judul = $this->judul;
         $proposal->latar_belakang = $this->latar_belakang;
         $proposal->provinsi = $this->provinsi;
+        $proposal->potensi = $this->potensi;
+        $proposal->permasalahaan = $this->permasalahan;
         $proposal->kecamatan = $this->kecamatan;
         $proposal->kabupaten = $this->kabupaten;
         $proposal->desa = $this->desa;
@@ -21,7 +24,7 @@ class Create extends Component
         $proposal->rtrw = $this->rtrw;
         $proposal->save();
         $this->emit('success', $proposal);
-        $this->resetInput();
+        $this->reset();
     }
 
     public function resetInput()
