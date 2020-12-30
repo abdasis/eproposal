@@ -36,12 +36,17 @@ class InputNilai extends Component
             $totalO[$key] = $nilaiManfaat;
         }
 
-        $getSurvey = SurveyKondisi::where('proposal_id', $this->proposal->id)->latest()->get();
-        if (!empty($getSurvey)) {
-            dd('tidak kososng');
+        $total = [];
+        $nilaiDampak = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->latest()->first();
+        if (!empty($nilaiDampak)) {
+            foreach (json_decode($nilaiDampak->nilai_dampak) as $key => $nilai) {
+                foreach ($this->nilai_dampak as $k => $value) {
+                    $total[$key] = $nilai + $value;
+                }
+            }
         }
 
-        dd();
+        dd(json_encode($total));
 
         $pengaruh = new SurveyKondisi();
         $pengaruh->pengaruh = $this->kondisi;
@@ -82,6 +87,15 @@ class InputNilai extends Component
         $totalS = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->sum('total');
         $totalW = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->sum('total');
         $totalSW = $totalS - $totalW;
+
+        // $sumDampak = [];
+        // $nilaiDampak = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->latest()->pluck('nilai_dampak');
+        // foreach (json_decode($nilaiDampak) as $key => $nilai) {
+        //     foreach (json_decode($nilai) as $key => $value) {
+        //         $sumDampak[$key] += $value;
+        //     }
+        // }
+        // dd($nilaiDampak);
 
         return view('livewire.survey-kondisi.input-nilai', [
             'kondisis' => $kondisi,
