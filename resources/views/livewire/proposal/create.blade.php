@@ -111,6 +111,12 @@
                             </div>
                         </div>
 
+
+
+                        <div class="form-group" wire:ignore>
+                            <label for="">Latar Belakang</label>
+                            <textarea id="latar_belakang" wire:model='latar_belakarang' class="form-control"></textarea>
+                        </div>
                         <div class="form-group">
                             <label for="permasalahan">1.1 Permasalahan</label>
                             <textarea class="form-control shadow-none" wire:model="permasalahan" id="permasalahan"
@@ -121,11 +127,6 @@
                             <label for="potensi">1.2 Potensi</label>
                             <textarea class="form-control shadow-none" wire:model="potensi" id="potensi"
                                 rows="3"></textarea>
-                        </div>
-
-                        <div class="form-group" wire:ignore>
-                            <label for="">Latar Belakang</label>
-                            <textarea id="latar_belakang" wire:model='latar_belakarang' class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">
