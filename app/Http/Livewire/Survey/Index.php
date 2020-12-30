@@ -19,8 +19,9 @@ class Index extends Component
     public function render()
     {
         $analisies = Analisys::where('proposal_id', $this->proposal_id)->groupBy('nama_anggota')
-        ->selectRaw('sum(tingkat_pengaruh) as tingkat_pengaruh, sum(tingkat_kepentingan) as tingkat_kepentingan, sum(tingkat_pengaruh+tingkat_kepentingan) as total,nama_anggota')
-        ->get();
+            ->selectRaw('sum(tingkat_pengaruh) as tingkat_pengaruh, sum(tingkat_kepentingan) as tingkat_kepentingan, sum(tingkat_pengaruh+tingkat_kepentingan) as total,nama_anggota')
+            ->get();
+
         // dd($analisies);
         return view('livewire.survey.index', [
             'analisies' => $analisies,

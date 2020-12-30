@@ -15,7 +15,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="card">
                 <h5 class="card-header bg-white border-bottom">
                     List Semua Survey
@@ -28,17 +28,43 @@
                             <th>Rata-rata tingkat pengaruh</th>
                             <th>Rata-rata tingkat kepentingan</th>
                         </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($analisies as $key => $analisys)
-                            <tr>
-                                <td class="text-center" scope="row">{{ $key+1 }}</td>
-                                <td>{{ $analisys->nama_anggota }}</td>
-                                <td>{{ round($analisys->tingkat_kepentingan/$repondenCount,1) }}</td>
-                                <td>{{ round($analisys->tingkat_pengaruh/$repondenCount,1) }}</td>
+                    </thead>
+                    <tbody>
+                        @foreach ($analisies as $key => $analisys)
+                        <tr>
+                            <td class="text-center" scope="row">{{ $key+1 }}</td>
+                            <td>{{ $analisys->nama_anggota }}</td>
+                            <td>{{ round($analisys->tingkat_kepentingan/$repondenCount,1) }}</td>
+                            <td>{{ round($analisys->tingkat_pengaruh/$repondenCount,1) }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <h5 class="card-header bg-white border-bottom">
+                    Stakeholder Terpilih
+                </h5>
+                <table class="table table-bordered table-sm card-body">
+                    <thead class="thead-default bg-light">
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th>Jabatan / Nama lembaga/Individu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($analisies as $key => $analisys)
+                        @if (round($analisys->tingkat_kepentingan/$repondenCount,1) > 2 &&
+                        round($analisys->tingkat_pengaruh/$repondenCount,1) <= 4) <tr>
+                            <td class="text-center" scope="row">{{ $key+1 }}</td>
+                            <td>{{ $analisys->nama_anggota }}</td>
                             </tr>
+                            @endif
                             @endforeach
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
         </div>
