@@ -17,7 +17,7 @@
                 data-label_2="Cuaca Saat Ini" data-theme="original">BANGKALAN Cuaca Saat Ini</a>
         </div>
         <div class="col-12 py-3">
-            <h1>Selamat Datang di SIRASTI <div class="badge badge-danger shadow-none">{{ Auth::user()->name }}</div>
+            <h1>Selamat Datang <div class="badge badge-danger shadow-none">{{ Auth::user()->name }}</div> di SIRASTI
             </h1>
         </div>
         <div class="col-md-8">
