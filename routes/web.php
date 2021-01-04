@@ -4,6 +4,7 @@ use App\Http\Livewire\Analisys\DaftarProposal;
 use App\Http\Livewire\Anggota\Create as AnggotaCreate;
 use App\Http\Livewire\Anggota\Index as AnggotaIndex;
 use App\Http\Livewire\Anggota\Update as AnggotaUpdate;
+use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\IndikatorKegiatan\DaftarProposal as IndikatorKegiatanDaftarProposal;
 use App\Http\Livewire\IndikatorKegiatan\Index as IndikatorKegiatanIndex;
 use App\Http\Livewire\IndikatorTujuan\Create as IndikatorTujuanCreate;
@@ -47,7 +48,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('proposal.index');
+    return redirect()->route('dashboard');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
@@ -115,7 +116,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', Dashboard::class);

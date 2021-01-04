@@ -2,8 +2,8 @@
 
     <div class="h-100" data-simplebar>
 
-       @auth
-            <!-- User box -->
+        @auth
+        <!-- User box -->
         <div class="user-box text-center">
             <img src="{{ url('/') }}/assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme"
                 class="rounded-circle avatar-md">
@@ -72,14 +72,14 @@
 
                 <li>
                     <a href="{{ route('daftar-proposal') }}">
-                        <i class="fa fa-chart-line"></i>
+                        <i class="fa fa-user-check"></i>
                         <span> Analisis Stakeholders </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('kondisi.daftar-proposal') }}">
-                        <i class="fa fa-chart-line"></i>
+                        <i class="fa fa-balance-scale-right"></i>
                         <span> Analisis Prioritisasi </span>
                     </a>
                 </li>
@@ -87,20 +87,20 @@
 
                 <li>
                     <a href="{{ route('survey-kondisi.daftar-proposal') }}">
-                        <i class="fa fa-chart-line"></i>
+                        <i class="fa fa-sitemap"></i>
                         <span> Survey Kondisi </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="{{ route('strategi.daftar-proposal') }}">
-                        <i class="fa fa-chart-line"></i>
+                        <i class="fa fa-project-diagram"></i>
                         <span> Tujuan/Strategi Prioritas </span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('indikator.daftar-proposal') }}">
-                        <i class="fa fa-chart-line"></i>
+                        <i class="fa fa-compass"></i>
                         <span> Indicator Tujuan </span>
                     </a>
                 </li>
@@ -120,19 +120,19 @@
                 </li>
 
 
-                <li>
+                {{-- <li>
                     <a href="apps-calendar.html">
                         <i class="mdi mdi-cog"></i>
                         <span> Pengaturan </span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
         </div>
         <!-- End Sidebar -->
 
         <div class="clearfix"></div>
-       @endauth
+        @endauth
 
     </div>
     <!-- Sidebar -left -->
