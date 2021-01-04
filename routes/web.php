@@ -116,4 +116,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     });
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', Dashboard::class);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', Dashboard::class)->name('dashboard');
