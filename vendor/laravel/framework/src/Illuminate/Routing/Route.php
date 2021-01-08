@@ -238,8 +238,7 @@ class Route
      */
     protected function isSerializedClosure()
     {
-        return is_string($this->action['uses']) &&
-               Str::startsWith($this->action['uses'], 'C:32:"Opis\\Closure\\SerializableClosure') !== false;
+        return RouteAction::containsSerializedClosure($this->action);
     }
 
     /**
@@ -303,7 +302,7 @@ class Route
     {
         $this->compileRoute();
 
-        foreach ($this->getValidators() as $validator) {
+        foreach (self::getValidators() as $validator) {
             if (! $includingMethod && $validator instanceof MethodValidator) {
                 continue;
             }

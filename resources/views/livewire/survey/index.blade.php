@@ -57,10 +57,14 @@
                     </thead>
                     <tbody>
                         @foreach ($analisies as $key => $analisys)
-                        @if (round($analisys->tingkat_kepentingan/$repondenCount,1) > 2 &&
-                        round($analisys->tingkat_pengaruh/$repondenCount,1) <= 4) <tr>
-                            <td class="text-center" scope="row">{{ $key+1 }}</td>
-                            <td>{{ $analisys->nama_anggota }}</td>
+                        @if (round($analisys->tingkat_kepentingan/$repondenCount,1) >
+                        (round($analisys->tingkat_pengaruh/$repondenCount,1)-2) &&
+                        round($analisys->tingkat_kepentingan/$repondenCount,1) < (round($analisys->
+                            tingkat_pengaruh/$repondenCount,1)+2) &&
+                            (round($analisys->tingkat_kepentingan/$repondenCount,1) +
+                            (round($analisys->tingkat_pengaruh/$repondenCount,1))) > 2) <tr>
+                                <td class="text-center" scope="row">{{ $key+1 }}</td>
+                                <td>{{ $analisys->nama_anggota }}</td>
                             </tr>
                             @endif
                             @endforeach

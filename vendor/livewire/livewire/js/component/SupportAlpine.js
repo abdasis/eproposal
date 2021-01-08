@@ -97,7 +97,7 @@ function supportEntangle() {
                                 livewireProperty,
                                 value,
                                 isDeferred,
-                                true // Skip firing Livewire watchers when the request comes back.
+                                true // Block firing of Livewire watchers for this data key when the request comes back.
                             )
                         })
 
@@ -105,7 +105,6 @@ function supportEntangle() {
                         livewireComponent.watch(
                             livewireProperty,
                             value => {
-                                blockAlpineWatcher = true
                                 component.$data[key] = value
                             }
                         )
