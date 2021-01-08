@@ -18,6 +18,11 @@ class InputNilai extends Component
     public $dampak, $nilai_dampak;
     public $manfaat, $nilai_manfaat;
     public $surveyKondisi;
+
+    protected $listeners = [
+        'confirmed',
+        'cancelled',
+    ];
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);
@@ -46,13 +51,23 @@ class InputNilai extends Component
             }
         }
 
-        dd(json_encode($total));
+        $totalManfaat = [];
+        $nilaiManfaat = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->latest()->first();
+        if (!empty($nilaiManfaat)) {
+            foreach (json_decode($nilaiManfaat->nilai_manfaat) as $keyManfaat => $nilaiManfaat) {
+                foreach ($this->nilai_manfaat as $k => $valueManfaat) {
+                    $totalManfaat[$keyManfaat] = $nilaiManfaat + $valueManfaat;
+                }
+            }
+        }
 
         $pengaruh = new SurveyKondisi();
         $pengaruh->pengaruh = $this->kondisi;
         $pengaruh->nilai_dampak = json_encode($this->nilai_dampak);
         $pengaruh->nilai_manfaat = json_encode($this->nilai_manfaat);
         $pengaruh->total = array_sum($totalT) + array_sum($totalO);
+        $pengaruh->total_dampak = json_encode($total);
+        $pengaruh->total_manfaat = json_encode($totalManfaat);
         $pengaruh->proposal_id = $this->proposal->id;
         $pengaruh->swot = $this->kondisi[0];
         $pengaruh->save();
@@ -60,16 +75,36 @@ class InputNilai extends Component
     }
     public function delete($id)
     {
-        $this->confirm('Apakah anda yakin?', [
-            'text' => 'Data yang dihapus tidak dapat di kembalikan'
-        ]);
+        $this->confirm(
+            'Do you love Livewire Alert?',
+            [
+                'toast' => false,
+                'position' => 'center',
+                'showConfirmButton' => true,
+                'cancelButtonText' => 'Nope',
+                'onConfirmed' => 'confirmed',
+                'onCancelled' => 'cancelled'
+            ]
+        );
 
         $this->surveyKondisi = $id;
         return;
     }
-    public function onCancelledCallBack()
+
+    public function confirmed()
     {
-        return;
+        $kondisi = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('id', $this->surveyKondisi)->first();
+        $kondisi->delete();
+        $this->alert(
+            'success',
+            'Thanks! consider giving it a star on github.'
+        );
+    }
+
+    public function cancelled()
+    {
+
+        $this->alert('info', 'Understood');
     }
 
     public function onConfirmedAction()
@@ -105,7 +140,8 @@ class InputNilai extends Component
             'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->orderBy('pengaruh', 'asc')->get(),
             'totalS' => $totalS,
             'totalW' => $totalW,
-            'totalSW' => $totalSW
+            'totalSW' => $totalSW,
+            'kondisiS'
         ]);
     }
 }
