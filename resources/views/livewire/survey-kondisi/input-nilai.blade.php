@@ -115,7 +115,7 @@
                         </tr>
 
                         {{-- <tr>
-                            <td>NO</td>
+                            <td class="text-wrap">NO</td>
                             <th>PENGARUH</th>
                             <th>TERHADAP PENGURANGAN DAMPAK</th>
                             <th>NILAI</th>
@@ -128,27 +128,87 @@
                     </thead>
                     <tbody>
                         @foreach ($surveyKondisis as $key => $kondisi)
+                        @if ($kondisi->pengaruh[0] == 'S')
                         <tr>
-                            <td>{{ $kondisi->pengaruh }}</td>
+                            <td class="text-wrap">{{ $kondisi->pengaruh }}</td>
                             @foreach (json_decode($kondisi->nilai_dampak) as $dampak)
-                            <td>{{ $dampak }}</td>
+                            <td class="text-wrap">{{ $dampak }}</td>
                             @endforeach
+                            @foreach (json_decode($kondisi->nilai_manfaat) as $manfaat)
+                            <td class="text-wrap">{{ $manfaat }}</td>
+                            @endforeach
+                            <td class="text-wrap">{{ $kondisi->total }}</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-danger shadow-none"
+                                    wire:click='delete({{ $kondisi->id }})'><i class="fa fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                        @endif
+                        @endforeach
+
+                        <tr>
+                            <td class="text-wrap bg-soft-success">Total S</td>
+                            @foreach ($totalPerkolomT as $kolomT)
+                            @if ($kolomT != 0)
+                            <td class="text-wrap">{{ $kolomT }}</td>
+                            @endif
+                            @endforeach
+                            @foreach ($totalPerkolomS as $kolomS)
+                            @if ($kolomS != 0)
+                            <td class="text-wrap">{{ $kolomS }}</td>
+                            @endif
+                            @endforeach
+                            <td>{{ $totalSTonS }}</td>
                         </tr>
 
-                        @endforeach
+                        @foreach ($surveyKondisis as $key => $kondisi)
+                        @if ($kondisi->pengaruh[0] == 'W')
                         <tr>
-                            <th>Total Skor S</th>
-                            @foreach (json_decode($kondisi->total_dampak) as $totalDampak)
-                            <td>{{ $totalDampak }}</td>
+                            <td class="text-wrap">{{ $kondisi->pengaruh }}</td>
+                            @foreach (json_decode($kondisi->nilai_dampak) as $dampak)
+                            <td class="text-wrap">{{ $dampak }}</td>
                             @endforeach
+                            @foreach (json_decode($kondisi->nilai_manfaat) as $manfaat)
+                            <td class="text-wrap">{{ $manfaat }}</td>
+                            @endforeach
+                            <td class="text-wrap">{{ $kondisi->total }}</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-danger shadow-none"
+                                    wire:click='delete({{ $kondisi->id }})'><i class="fa fa-trash-alt"></i></button>
+                            </td>
                         </tr>
+                        @endif
+                        @endforeach
+
                         <tr>
-                            <th>Total Skor W</th>
-                            <td>{{ $totalW }}</td>
+                            <td class="text-wrap bg-soft-success">Total Skor W</td>
+                            @foreach ($totalPerkolomTonW as $kolomTonW)
+                            @if ($kolomTonW != 0)
+                            <td class="text-wrap">{{ $kolomTonW }}</td>
+                            @endif
+                            @endforeach
+                            @foreach ($totalPerkolomOonW as $kolomOonW)
+                            @if ($kolomOonW != 0)
+                            <td class="text-wrap">{{ $kolomOonW }}</td>
+                            @endif
+                            @endforeach
+                            <td>{{ $totalSTonW }}</td>
                         </tr>
+
+
                         <tr>
                             <th>Total Skor S-W</th>
-                            <td>{{ $totalSW }}</td>
+                            @foreach ($totalSW as $totalT)
+                            @if ($totalT != 0)
+                            <td class="text-wrap">{{ $totalT }}</td>
+                            @endif
+                            @endforeach
+                            @foreach ($totalSwOnO as $totalO)
+                            @if ($totalO != 0)
+                            <td class="text-wrap">{{ $totalO }}</td>
+                            @endif
+                            @endforeach
+                            <td>{{ $sumTotalSW }}</td>
                         </tr>
                     </tbody>
                 </table>
