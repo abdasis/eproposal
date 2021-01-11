@@ -225,10 +225,7 @@ class InputNilai extends Component
                 $getTotalTonSTanpaNull[] = $getTonS;
             }
         }
-        // dd(count($getTotalTonSTanpaNull));
-        for ($dataT = 0; $dataT < count($getTotalTonSTanpaNull); $dataT++) {
-            $getTotalSw[$dataT] = $getTotalTonS[$dataT] - $getTotalTonW[$dataT];
-        }
+
 
         $getTotalSwKolomO = [];
         $getTotalOonSTanpaNull = [];
@@ -237,9 +234,16 @@ class InputNilai extends Component
                 $getTotalOonSTanpaNull[] = $getOonS;
             }
         }
-        // dd(count($getTotalTonSTanpaNull));
-        for ($dataO = 0; $dataO < count($getTotalOonSTanpaNull); $dataO++) {
-            $getTotalSwKolomO[$dataO] = $getTotalOonS[$dataO] - $getTotalOonW[$dataO];
+        // dd(count($dataSurveyKondisiW));
+
+        if (count($dataSurveyKondisiW) > 0 && count($dataSurveyKondisi) > 0) {
+            for ($dataT = 0; $dataT < count($getTotalTonSTanpaNull); $dataT++) {
+                $getTotalSw[$dataT] = $getTotalTonS[$dataT] - $getTotalTonW[$dataT];
+            }
+            // dd(count($getTotalTonSTanpaNull));
+            for ($dataO = 0; $dataO < count($getTotalOonSTanpaNull); $dataO++) {
+                $getTotalSwKolomO[$dataO] = $getTotalOonS[$dataO] - $getTotalOonW[$dataO];
+            }
         }
 
         // dd($getTotalSwKolomO);
