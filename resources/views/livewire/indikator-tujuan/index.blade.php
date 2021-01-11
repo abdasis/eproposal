@@ -27,29 +27,35 @@
                             <select class="custom-select shadow-none" wire:model='tujuan' name="" id="">
                                 <option selected>Pilih Tujuan</option>
                                 @foreach ($strategies as $key => $strategi)
-                                    <option value="{{ $strategi->tujuan_1 }}">{{ $strategi->tujuan_1 }}</option>
-                                    <option value="{{ $strategi->tujuan_2 }}">{{ $strategi->tujuan_2 }}</option>
-                                    <option value="{{ $strategi->tujuan_3 }}">{{ $strategi->tujuan_3 }}</option>
-                                    <option value="{{ $strategi->tujuan_4 }}">{{ $strategi->tujuan_4 }}</option>
+                                <option value="{{ $strategi->tujuan_1 }}">{{ $strategi->tujuan_1 }}</option>
+                                <option value="{{ $strategi->tujuan_2 }}">{{ $strategi->tujuan_2 }}</option>
+                                <option value="{{ $strategi->tujuan_3 }}">{{ $strategi->tujuan_3 }}</option>
+                                <option value="{{ $strategi->tujuan_4 }}">{{ $strategi->tujuan_4 }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="">Indikator Kinerja Tujuan</label>
-                            <textarea wire:model='indikator_tujuan' class="form-control shadow-none" id="" cols="30" rows="10"></textarea>
+                            <textarea wire:model='indikator_tujuan' class="form-control shadow-none" id="" cols="30"
+                                rows="10"></textarea>
                         </div>
 
                         <div class="form-group">
-                          <label for="">Nilai Awal</label>
-                          <input type="text" name="" wire:model='nilai_awal' id="" class="form-control shadow-none" placeholder="" aria-describedby="helpId">
+                            <label for="">Nilai Awal</label>
+                            <input type="text" name="" wire:model='nilai_awal' id="" class="form-control shadow-none"
+                                placeholder="" aria-describedby="helpId">
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-7">
-                                <label for="">Priode | <span wire:click='add({{ $i }})' class="text-success cursor-pointer"><i class="fa fa-plus-square"></i> Tambah Priode <span wire:loading wire:target="add" class="text-warning"> Loading...</span> </button>
+                                <label for="">Priode | <span wire:click='add({{ $i }})'
+                                        class="text-success cursor-pointer"><i class="fa fa-plus-square"></i> Tambah
+                                        Priode <span wire:loading wire:target="add" class="text-warning">
+                                            Loading...</span> </button>
                                 </label>
-                                <input type="text" class="form-control shadow-none bg-light" disabled value="Semester 1">
+                                <input type="text" class="form-control shadow-none bg-light" disabled
+                                    value="Semester 1">
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
@@ -59,12 +65,17 @@
                         @foreach ($input_priode as $key => $value)
                         <div class="form-group row">
                             <div class="col-md-7">
-                                <label for="">Priode | <span wire:click='remove({{ $key }})' class="text-danger cursor-pointer"><i class="fa fa-minus-square"></i> Hapus Priode <span wire:loading wire:target="remove" class="text-warning"> Loading...</span></label>
-                                <input type="text" class="form-control shadow-none bg-light" disabled value="Semester {{ $value }}">
+                                <label for="">Priode | <span wire:click='remove({{ $key }})'
+                                        class="text-danger cursor-pointer"><i class="fa fa-minus-square"></i> Hapus
+                                        Priode <span wire:loading wire:target="remove" class="text-warning">
+                                            Loading...</span></label>
+                                <input type="text" class="form-control shadow-none bg-light" disabled
+                                    value="Semester {{ $value }}">
                             </div>
                             <div class="col-md-5">
                                 <label for="">Nilai</label>
-                                <input type="text" class="form-control shadow-none" wire:model='nilai_akhir.{{ $value }}'>
+                                <input type="text" class="form-control shadow-none"
+                                    wire:model='nilai_akhir.{{ $value }}'>
                             </div>
                         </div>
                         @endforeach
@@ -93,36 +104,38 @@
                                 <th colspan="7">Nilai Indikator</th>
                             </tr>
                             <tr>
-                                <th class="align-middle" rowspan="2" >Nilai Awal</th>
+                                <th class="align-middle" rowspan="2">Nilai Awal</th>
                                 <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target</th>
                             </tr>
                             <tr>
-                                 @foreach ($getMaxNilaiTarget as $key => $item)
-                                    <th>Semester {{ $key }}</th>
+                                @foreach ($getMaxNilaiTarget as $key => $item)
+                                <th>Semester {{ $key }}</th>
                                 @endforeach
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($indikatorTujuan->unique('tujuan_prioritas') as $key => $indikator)
-                                <tr>
-                                    <td rowspan="{{ count($indikator->indikators)+1 }}" scope="row">{{ $key+1 }}</td>
-                                    <td rowspan="{{ count($indikator->indikators)+1 }}">
-                                        {{ $indikator->tujuan }}
-                                    </td>
-                                </tr>
-                                @foreach ($indikator->indikators as $indikatortujuan)
-                                <tr>
-                                    <td>{{ $indikatortujuan->indikator_kinerja }} <button class="btn btn-sm btn-white text-danger shadow-none" wire:click='delete({{ $indikatortujuan->id }})'><i class="fa fa-minus"></i></button> </td>
-                                    <x-livewire-alert::confirm onConfirmed="onConfirmedAction" onCancelled="onCancelledCallBack" />
-                                    <td>{{ $indikatortujuan->nilai_awal }}</td>
+                        </thead>
+                        <tbody>
+                            @foreach ($indikatorTujuan->unique('tujuan') as $key => $indikator)
+                            <tr>
+                                <td rowspan="{{ count($indikator->indikators)+1 }}" scope="row">{{ $key+1 }}</td>
+                                <td rowspan="{{ count($indikator->indikators)+1 }}">
+                                    {{ $indikator->tujuan }}
+                                </td>
+                            </tr>
+                            @foreach ($indikator->indikators as $indikatortujuan)
+                            <tr>
+                                <td>{{ $indikatortujuan->indikator_kinerja }} <button
+                                        class="btn btn-sm btn-white text-danger shadow-none"
+                                        wire:click='delete({{ $indikatortujuan->id }})'><i
+                                            class="fa fa-minus"></i></button> </td>
+                                <td>{{ $indikatortujuan->nilai_awal }}</td>
 
-                                    @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
-                                        <td>{{ $targetThreat }}</td>
-                                    @endforeach
-                                </tr>
+                                @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
+                                <td>{{ $targetThreat }}</td>
                                 @endforeach
-                                @endforeach
-                            </tbody>
+                            </tr>
+                            @endforeach
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -132,13 +145,13 @@
 
 
 @push('js')
-    <script>
-        Livewire.on('success', params => {
+<script>
+    Livewire.on('success', params => {
             Swal.fire(
                 params['title'],
                 params['message'],
                 'success'
             )
         })
-    </script>
+</script>
 @endpush

@@ -23,6 +23,11 @@ class Index extends Component
         $this->proposal = Proposal::find($proposal_id);
     }
 
+    protected $listeners = [
+        'confirmed',
+        'cancelled',
+    ];
+
     public function add($i)
     {
         $i = $i + 1;
@@ -37,20 +42,26 @@ class Index extends Component
 
     public function delete($id)
     {
-        $this->indikatorKegiatan_id = $id;
-        $this->confirm('Apakah anda yakin?', [
-            'text' => 'Data yang dihapus tidak dapat di kembalikan!'
-        ]);
+        $this->indikatorKegiatan_id = $id; {
+            $this->confirm('Apakah yakin hapus data ini?', [
+                'toast' => false,
+                'position' => 'center',
+                'showConfirmButton' => true,
+                'cancelButtonText' => 'Tidak',
+                'onConfirmed' => 'confirmed',
+                'onCancelled' => 'cancelled'
+            ]);
+        }
 
         return;
     }
 
-    public function onCancelledCallBack()
+    public function cancelled()
     {
         return;
     }
 
-    public function onConfirmedAction()
+    public function confirmed()
     {
         $indikator = IndikatorKegiatan::where('id', $this->indikatorKegiatan_id)->first();
         $indikator->delete();

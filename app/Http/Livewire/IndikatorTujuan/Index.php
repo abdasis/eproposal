@@ -17,6 +17,11 @@ class Index extends Component
     public $input_priode = [];
     public $i = 1;
     public $indikatorTujuan_id;
+
+    protected $listeners = [
+        'confirmed',
+        'cancelled',
+    ];
     public function mount($proposal_id)
     {
         $this->proposal = Proposal::find($proposal_id);
@@ -75,20 +80,24 @@ class Index extends Component
 
     public function delete($id)
     {
-        $this->indikatorTujuan_id = $id;
-        $this->confirm('Apakah anda yakin?', [
-            'text' => 'Data yang dihapus tidak dapat di kembalikan!'
-        ]);
-
-        return;
+        $this->indikatorTujuan_id = $id; {
+            $this->confirm('Apakah anda yakin ingin hapus data ini?', [
+                'toast' => false,
+                'position' => 'center',
+                'showConfirmButton' => true,
+                'cancelButtonText' => 'Tidak',
+                'onConfirmed' => 'confirmed',
+                'onCancelled' => 'cancelled'
+            ]);
+        }
     }
 
-    public function onCancelledCallBack()
+    public function cancelled()
     {
         return;
     }
 
-    public function onConfirmedAction()
+    public function confirmed()
     {
         $indikator = IndikatorTujuan::where('id', $this->indikatorTujuan_id)->first();
         $indikator->delete();
@@ -98,14 +107,23 @@ class Index extends Component
 
     public function render()
     {
-        $getTujuan = IndikatorTujuan::where('proposal_id', $this->proposal->id)->max('nilai_target');
-        $tujuan = IndikatorTujuan::where('nilai_target', $getTujuan)->first();
-        if (!empty($tujuan)) {
-            $getMaxNilaiTarget = json_decode($tujuan->nilai_target);
-        } else {
-            $getMaxNilaiTarget = [];
+        $getTujuan = IndikatorTujuan::where('proposal_id', $this->proposal->id)->get();
+        // $tujuan = IndikatorTujuan::where('nilai_target', $getTujuan)->get();
+        $getMaxNilaiTarget = [];
+        foreach ($getTujuan as $key => $tujuan) {
+            $getMaxNilaiTarget[] = json_decode($tujuan->nilai_target);
+        }
+        // if (!empty($tujuan)) {
+        //     $getMaxNilaiTarget = json_decode($tujuan->nilai_target);
+        // } else {
+        //     $getMaxNilaiTarget = [];
+        // }
+
+        if ($getMaxNilaiTarget != null) {
+            $getMaxNilaiTarget = max($getMaxNilaiTarget);
         }
 
+        // dd(max($getMaxNilaiTarget));
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
 
