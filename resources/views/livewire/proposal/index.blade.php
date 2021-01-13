@@ -35,7 +35,7 @@
                     </div>
 
                 </div>
-                <table class="card-body table table-sm">
+                <table class="card-body table table-wrap table-sm">
                     <thead class="thead-white bg-light">
                         <tr>
                             <th>No.</th>
@@ -45,29 +45,33 @@
                             <th>Potensi Lokal</th>
                             <th>Option</th>
                         </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($proposals  as $key => $proposal)
-                            <tr>
-                                <td class="align-middle" scope="row">{{ $key+1 }}</td>
-                                <td class="align-middle">{{ $proposal->judul }}</td>
-                                <td class="align-middle">{{ $proposal->desa }}</td>
-                                <td class="align-middle">{{ $proposal->dusun }}</td>
-                                <td class="align-middle">{{ Str::limit(strip_tags($proposal->latar_belakang), 150, '...') }}</td>
-                                <td class="align-middle text-center">
-                                    <div class="btn-group-justified" role="group" aria-label="Basic example">
-                                        <a href="{{ route('proposal.lihat-proposal', $proposal->id) }}">
-                                            <button class="btn btn-sm mb-1 btn-outline-blue"><i class="fa fa-eye"></i></button>
-                                        </a>
-                                        <a href="{{ route('proposal.update-proposal', $proposal->id) }}">
-                                            <button class="btn btn-sm mb-1 btn-outline-warning"><i class="fa fa-edit"></i></button>
-                                        </a>
-                                        <button class="btn btn-sm mb-1 shadow-none btn-danger"><i class="fa fa-trash-alt"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+                    </thead>
+                    <tbody>
+                        @foreach ($proposals as $key => $proposal)
+                        <tr>
+                            <td class="align-middle" scope="row">{{ $key+1 }}</td>
+                            <td class="align-middle">{{ $proposal->judul }}</td>
+                            <td class="align-middle">{{ $proposal->desa }}</td>
+                            <td class="align-middle">{{ $proposal->dusun }}</td>
+                            <td class="align-middle">{{ Str::limit(strip_tags($proposal->latar_belakang), 150, '...') }}
+                            </td>
+                            <td class="align-middle text-center text-nowrap">
+                                <div class="btn-group-justified" role="group" aria-label="Basic example">
+                                    <a href="{{ route('proposal.lihat-proposal', $proposal->id) }}">
+                                        <button class="btn btn-sm mb-1 btn-outline-blue"><i
+                                                class="fa fa-eye"></i></button>
+                                    </a>
+                                    <a href="{{ route('proposal.update-proposal', $proposal->id) }}">
+                                        <button class="btn btn-sm mb-1 btn-outline-warning"><i
+                                                class="fa fa-edit"></i></button>
+                                    </a>
+                                    <button class="btn btn-sm mb-1 shadow-none btn-danger"><i
+                                            class="fa fa-trash-alt"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

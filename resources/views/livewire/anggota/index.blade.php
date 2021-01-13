@@ -16,7 +16,9 @@
 
     <div class="row">
         <div class="col-md-12 mb-1">
-            <div class="alert alert-info">Untuk melihat semua anggota silahkan klik tanda icon <button class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button> pada daftar proposal yang disediakan</div>
+            <div class="alert alert-info">Untuk melihat semua anggota silahkan klik tanda icon <button
+                    class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button> pada daftar proposal
+                yang disediakan</div>
         </div>
         <div class="col-md-12">
             <div class="card">
@@ -33,7 +35,7 @@
                     </div>
 
                 </div>
-                <table class="table card-body table-bordered table-sm">
+                <table class="table card-body table-bordered table-nowrap table-sm">
                     <thead class="thead-ligth bg-light">
                         <tr>
                             <th class="text-center">No.</th>
@@ -41,22 +43,23 @@
                             <th>Dibuat Pada</th>
                             <th>Option</th>
                         </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($proposals  as $key => $proposal)
-                            <tr>
-                                <td class="align-middle text-center" scope="row">{{ $key+1 }}</td>
-                                <td class="align-middle">{{ $proposal->judul }}</td>
-                                <td class="align-middle">{{ $proposal->created_at }}</td>
-                                <td class="align-middle text-center">
+                    </thead>
+                    <tbody>
+                        @foreach ($proposals as $key => $proposal)
+                        <tr>
+                            <td class="align-middle text-center" scope="row">{{ $key+1 }}</td>
+                            <td class="align-middle text-wrap">{{ $proposal->judul }}</td>
+                            <td class="align-middle">{{ $proposal->created_at }}</td>
+                            <td class="align-middle text-center">
 
-                                    <a href="{{ route('anggota.create', $proposal->id) }}">
-                                        <button class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+                                <a href="{{ route('anggota.create', $proposal->id) }}">
+                                    <button class="btn btn-sm btn-outline-blue"><i
+                                            class="fa fa-user-friends"></i></button>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </div>
         </div>

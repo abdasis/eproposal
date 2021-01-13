@@ -389,6 +389,7 @@
                             </table>
                         </div>
                     </div>
+                    @if (!empty($proposal->strategi))
                     <div class="col-md-12 ">
                         <div class="card">
                             <h5 class="card-header bg-white border-bottom">
@@ -435,6 +436,102 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                    @endif
+                    <div class="col-md-12">
+                        <table class="table table-sm table-bordered">
+                            <thead class="thead-default">
+                                <tr>
+                                    <th rowspan="4">No.</th>
+                                    <th rowspan="4">Tujuan Prioritas</th>
+                                    <th rowspan="4">Indikator Kinerja</th>
+                                    <th colspan="7">Nilai Indikator</th>
+                                </tr>
+                                <tr>
+                                    <th class="align-middle" rowspan="2">Nilai Awal</th>
+                                    <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target</th>
+                                </tr>
+                                <tr>
+                                    @foreach ($getMaxNilaiTarget as $key => $item)
+                                    <th>Semester {{ $key }}</th>
+                                    @endforeach
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($indikatorTujuan->unique('tujuan') as $key => $indikator)
+                                <tr>
+                                    <td rowspan="{{ count($indikator->indikators)+1 }}" scope="row">{{ $key+1 }}</td>
+                                    <td rowspan="{{ count($indikator->indikators)+1 }}">
+                                        {{ $indikator->tujuan }}
+                                    </td>
+                                </tr>
+                                @foreach ($indikator->indikators as $indikatortujuan)
+                                <tr>
+                                    <td>{{ $indikatortujuan->indikator_kinerja }} </td>
+
+                                    @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
+                                    <td>{{ $targetThreat }}</td>
+                                    @endforeach
+                                </tr>
+                                @endforeach
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <h5 class="card-header bg-white">Data Nilai</h5>
+                            <table class="table card-body table-sm bg-white table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle" rowspan="4">No.</th>
+                                        <th class="align-middle" rowspan="4">Tujuan Prioritas</th>
+                                        <th class="align-middle" rowspan="4">No Kegiatan</th>
+                                        <th class="align-middle" rowspan="4">Kegiatan</th>
+                                        <th class="align-middle" rowspan="4">Indikator Kinerja</th>
+                                        <th class="align-middle" colspan="{{ end($getMaxNilaiTarget)+1 }}">Nilai
+                                            Indikator</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="align-middle" rowspan="2">Nilai Awal</th>
+                                        <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        @foreach ($getMaxNilaiTarget as $key => $item)
+                                        <th>Semester {{ $key }}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($indikatorKegiatan->unique('nama_kegiatan') as $keyIndikator => $kegiatan)
+                                    <tr>
+                                        <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}" scope="row">
+                                            {{ $keyIndikator+1 }}
+                                        </td>
+                                        <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}">
+                                            {{ $kegiatan->nama_kegiatan }}
+                                        </td>
+                                    </tr>
+                                    @foreach ($kegiatan->indikatorKegiatan as $keykegiatan => $dataKegiatan)
+                                    <tr>
+                                        <td>{{ $keykegiatan+1 }}</td>
+                                        <td>
+                                            {{ $dataKegiatan->kegiaatan }}
+                                        </td>
+                                        <td>
+                                            {{ $dataKegiatan->indikator_kinerja }}
+                                        </td>
+                                        <td>{{ $dataKegiatan->nilai_awal }}</td>
+                                        @foreach (json_decode($dataKegiatan->nilai_target) as $target)
+                                        <td>{{ $target }}</td>
+                                        @endforeach
+                                    </tr>
+                                    @endforeach
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

@@ -113,10 +113,10 @@
 
 
 
-                        <div class="form-group" wire:ignore>
+                        {{-- <div class="form-group" wire:ignore>
                             <label for="">Latar Belakang</label>
                             <textarea id="latar_belakang" wire:model='latar_belakarang' class="form-control"></textarea>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="permasalahan">1.1 Permasalahan</label>
                             <textarea class="form-control shadow-none" wire:model="permasalahan" id="permasalahan"

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Proposal;
 
 use App\Models\Analisys;
+use App\Models\IndikatorKegiatan;
 use App\Models\IndikatorTujuan;
 use App\Models\Kegiatan;
 use App\Models\Kondisi;
@@ -12,6 +13,7 @@ use App\Models\Responden;
 use App\Models\Strategi;
 use App\Models\SurveiKondisi;
 use App\Models\SurveyKondisi;
+use App\Models\Tujuan;
 use Livewire\Component;
 
 class Show extends Component
@@ -143,6 +145,45 @@ class Show extends Component
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
 
+
+        // -----------------------------------------
+        // Data indikator tujuan
+        // -----------------------------------------
+        $getTujuan = IndikatorTujuan::where('proposal_id', $this->proposal->id)->get();
+        // $tujuan = IndikatorTujuan::where('nilai_target', $getTujuan)->get();
+        $getMaxNilaiTarget = [];
+        foreach ($getTujuan as $key => $tujuan) {
+            $getMaxNilaiTarget[] = json_decode($tujuan->nilai_target);
+        }
+        // if (!empty($tujuan)) {
+        //     $getMaxNilaiTarget = json_decode($tujuan->nilai_target);
+        // } else {
+        //     $getMaxNilaiTarget = [];
+        // }
+
+        if ($getMaxNilaiTarget != null) {
+            $getMaxNilaiTarget = max($getMaxNilaiTarget);
+        }
+
+        // dd(max($getMaxNilaiTarget));
+        $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
+        $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
+
+        // --------------------------------------
+        // Data indikator ketgiatan
+        // -------------------------------------
+        $getKegiatan = IndikatorKegiatan::where('proposal_id', $this->proposal->id)->max('nilai_target');
+        $kegiatan = IndikatorKegiatan::where('nilai_target', $getKegiatan)->first();
+        if (!empty($kegiatan)) {
+            $getMaxNilaiTarget = json_decode($kegiatan->nilai_target);
+        } else {
+            $getMaxNilaiTarget = [];
+        }
+
+
+        $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
+        $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
+
         return view('livewire.proposal.show', [
             'analisisKondisi' => SurveyKondisi::where('proposal_id', $this->proposal->id)->first(),
             'strategi' => Strategi::where('proposal_id', $this->proposal->id)->first(),
@@ -167,6 +208,13 @@ class Show extends Component
             'totalSW' => $getTotalSw,
             'totalSwOnO' => $getTotalSwKolomO,
             'sumTotalSW' => array_sum($getTotalSw) + array_sum($getTotalSwKolomO),
+            'strategies' => $strategi,
+            'threats' => $threat,
+            'indikatorTujuan' => Tujuan::where('proposal_id', $this->proposal->id)->latest()->get(),
+            'countPriode' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->max('nilai_target'),
+            'getMaxNilaiTarget' => $getMaxNilaiTarget,
+            'indikatorKegiatan' => Kegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
+            'getMaxNilaiTarget' => $getMaxNilaiTarget,
         ]);
     }
 }
