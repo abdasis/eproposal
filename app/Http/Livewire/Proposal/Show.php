@@ -172,12 +172,14 @@ class Show extends Component
         // --------------------------------------
         // Data indikator ketgiatan
         // -------------------------------------
-        $getKegiatan = IndikatorKegiatan::where('proposal_id', $this->proposal->id)->max('nilai_target');
-        $kegiatan = IndikatorKegiatan::where('nilai_target', $getKegiatan)->first();
-        if (!empty($kegiatan)) {
-            $getMaxNilaiTarget = json_decode($kegiatan->nilai_target);
-        } else {
-            $getMaxNilaiTarget = [];
+        $getKegiatan = IndikatorKegiatan::where('proposal_id', $this->proposal->id)->get();
+        $getMaxNilaiTargetKegiatan = [];
+        foreach ($getKegiatan as $key => $tujuan) {
+            $getMaxNilaiTargetKegiatan[] = json_decode($tujuan->nilai_target);
+        }
+
+        if ($getMaxNilaiTargetKegiatan != null) {
+            $getMaxNilaiTargetKegiatan = max($getMaxNilaiTargetKegiatan);
         }
 
 
@@ -214,7 +216,7 @@ class Show extends Component
             'countPriode' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->max('nilai_target'),
             'getMaxNilaiTarget' => $getMaxNilaiTarget,
             'indikatorKegiatan' => Kegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
-            'getMaxNilaiTarget' => $getMaxNilaiTarget,
+            'getMaxNilaiTargetKegiatan' => $getMaxNilaiTargetKegiatan,
         ]);
     }
 }

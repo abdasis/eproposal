@@ -106,12 +106,15 @@ class Index extends Component
 
     public function render()
     {
-        $getKegiatan = IndikatorKegiatan::where('proposal_id', $this->proposal->id)->max('nilai_target');
-        $kegiatan = IndikatorKegiatan::where('nilai_target', $getKegiatan)->first();
-        if (!empty($kegiatan)) {
-            $getMaxNilaiTarget = json_decode($kegiatan->nilai_target);
-        } else {
-            $getMaxNilaiTarget = [];
+        $getKegiatan = IndikatorKegiatan::where('proposal_id', $this->proposal->id)->get();
+        // $kegiatan = IndikatorKegiatan::where('nilai_target', $getKegiatan)->first();
+        $getMaxNilaiTarget = [];
+        foreach ($getKegiatan as $key => $tujuan) {
+            $getMaxNilaiTarget[] = json_decode($tujuan->nilai_target);
+        }
+
+        if ($getMaxNilaiTarget != null) {
+            $getMaxNilaiTarget = max($getMaxNilaiTarget);
         }
 
 

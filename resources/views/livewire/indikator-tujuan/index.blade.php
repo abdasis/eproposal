@@ -101,7 +101,7 @@
                                 <th rowspan="4">No.</th>
                                 <th rowspan="4">Tujuan Prioritas</th>
                                 <th rowspan="4">Indikator Kinerja</th>
-                                <th colspan="7">Nilai Indikator</th>
+                                <th colspan="{{ end($getMaxNilaiTarget) }}">Nilai Indikator</th>
                             </tr>
                             <tr>
                                 <th class="align-middle" rowspan="2">Nilai Awal</th>

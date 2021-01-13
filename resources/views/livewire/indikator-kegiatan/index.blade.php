@@ -110,7 +110,7 @@
                         </tr>
                         <tr>
                             <th class="align-middle" rowspan="2">Nilai Awal</th>
-                            <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target</th>
+                            <th class="align-middle" colspan="{{ end($getMaxNilaiTarget)+1 }}"> Nilai Target</th>
                         </tr>
                         <tr>
                             @foreach ($getMaxNilaiTarget as $key => $item)

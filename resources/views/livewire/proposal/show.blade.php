@@ -440,44 +440,56 @@
                     </div>
                     @endif
                     <div class="col-md-12">
-                        <table class="table table-sm table-bordered">
-                            <thead class="thead-default">
-                                <tr>
-                                    <th rowspan="4">No.</th>
-                                    <th rowspan="4">Tujuan Prioritas</th>
-                                    <th rowspan="4">Indikator Kinerja</th>
-                                    <th colspan="7">Nilai Indikator</th>
-                                </tr>
-                                <tr>
-                                    <th class="align-middle" rowspan="2">Nilai Awal</th>
-                                    <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target</th>
-                                </tr>
-                                <tr>
-                                    @foreach ($getMaxNilaiTarget as $key => $item)
-                                    <th>Semester {{ $key }}</th>
-                                    @endforeach
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($indikatorTujuan->unique('tujuan') as $key => $indikator)
-                                <tr>
-                                    <td rowspan="{{ count($indikator->indikators)+1 }}" scope="row">{{ $key+1 }}</td>
-                                    <td rowspan="{{ count($indikator->indikators)+1 }}">
-                                        {{ $indikator->tujuan }}
-                                    </td>
-                                </tr>
-                                @foreach ($indikator->indikators as $indikatortujuan)
-                                <tr>
-                                    <td>{{ $indikatortujuan->indikator_kinerja }} </td>
+                        <div class="card">
+                            <h5 class="card-header">Data Nilai</h5>
+                            <div class="card-body">
+                                <table class="table table-sm table-bordered">
+                                    <thead class="thead-default">
+                                        <tr>
+                                            <th rowspan="4">No.</th>
+                                            <th rowspan="4">Tujuan Prioritas</th>
+                                            <th rowspan="4">Indikator Kinerja</th>
+                                            <th colspan="{{ end($getMaxNilaiTarget) }}">Nilai Indikator</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="align-middle" rowspan="2">Nilai Awal</th>
+                                            <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai
+                                                Target</th>
+                                        </tr>
+                                        <tr>
+                                            @foreach ($getMaxNilaiTarget as $key => $item)
+                                            <th>Semester {{ $key }}</th>
+                                            @endforeach
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($indikatorTujuan->unique('tujuan') as $key => $indikator)
+                                        <tr>
+                                            <td rowspan="{{ count($indikator->indikators)+1 }}" scope="row">{{ $key+1 }}
+                                            </td>
+                                            <td rowspan="{{ count($indikator->indikators)+1 }}">
+                                                {{ $indikator->tujuan }}
+                                            </td>
+                                        </tr>
+                                        @foreach ($indikator->indikators as $indikatortujuan)
+                                        <tr>
+                                            <td>{{ $indikatortujuan->indikator_kinerja }} <button
+                                                    class="btn btn-sm btn-white text-danger shadow-none"
+                                                    wire:click='delete({{ $indikatortujuan->id }})'><i
+                                                        class="fa fa-minus"></i></button>
+                                            </td>
+                                            <td>{{ $indikatortujuan->nilai_awal }}</td>
 
-                                    @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
-                                    <td>{{ $targetThreat }}</td>
-                                    @endforeach
-                                </tr>
-                                @endforeach
-                                @endforeach
-                            </tbody>
-                        </table>
+                                            @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
+                                            <td>{{ $targetThreat }}</td>
+                                            @endforeach
+                                        </tr>
+                                        @endforeach
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <div class="card">
@@ -490,16 +502,17 @@
                                         <th class="align-middle" rowspan="4">No Kegiatan</th>
                                         <th class="align-middle" rowspan="4">Kegiatan</th>
                                         <th class="align-middle" rowspan="4">Indikator Kinerja</th>
-                                        <th class="align-middle" colspan="{{ end($getMaxNilaiTarget)+1 }}">Nilai
+                                        <th class="align-middle" colspan="{{ end($getMaxNilaiTargetKegiatan)+1 }}">Nilai
                                             Indikator</th>
                                     </tr>
                                     <tr>
                                         <th class="align-middle" rowspan="2">Nilai Awal</th>
-                                        <th class="align-middle" colspan="{{ end($getMaxNilaiTarget) }}"> Nilai Target
+                                        <th class="align-middle" colspan="{{ end($getMaxNilaiTargetKegiatan) }}"> Nilai
+                                            Target
                                         </th>
                                     </tr>
                                     <tr>
-                                        @foreach ($getMaxNilaiTarget as $key => $item)
+                                        @foreach ($getMaxNilaiTargetKegiatan as $key => $item)
                                         <th>Semester {{ $key }}</th>
                                         @endforeach
                                     </tr>
