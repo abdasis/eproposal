@@ -65,7 +65,8 @@
                                         <button class="btn btn-sm mb-1 btn-outline-warning"><i
                                                 class="fa fa-edit"></i></button>
                                     </a>
-                                    <button class="btn btn-sm mb-1 shadow-none btn-danger"><i
+                                    <button wire:click='delete({{ $proposal->id }})'
+                                        class="btn btn-sm mb-1 shadow-none btn-danger"><i
                                             class="fa fa-trash-alt"></i></button>
                                 </div>
                             </td>
