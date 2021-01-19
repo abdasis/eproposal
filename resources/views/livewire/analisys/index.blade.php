@@ -30,23 +30,24 @@
                                 <th>Tahapan</th>
                                 <th>Option</th>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($proposals  as $key => $proposal)
-                                <tr>
-                                    <td class="align-middle" scope="row">{{ $key+1 }}</td>
-                                    <td class="align-middle">{{ $proposal->judul }}</td>
-                                    <td class="align-middle">{{ $proposal->created_at }}</td>
-                                    <td class="align-middle">Tahap ke-{{ $proposal->status_tahap }}</td>
-                                    <td class="align-middle text-center">
+                        </thead>
+                        <tbody>
+                            @foreach ($proposals as $key => $proposal)
+                            <tr>
+                                <td class="align-middle" scope="row">{{ $key+1 }}</td>
+                                <td class="align-middle">{{ $proposal->judul }}</td>
+                                <td class="align-middle">{{ $proposal->created_at }}</td>
+                                <td class="align-middle">Tahap ke-{{ $proposal->status_tahap }}</td>
+                                <td class="align-middle text-nowrap text-center">
 
-                                        <a href="{{ route('anggota.create', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
+                                    <a href="{{ route('anggota.create', $proposal->id) }}">
+                                        <button class="btn btn-sm btn-outline-blue"><i
+                                                class="fa fa-user-friends"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -67,29 +68,27 @@
                                 <th>Tahapan</th>
                                 <th>Option</th>
                             </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($proposals  as $key => $proposal)
-                                <tr>
-                                    <td class="align-middle" scope="row">{{ $key+1 }}</td>
-                                    <td class="align-middle">{{ $proposal->judul }}</td>
-                                    <td class="align-middle">{{ $proposal->created_at }}</td>
-                                    <td class="align-middle">Tahap ke-{{ $proposal->status_tahap }}</td>
-                                    <td class="align-middle text-center">
+                        </thead>
+                        <tbody>
+                            @foreach ($proposals as $key => $proposal)
+                            <tr>
+                                <td class="align-middle" scope="row">{{ $key+1 }}</td>
+                                <td class="align-middle">{{ $proposal->judul }}</td>
+                                <td class="align-middle">{{ $proposal->created_at }}</td>
+                                <td class="align-middle">Tahap ke-{{ $proposal->status_tahap }}</td>
+                                <td class="align-middle text-center">
 
-                                        <a href="{{ route('anggota.create', $proposal->id) }}">
-                                            <button class="btn btn-sm btn-outline-blue"><i class="fa fa-user-friends"></i></button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
+                                    <a href="{{ route('anggota.create', $proposal->id) }}">
+                                        <button class="btn btn-sm btn-outline-blue"><i
+                                                class="fa fa-user-friends"></i></button>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
