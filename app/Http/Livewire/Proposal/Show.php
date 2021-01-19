@@ -23,6 +23,10 @@ class Show extends Component
     {
         $this->proposal = Proposal::find($id);
     }
+    public function downloadPDF($id)
+    {
+        dd($id);
+    }
     public function render()
     {
         $kondisi = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->latest()->get();

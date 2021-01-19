@@ -1,4 +1,5 @@
 <div>
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box">
@@ -16,6 +17,12 @@
     </div>
 
 
+    <div class="row mb-2">
+        <div class="col-md-12">
+            <button onclick="return window.print()" class="btn btn-danger float-right"><i
+                    class="fa fa-file-pdf mr-1"></i> Download PDF</button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -254,7 +261,7 @@
                                 Stakeholder Terpilih
                             </h5>
                             <table class="table table-sm card-body">
-                                <thead class="thead-default bg-light">
+                                <thead class="thead-default bg-white">
                                     <tr>
                                         <th class="text-center">No</th>
                                         <th>Jabatan / Nama lembaga/Individu</th>
@@ -441,9 +448,9 @@
                     @endif
                     <div class="col-md-12">
                         <div class="card">
-                            <h5 class="card-header">Data Nilai</h5>
+                            <h5 class="card-header bg-white">Data Nilai</h5>
                             <div class="card-body">
-                                <table class="table table-sm table-bordered">
+                                <table class="table table-sm bg-white table-bordered">
                                     <thead class="thead-default">
                                         <tr>
                                             <th rowspan="4">No.</th>
@@ -473,11 +480,7 @@
                                         </tr>
                                         @foreach ($indikator->indikators as $indikatortujuan)
                                         <tr>
-                                            <td>{{ $indikatortujuan->indikator_kinerja }} <button
-                                                    class="btn btn-sm btn-white text-danger shadow-none"
-                                                    wire:click='delete({{ $indikatortujuan->id }})'><i
-                                                        class="fa fa-minus"></i></button>
-                                            </td>
+                                            <td>{{ $indikatortujuan->indikator_kinerja }}</td>
                                             <td>{{ $indikatortujuan->nilai_awal }}</td>
 
                                             @foreach (json_decode($indikatortujuan->nilai_target) as $targetThreat)
