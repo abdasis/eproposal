@@ -82,4 +82,9 @@ class ProposalController extends Controller
     {
         //
     }
+
+    public function downloadPdf($id)
+    {
+        dd($id);
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProposalController;
 use App\Http\Livewire\Analisys\DaftarProposal;
 use App\Http\Livewire\Anggota\Create as AnggotaCreate;
 use App\Http\Livewire\Anggota\Index as AnggotaIndex;
@@ -58,7 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('ubah-proposal/{id}', Update::class)->name('proposal.update-proposal');
         Route::get('tambah-proposal', Create::class)->name('proposal.tambah-proposal');
         Route::get('lihat-proposal/{id}', Show::class)->name('proposal.lihat-proposal');
-        Route::get('download-proposal/{id}', [ProposalController::class, 'download'])->name('proposal.download');
+        Route::get('download-proposal/{id}', [ProposalController::class, 'downloadPdf'])->name('proposal.download');
     });
 
     Route::group(['prefix' => 'anggota'], function () {
