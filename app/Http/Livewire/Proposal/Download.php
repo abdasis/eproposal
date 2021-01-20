@@ -11,21 +11,25 @@ use App\Models\PenetuanRencana;
 use App\Models\Proposal;
 use App\Models\Responden;
 use App\Models\Strategi;
-use App\Models\SurveiKondisi;
 use App\Models\SurveyKondisi;
 use App\Models\Tujuan;
+use Barryvdh\DomPDF\Facade as PDF;
 use Livewire\Component;
 
-class Show extends Component
+class Download extends Component
 {
     public $proposal;
+
+
     public function mount($id)
     {
         $this->proposal = Proposal::find($id);
+        $pdf = PDF::loadView('livewire.proposal.download');
+        $pdf->download('invoice.pdf');
     }
     public function downloadPDF($id)
     {
-        $this->emit('getProposal', $id);
+        $this->proposal = $id;
     }
     public function render()
     {
@@ -189,8 +193,7 @@ class Show extends Component
 
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
-
-        return view('livewire.proposal.show', [
+        return view('livewire.proposal.download', [
             'analisisKondisi' => SurveyKondisi::where('proposal_id', $this->proposal->id)->first(),
             'strategi' => Strategi::where('proposal_id', $this->proposal->id)->first(),
             'indikatorTujuan' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->get(),

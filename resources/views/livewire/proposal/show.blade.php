@@ -19,8 +19,9 @@
 
     <div class="row mb-2">
         <div class="col-md-12">
-            <button onclick="return window.print()" class="btn btn-danger float-right"><i
-                    class="fa fa-file-pdf mr-1"></i> Download PDF</button>
+            <a href="{{ route('proposal.download', $proposal->id) }}">
+                <button class="btn btn-danger float-right"><i class="fa fa-file-pdf mr-1"></i> Download PDF</button>
+            </a>
         </div>
     </div>
     <div class="row">

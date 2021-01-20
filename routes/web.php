@@ -17,6 +17,7 @@ use App\Http\Livewire\Kondisi\Update as KondisiUpdate;
 use App\Http\Livewire\PenentuanRencana\DaftarProposal as PenentuanRencanaDaftarProposal;
 use App\Http\Livewire\PenentuanRencana\Index as PenentuanRencanaIndex;
 use App\Http\Livewire\Proposal\Create;
+use App\Http\Livewire\Proposal\Download;
 use App\Http\Livewire\Proposal\Index;
 use App\Http\Livewire\Proposal\Show;
 use App\Http\Livewire\Proposal\Update;
@@ -57,6 +58,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('ubah-proposal/{id}', Update::class)->name('proposal.update-proposal');
         Route::get('tambah-proposal', Create::class)->name('proposal.tambah-proposal');
         Route::get('lihat-proposal/{id}', Show::class)->name('proposal.lihat-proposal');
+        Route::get('download-proposal/{id}', [ProposalController::class, 'download'])->name('proposal.download');
     });
 
     Route::group(['prefix' => 'anggota'], function () {
