@@ -33,7 +33,8 @@
                     </h2>
                     <div class="card-text">
                         <h5>Latar Belakang</h5>
-                        <p>{!! $proposal->latar_belakang !!}</p>
+                        <p>{!! $proposal->permasalahaan !!}</p>
+                        <p>{!! $proposal->potensi !!}</p>
                         <p>Dokumen ini adalah Rencana Aksi Strategis untuk “{{ $proposal->judul }}” yang disusun secara
                             partisipatif oleh pihak-pihak terkait di “{{ $proposal->dusun }}, {{ $proposal->desa }},
                             {{ $proposal->kecamatan }}, {{ $proposal->kabupaten }}, {{ $proposal->provinsi }},

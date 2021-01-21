@@ -377,7 +377,8 @@
     </h2>
     <div class="card-text">
         <h5>Latar Belakang</h5>
-        <p>{!! $proposal->latar_belakang !!}</p>
+        <p>{!! $proposal->permasalahaan !!}</p>
+        <p>{!! $proposal->potensi !!}</p>
         <p>Dokumen ini adalah Rencana Aksi Strategis untuk “{{ $proposal->judul }}” yang disusun secara
             partisipatif oleh pihak-pihak terkait di “{{ $proposal->dusun }}, {{ $proposal->desa }},
             {{ $proposal->kecamatan }}, {{ $proposal->kabupaten }}, {{ $proposal->provinsi }},
@@ -388,7 +389,7 @@
             <h5 class="card-header bg-white border-bottom">
                 Stakeholder Terpilih
             </h5>
-            <table class="table table-sm card-body">
+            <table class="table table-nowrap table-bordered table-sm card-body">
                 <thead class="thead-default bg-white">
                     <tr>
                         <th class="text-center">No</th>
@@ -423,7 +424,7 @@
                 </div>
 
             </div>
-            <table class="table card-body table-sm">
+            <table class="table table-nowrap table-bordered card-body table-sm">
                 <thead class="thead-white">
                     <tr>
                         <th rowspan="2">Pengaruh</th>
@@ -532,7 +533,7 @@
             </h5>
             <div class="card-body">
                 <p>Berdasarkan hasil survei di atas dapat diketahui bahwa:</p>
-                <table class="table table-bordered table-sm">
+                <table class="table table-nowrap table-bordered table-bordered table-sm">
                     <tbody>
                         <tr>
                             <th colspan="5">Killer weakness proyek “{{ $proposal->judul }}” adalah:</th>
@@ -578,7 +579,7 @@
         <div class="card">
             <h5 class="card-header bg-white">Data Nilai</h5>
             <div class="card-body">
-                <table class="table table-sm bg-white table-bordered">
+                <table class="table table-nowrap table-bordered table-sm bg-white table-bordered">
                     <thead class="thead-default">
                         <tr>
                             <th rowspan="4">No.</th>
@@ -625,7 +626,7 @@
     <div class="col-md-12">
         <div class="card">
             <h5 class="card-header bg-white">Data Nilai</h5>
-            <table class="table card-body table-sm bg-white table-bordered">
+            <table class="table table-nowrap table-bordered card-body table-sm bg-white table-bordered">
                 <thead>
                     <tr>
                         <th class="align-middle" rowspan="4">No.</th>

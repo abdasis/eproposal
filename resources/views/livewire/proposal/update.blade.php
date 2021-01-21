@@ -112,20 +112,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group" wire:ignore>
+                        {{-- <div class="form-group" wire:ignore>
                             <label for="">Latar Belakang</label>
                             <textarea wire:model='latar_belakang' id="" class="form-control"></textarea>
-                        </div>
+                        </div> --}}
 
-                        <div class="form-group">
+                        <div class="form-group" wire:ignore>
                             <label for="permasalahan">1.1 Permasalahan</label>
-                            <textarea class="form-control shadow-none" wire:model="permasalahan" id="permasalahan"
-                                rows="3"></textarea>
+                            <textarea required class="form-control shadow-none" wire:model="permasalahan"
+                                id="permasalahan" rows="3"></textarea>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" wire:ignore>
                             <label for="potensi">1.2 Potensi</label>
-                            <textarea class="form-control shadow-none" wire:model="potensi" id="potensi"
+                            <textarea required class="form-control shadow-none" wire:model="potensi" id="potensi"
                                 rows="3"></textarea>
                         </div>
 
@@ -159,7 +159,7 @@
 @push('js')
 <script>
     tinymce.init({
-        selector: 'textarea',
+        selector: 'textarea#permasalahan',
         plugins: 'advlist lists autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
         toolbar: 'undo redo | formatselect | ' +
@@ -170,7 +170,24 @@
         height: 500,
         setup: function(editor){
             editor.on('keyup', function(e){
-                @this.set('latar_belakang', tinymce.activeEditor.getContent())
+                @this.set('permasalahan', tinymce.activeEditor.getContent())
+            })
+        }
+    });
+
+    tinymce.init({
+        selector: 'textarea#potensi',
+        plugins: 'advlist lists autolink lists link image charmap print preview hr anchor pagebreak',
+        toolbar_mode: 'floating',
+        toolbar: 'undo redo | formatselect | ' +
+        'bold italic backcolor | alignleft aligncenter ' +
+        'alignright alignjustify | bullist numlist outdent indent | ' +
+        'removeformat | help',
+        content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+        height: 500,
+        setup: function(editor){
+            editor.on('keyup', function(e){
+                @this.set('potensi', tinymce.activeEditor.getContent())
             })
         }
     });
