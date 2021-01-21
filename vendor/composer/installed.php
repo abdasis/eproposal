@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'db0a745b6814bda95837ba358171acabdb0e2ce1',
+    'reference' => '5894b8d61b7d3ddf5f3c91809b7eab055db469e9',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -29,23 +29,23 @@
       ),
       'reference' => '3e9d791b67d0a2912922b7b7c7312f4b37af41e4',
     ),
-    'barryvdh/laravel-dompdf' => 
+    'barryvdh/laravel-snappy' => 
     array (
-      'pretty_version' => 'v0.9.0',
-      'version' => '0.9.0.0',
+      'pretty_version' => 'v0.4.8',
+      'version' => '0.4.8.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5b99e1f94157d74e450f4c97e8444fcaffa2144b',
+      'reference' => '1903ab84171072b6bff8d98eb58d38b2c9aaf645',
     ),
     'brick/math' => 
     array (
-      'pretty_version' => '0.9.1',
-      'version' => '0.9.1.0',
+      'pretty_version' => '0.9.2',
+      'version' => '0.9.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '283a40c901101e66de7061bd359252c013dcc43c',
+      'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
     ),
     'clue/stream-filter' => 
     array (
@@ -124,15 +124,6 @@
       ),
       'reference' => 'e864bbf5904cb8f5bb334f99209b48018522f042',
     ),
-    'dompdf/dompdf' => 
-    array (
-      'pretty_version' => 'v1.0.2',
-      'version' => '1.0.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '8768448244967a46d6e67b891d30878e0e15d25c',
-    ),
     'dragonmantank/cron-expression' => 
     array (
       'pretty_version' => 'v3.1.0',
@@ -205,15 +196,6 @@
       ),
       'reference' => '01de0fe5f71c70d1930ee9a80385f9cc28e0f63a',
     ),
-    'fzaninotto/faker' => 
-    array (
-      'pretty_version' => 'v1.9.2',
-      'version' => '1.9.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '848d8125239d7dbf8ab25cb7f054f1a630e68c2e',
-    ),
     'graham-campbell/result-type' => 
     array (
       'pretty_version' => 'v1.0.1',
@@ -250,6 +232,24 @@
       ),
       'reference' => '53330f47520498c0ae1f61f7e2c90f55690c06a3',
     ),
+    'h4cc/wkhtmltoimage-amd64' => 
+    array (
+      'pretty_version' => '0.12.4',
+      'version' => '0.12.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c4e33f635207af89a704205b8902fb5715ca88be',
+    ),
+    'h4cc/wkhtmltopdf-amd64' => 
+    array (
+      'pretty_version' => '0.12.4',
+      'version' => '0.12.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4e2ab2d032a5d7fbe2a741de8b10b8989523c95b',
+    ),
     'hamcrest/hamcrest-php' => 
     array (
       'pretty_version' => 'v2.0.1',
@@ -272,217 +272,217 @@
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/broadcasting' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/bus' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/cache' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/collections' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/config' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/console' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/container' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/contracts' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/cookie' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/database' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/encryption' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/events' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/filesystem' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/hashing' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/http' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/log' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/macroable' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/mail' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/notifications' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/pagination' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/pipeline' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/queue' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/redis' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/routing' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/session' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/support' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/testing' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/translation' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/validation' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'illuminate/view' => 
     array (
       'replaced' => 
       array (
-        0 => 'v8.22.1',
+        0 => 'v8.24.0',
       ),
     ),
     'jantinnerezo/livewire-alert' => 
@@ -521,6 +521,15 @@
       ),
       'reference' => 'daa11c43729510b3700bc34d414664966b03bffe',
     ),
+    'knplabs/knp-snappy' => 
+    array (
+      'pretty_version' => 'v1.2.1',
+      'version' => '1.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7bac60fb729147b7ccd8532c07df3f52a4afa8a4',
+    ),
     'kodova/hamcrest-php' => 
     array (
       'replaced' => 
@@ -530,21 +539,21 @@
     ),
     'laravel/fortify' => 
     array (
-      'pretty_version' => 'v1.7.4',
-      'version' => '1.7.4.0',
+      'pretty_version' => 'v1.7.5',
+      'version' => '1.7.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '2ca0c06bf7385d26730cfc3783865a9c06a51f63',
+      'reference' => '12c33249673f16cc1e01d6a3a0e92372153a2f92',
     ),
     'laravel/framework' => 
     array (
-      'pretty_version' => 'v8.22.1',
-      'version' => '8.22.1.0',
+      'pretty_version' => 'v8.24.0',
+      'version' => '8.24.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5c70991b96c5722afed541a996479b5112654c8b',
+      'reference' => 'd16e9f875e4d7609a05d5007393e22ba95efd1fc',
     ),
     'laravel/jetstream' => 
     array (
@@ -562,7 +571,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'db0a745b6814bda95837ba358171acabdb0e2ce1',
+      'reference' => '5894b8d61b7d3ddf5f3c91809b7eab055db469e9',
     ),
     'laravel/sanctum' => 
     array (
@@ -611,12 +620,12 @@
     ),
     'livewire/livewire' => 
     array (
-      'pretty_version' => 'v2.3.6',
-      'version' => '2.3.6.0',
+      'pretty_version' => 'v2.3.8',
+      'version' => '2.3.8.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8663232c198ef12964b62559e9bb2023eb86701d',
+      'reference' => 'c661e295428b2baaff04320d0a9424db5ca72be5',
     ),
     'mobiledetect/mobiledetectlib' => 
     array (
@@ -734,24 +743,6 @@
       array (
       ),
       'reference' => 'e4782611070e50613683d2b9a57730e9a3ba5451',
-    ),
-    'phenx/php-font-lib' => 
-    array (
-      'pretty_version' => '0.5.2',
-      'version' => '0.5.2.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'ca6ad461f032145fff5971b5985e5af9e7fa88d8',
-    ),
-    'phenx/php-svg-lib' => 
-    array (
-      'pretty_version' => 'v0.3.3',
-      'version' => '0.3.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '5fa61b65e612ce1ae15f69b3d223cb14ecc60e32',
     ),
     'php-http/async-client-implementation' => 
     array (
@@ -1062,12 +1053,12 @@
     ),
     'ramsey/collection' => 
     array (
-      'pretty_version' => '1.1.1',
-      'version' => '1.1.1.0',
+      'pretty_version' => '1.1.2',
+      'version' => '1.1.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '24d93aefb2cd786b7edd9f45b554aea20b28b9b1',
+      'reference' => 'a2a85f56ac8f0f973f0e43fcbad5464355bcfe1f',
     ),
     'ramsey/uuid' => 
     array (
@@ -1084,15 +1075,6 @@
       array (
         0 => '4.1.1',
       ),
-    ),
-    'sabberworm/php-css-parser' => 
-    array (
-      'pretty_version' => '8.3.1',
-      'version' => '8.3.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'd217848e1396ef962fb1997cf3e2421acba7f796',
     ),
     'sebastian/cli-parser' => 
     array (
@@ -1585,12 +1567,12 @@
     ),
     'vlucas/phpdotenv' => 
     array (
-      'pretty_version' => 'v5.2.0',
-      'version' => '5.2.0.0',
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'fba64139db67123c7a57072e5f8d3db10d160b66',
+      'reference' => 'b3eac5c7ac896e52deab4a99068e3f4ab12d9e56',
     ),
     'voku/portable-ascii' => 
     array (

@@ -13,7 +13,7 @@ use App\Models\Responden;
 use App\Models\Strategi;
 use App\Models\SurveyKondisi;
 use App\Models\Tujuan;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Livewire\Component;
 
 class Download extends Component
@@ -193,7 +193,7 @@ class Download extends Component
 
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
-        return view('livewire.proposal.download', [
+        $data = [
             'analisisKondisi' => SurveyKondisi::where('proposal_id', $this->proposal->id)->first(),
             'strategi' => Strategi::where('proposal_id', $this->proposal->id)->first(),
             'indikatorTujuan' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->get(),
@@ -224,6 +224,6 @@ class Download extends Component
             'getMaxNilaiTarget' => $getMaxNilaiTarget,
             'indikatorKegiatan' => Kegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
             'getMaxNilaiTargetKegiatan' => $getMaxNilaiTargetKegiatan,
-        ]);
+        ];
     }
 }
