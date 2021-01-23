@@ -52,10 +52,7 @@
                             <td class="align-middle">{{ $proposal->created_at }}</td>
                             <td class="align-middle text-center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ route('kondisi.index', $proposal->id) }}">
-                                        <button class="btn btn-sm btn-outline-warning mr-1"><i
-                                                class="fa fa-list"></i></button>
-                                    </a>
+
                                     <a href="{{ route('kondisi.create', $proposal->id) }}">
                                         <button class="btn btn-sm btn-outline-success"><i
                                                 class="fa fa-chart-line"></i></button>
