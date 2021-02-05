@@ -56,73 +56,55 @@ class Show extends Component
         $totalW = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->latest()->first();
 
         $dataSurveyKondisi = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'S')->get();
-        $arrayTonS = [];
+        $kondisiTdiS = [];
+        $totalTdiS = [];
         foreach ($dataSurveyKondisi as $keySurveyKondisi => $surveyKondisi) {
-            $arrayTonS[$keySurveyKondisi] = json_decode($surveyKondisi->nilai_dampak);
-        }
-        $getTotalTonS = [];
-        foreach ($arrayTonS as $keyArrayTonS => $totalSum) {
-            $getTotalTonS[$keyArrayTonS] = array_sum(array_column($arrayTonS, $keyArrayTonS));
+            $kondisiTdiS[$keySurveyKondisi] = json_decode($surveyKondisi->nilai_dampak);
+            $totalTdiS[$keySurveyKondisi] = array_sum(json_decode($surveyKondisi->nilai_dampak));
         }
 
-        $arrayOonS = [];
-        foreach ($dataSurveyKondisi as $keySurveyKondisi => $surveyKondisi) {
-            $arrayOonS[$keySurveyKondisi] = json_decode($surveyKondisi->nilai_manfaat);
-        }
-        $getTotalOonS = [];
-        foreach ($arrayOonS as $keyArrayOonS => $totalSum) {
-            $getTotalOonS[$keyArrayOonS] = array_sum(array_column($arrayOonS, $keyArrayOonS));
-        }
+        $jumlahTdiS = collect($kondisiTdiS);
 
-        // -----------------
-        // data total w
-        // -----------------
-
-        $dataSurveyKondisiW = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->get();
-        $arrayTonW = [];
-        foreach ($dataSurveyKondisiW as $keySurveyKondisiW => $surveyKondisiW) {
-            $arrayTonW[$keySurveyKondisiW] = json_decode($surveyKondisiW->nilai_dampak);
-        }
-        $getTotalTonW = [];
-        foreach ($arrayTonW as $keyArrayTonW => $totalSum) {
-            $getTotalTonW[$keyArrayTonW] = array_sum(array_column($arrayTonW, $keyArrayTonW));
+        $kondisiOdiS = [];
+        $totalOdiS = [];
+        foreach ($dataSurveyKondisi as $keyOdiS => $oDiS) {
+            $kondisiOdiS[$keyOdiS] = json_decode($oDiS->nilai_manfaat);
+            $totalOdiS[$keyOdiS] = array_sum(json_decode($oDiS->nilai_manfaat));
         }
 
-        $arrayOonW = [];
-        foreach ($dataSurveyKondisiW as $keyArrayOonW => $surveyKondisi) {
-            $arrayOonW[$keyArrayOonW] = json_decode($surveyKondisi->nilai_manfaat);
-        }
-        $getTotalOonW = [];
-        foreach ($arrayOonW as $keyArrayOonW => $totalSum) {
-            $getTotalOonW[$keyArrayOonW] = array_sum(array_column($arrayOonW, $keyArrayOonW));
-        }
+        $totalS = array_sum($totalOdiS) + array_sum($totalTdiS);
+        $jumlahOdiS = collect($kondisiOdiS);
 
 
-        $getTotalSw = [];
-        $getTotalTonSTanpaNull = [];
-        foreach ($getTotalTonS as  $getTonS) {
-            if ($getTonS != 0) {
-                $getTotalTonSTanpaNull[] = $getTonS;
-            }
+        // data di kondisi W
+
+        $dataKondisiDiW = SurveyKondisi::where('proposal_id', $this->proposal->id)->where('swot', 'W')->get();
+
+        $kondisiTdiW = [];
+        $totalTdiW = [];
+        foreach ($dataKondisiDiW as $keyTdiW => $tDiw) {
+            $kondisiTdiW[$keyTdiW] = json_decode($tDiw->nilai_dampak);
+            $totalTdiW[$keyTdiW] = array_sum(json_decode($tDiw->nilai_dampak));
         }
 
+        $jumlahTdiW = collect($kondisiTdiW);
 
-        $getTotalSwKolomO = [];
-        $getTotalOonSTanpaNull = [];
-        foreach ($getTotalOonS as  $getOonS) {
-            if ($getOonS != 0) {
-                $getTotalOonSTanpaNull[] = $getOonS;
-            }
+        // dd($jumlahTdiW);
+
+        $kondisiOdiW = [];
+        $totalOdiW = [];
+        foreach ($dataKondisiDiW as $keyOdiW => $oDiW) {
+            $kondisiOdiW[$keyOdiW] = json_decode($oDiW->nilai_manfaat);
+            $totalOdiW[$keyOdiW] = array_sum(json_decode($oDiW->nilai_manfaat));
         }
-        // dd(count($dataSurveyKondisiW));
 
-        if (count($dataSurveyKondisiW) > 0 && count($dataSurveyKondisi) > 0) {
-            for ($dataT = 0; $dataT < count($getTotalTonSTanpaNull); $dataT++) {
-                $getTotalSw[$dataT] = $getTotalTonS[$dataT] - $getTotalTonW[$dataT];
-            }
-            // dd(count($getTotalTonSTanpaNull));
-            for ($dataO = 0; $dataO < count($getTotalOonSTanpaNull); $dataO++) {
-                $getTotalSwKolomO[$dataO] = $getTotalOonS[$dataO] - $getTotalOonW[$dataO];
+        $totalW = array_sum($totalTdiW) + array_sum($totalOdiW);
+        $jumlahOdiW = collect($kondisiOdiW);
+
+        $totalSwT = [];
+        if (count($kondisiTdiS) > 0 && count($kondisiTdiW) > 0) {
+            for ($totalKondisi = 0; $totalKondisi < count($kondisiTdiS); $totalKondisi++) {
+                $totalSwT[] = $jumlahTdiS->sum($totalKondisi) - $jumlahTdiW->sum($totalKondisi);
             }
         }
 
@@ -203,17 +185,12 @@ class Show extends Component
             'threats' => $threat,
             'weakness' => $weakness,
             'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->orderBy('pengaruh', 'asc')->get(),
+            'jumlahTdiS' => $jumlahTdiS,
+            'jumlahOdiS' => $jumlahOdiS,
             'totalS' => $totalS,
+            'jumlahTdiW' => $jumlahTdiW,
+            'jumlahOdiW' => $jumlahOdiW,
             'totalW' => $totalW,
-            'totalPerkolomT' => $getTotalTonS,
-            'totalPerkolomS' => $getTotalOonS,
-            'totalSTonS' => array_sum($getTotalTonS) + array_sum($getTotalOonS),
-            'totalPerkolomTonW' => $getTotalTonW,
-            'totalPerkolomOonW' => $getTotalOonW,
-            'totalSTonW' => array_sum($getTotalTonW) + array_sum($getTotalOonW),
-            'totalSW' => $getTotalSw,
-            'totalSwOnO' => $getTotalSwKolomO,
-            'sumTotalSW' => array_sum($getTotalSw) + array_sum($getTotalSwKolomO),
             'strategies' => $strategi,
             'threats' => $threat,
             'indikatorTujuan' => Tujuan::where('proposal_id', $this->proposal->id)->latest()->get(),
