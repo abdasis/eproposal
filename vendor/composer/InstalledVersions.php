@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '5894b8d61b7d3ddf5f3c91809b7eab055db469e9',
+    'reference' => 'cab0846c45fe5aefe63de76495de8369a95fcff2',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -594,7 +594,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '5894b8d61b7d3ddf5f3c91809b7eab055db469e9',
+      'reference' => 'cab0846c45fe5aefe63de76495de8369a95fcff2',
     ),
     'laravel/sanctum' => 
     array (
@@ -1091,6 +1091,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'cd4032040a750077205918c86049aa0f43d22947',
+    ),
+    'realrashid/sweet-alert' => 
+    array (
+      'pretty_version' => 'v3.2.1',
+      'version' => '3.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5c07913e4679ddc75e26d9333ee6480f46018e94',
     ),
     'rhumsaa/uuid' => 
     array (

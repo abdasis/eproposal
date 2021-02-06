@@ -35,7 +35,11 @@ use App\Http\Livewire\SurveyKondisi\IsiSurvey;
 use App\Http\Livewire\Tujuan\Create as TujuanCreate;
 use App\Http\Livewire\Tujuan\Index as TujuanIndex;
 use App\Http\Livewire\Tujuan\Update as TujuanUpdate;
+use App\Http\Livewire\User\Create as UserCreate;
+use App\Http\Livewire\User\Index as UserIndex;
+use App\Http\Livewire\User\Update as UserUpdate;
 use App\Models\Anggota;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -117,6 +121,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('daftar-proposal', PenentuanRencanaDaftarProposal::class)->name('rencana.daftar-proposal');
         Route::get('tambah/{proposal_id}', PenentuanRencanaIndex::class)->name('rencana.index');
     });
-});
 
+    Route::group(['prefix' => 'pengguna'], function () {
+        Route::get('semua', UserIndex::class)->name('pengguna.index');
+        Route::get('tambah', UserCreate::class)->name('pengguna.create');
+        Route::get('ubah/{id}', UserUpdate::class)->name('pengguna.update');
+    });
+});
+Route::get('/keluar', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('keluar');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', Dashboard::class)->name('dashboard');

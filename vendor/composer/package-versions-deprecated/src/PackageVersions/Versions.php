@@ -93,6 +93,7 @@ final class Versions
   'ralouphie/getallheaders' => '3.0.3@120b605dfeb996808c31b6477290a714d356e822',
   'ramsey/collection' => '1.1.2@a2a85f56ac8f0f973f0e43fcbad5464355bcfe1f',
   'ramsey/uuid' => '4.1.1@cd4032040a750077205918c86049aa0f43d22947',
+  'realrashid/sweet-alert' => 'v3.2.1@5c07913e4679ddc75e26d9333ee6480f46018e94',
   'sentry/sdk' => '3.1.0@f03133b067fdf03fed09ff03daf3f1d68f5f3673',
   'sentry/sentry' => '3.1.2@e9b2d45b248d75f4c79a9d166b13b947b72f01fa',
   'sentry/sentry-laravel' => '2.3.1@3c8b6c02fbb6b50cb8e236cd1845155b45fc881e',
@@ -169,7 +170,7 @@ final class Versions
   'sebastian/type' => '2.3.1@81cd61ab7bbf2de744aba0ea61fae32f721df3d2',
   'sebastian/version' => '3.0.2@c6c1022351a901512170118436c764e473f6de8c',
   'theseer/tokenizer' => '1.2.0@75a63c33a8577608444246075ea0af0d052e452a',
-  'laravel/laravel' => 'dev-master@64e832f5811cf94b7b6e38f8b6b168eb15077eda',
+  'laravel/laravel' => 'dev-master@cab0846c45fe5aefe63de76495de8369a95fcff2',
 );
 
     private function __construct()

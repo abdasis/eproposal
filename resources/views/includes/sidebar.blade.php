@@ -119,6 +119,13 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('pengguna.index') }}">
+                        <i class="fa fa-users"></i>
+                        <span> Pengguna </span>
+                    </a>
+                </li>
+
 
                 {{-- <li>
                     <a href="apps-calendar.html">
