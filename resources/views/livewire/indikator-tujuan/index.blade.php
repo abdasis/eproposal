@@ -23,14 +23,11 @@
                 <div class="card-body">
                     <form wire:submit.prevent='store'>
                         <div class="form-group">
-                            <label for="">Tujuan Priorita</label>
+                            <label for="">Tujuan Prioritas</label>
                             <select class="custom-select shadow-none" wire:model='tujuan' name="" id="">
                                 <option selected>Pilih Tujuan</option>
                                 @foreach ($strategies as $key => $strategi)
-                                <option value="{{ $strategi->tujuan_1 }}">{{ $strategi->tujuan_1 }}</option>
-                                <option value="{{ $strategi->tujuan_2 }}">{{ $strategi->tujuan_2 }}</option>
-                                <option value="{{ $strategi->tujuan_3 }}">{{ $strategi->tujuan_3 }}</option>
-                                <option value="{{ $strategi->tujuan_4 }}">{{ $strategi->tujuan_4 }}</option>
+                                <option value="{{ $strategi->kw }}">{{ $strategi->kw }}</option>
                                 @endforeach
                             </select>
                         </div>

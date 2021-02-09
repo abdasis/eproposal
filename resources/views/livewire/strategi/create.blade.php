@@ -106,6 +106,17 @@
                             <th>{{$strategi->tujuan_kw}}</th>
                         </tr>
                         @endforeach
+                        <tr>
+                            <th colspan="5">Semetara Skor Tertinggi S-W</th>
+                        </tr>
+                        @foreach($semuaStrategi as $key => $strategi)
+                            <tr>
+                                <th>S-W {{$key+1}} </th>
+                                <th>{{$strategi->sw}}</th>
+                                <th>Tujuan Prioritas {{$key+1}}</th>
+                                <th>{{$strategi->tujuan_sw}}</th>
+                            </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>
