@@ -15,20 +15,10 @@ class CreateStrategisTable extends Migration
     {
         Schema::create('strategis', function (Blueprint $table) {
             $table->id();
-            $table->string('killerweakness1', 100);
-            $table->string('kw1', 100);
-            $table->string('tujuan_1', 100);
-
-            $table->string('killerweakness2', 100);
-            $table->string('kw2', 100);
-            $table->string('tujuan_2', 100);
-
-            $table->string('killerweakness3', 100);
-            $table->string('sw1', 100);
-            $table->string('tujuan_3', 100);
-            $table->string('killerweakness4', 100);
-            $table->string('sw2', 100);
-            $table->string('tujuan_4', 100);
+            $table->longText('kw')->nullable();
+            $table->longText('tujuan_kw')->nullable();
+            $table->longText('sw')->nullable();
+            $table->longText('tujuan_sw')->nullable();
             $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

@@ -33,112 +33,80 @@
                 <div class="card-body">
                     <p>Berdasarkan hasil survei di atas dapat diketahui bahwa:</p>
                     <form wire:submit.prevent ='store'>
-                        <ol type="1" class="p-2">
-                            <h5>Killer weakness proyek “{{ $proposal->judul }}” adalah:</h5>
-                            <li >
-                                <div class="form-group-custom form-row align-items-center">
-                                    <div class="col my-1">
-                                        <input wire:model='killerweakness1' type="text" class="form-control shadow-none">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            KW 1
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='kw1' class="form-control shadow-none">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            tujuan Prioritas 1
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='tujuan1' class="form-control shadow-none">
-                                    </div>
-                                </div>
-                            </li>
+                        <h5>Killer weakness proyek “{{ $proposal->judul }}” adalah:</h5>
+                        <div class="form-group-custom form-row align-items-center">
+                            <div class="col my-1">
+                                <input wire:model='killerweakness_kw' type="text" class="form-control shadow-none">
+                            </div>
+                            <div class="col-auto my-1">
+                                <label class="form-check-label mx-auto">
+                                    KW
+                                </label>
+                            </div>
+                            <div class="col my-1">
+                                <input type="text" wire:model='kw' class="form-control shadow-none">
+                            </div>
+                            <div class="col-auto my-1">
+                                <label class="form-check-label mx-auto">
+                                    Tujuan Prioritas
+                                </label>
+                            </div>
+                            <div class="col my-1">
+                                <input type="text" wire:model='tujuan_kw' class="form-control shadow-none">
+                            </div>
+                        </div>
 
-                            <li >
-                                <div class="form-group-custom form-row align-items-center">
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='killerweakness2' class="form-control">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            KW 1
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='kw2' class="form-control shadow-none">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            tujuan Prioritas 2
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='tujuan2' class="form-control shadow-none">
-                                    </div>
-                                </div>
-                            </li>
+                        <h5>
+                            Sementara itu, Skor Tertinggi Skor S-W
+                        </h5>
 
-                            <h5>
-                                Sementara itu, Skor Tertinggi Skor S-W
-                            </h5>
-
-                            <li >
-                                <div class="form-group-custom form-row align-items-center">
-                                    <div class="col my-1">
-                                        <input wire:model='killerweakness3' type="text" class="form-control">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            SW 1
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='sw1' class="form-control shadow-none">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            tujuan Prioritas 3
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='tujuan3' class="form-control shadow-none">
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li >
-                                <div class="form-group-custom form-row align-items-center">
-                                    <div class="col my-1">
-                                        <input wire:model='killerweakness4' type="text" class="form-control">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            SW 1
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='sw2' class="form-control shadow-none">
-                                    </div>
-                                    <div class="col-auto my-1">
-                                        <label class="form-check-label mx-auto">
-                                            tujuan Prioritas 4
-                                        </label>
-                                    </div>
-                                    <div class="col my-1">
-                                        <input type="text" wire:model='tujuan4' class="form-control shadow-none">
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
+                        <div class="form-group-custom form-row align-items-center">
+                            <div class="col my-1">
+                                <input wire:model='killerweakness_sw' type="text" class="form-control shadow-none">
+                            </div>
+                            <div class="col-auto my-1">
+                                <label class="form-check-label mx-auto">
+                                    SW
+                                </label>
+                            </div>
+                            <div class="col my-1">
+                                <input type="text" wire:model='sw' class="form-control shadow-none">
+                            </div>
+                            <div class="col-auto my-1">
+                                <label class="form-check-label mx-auto">
+                                    Tujuan Prioritas
+                                </label>
+                            </div>
+                            <div class="col my-1">
+                                <input type="text" wire:model='tujuan_sw' class="form-control shadow-none">
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <button class="btn btn-outline-blue pl-3">Simpan Strategi</button>
+                            <button class="btn btn-blue float-right shadow-none">Simpan Strategi</button>
                         </div>
                     </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-white border-bottom">Data Semua Strategi Prioritas</div>
+                <div class="card-body">
+                    <table class="table table-bordered table-sm">
+                        <tr>
+                            <th colspan="5">Killer weakness proyek “{{ $proposal->judul }}” adalah:</th>
+                        </tr>
+                        @foreach($semuaStrategi as $key => $strategi)
+                        <tr>
+                            <th>KW {{$key+1}} </th>
+                            <th>{{$strategi->kw}}</th>
+                            <th>Tujuan Prioritas {{$key+1}}</th>
+                            <th>{{$strategi->tujuan_kw}}</th>
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
