@@ -240,20 +240,18 @@ class ProposalController extends Controller
 
         $strategi = Strategi::where('proposal_id', $proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $proposal->id)->where('swot', 'T')->latest()->get();
+        $dataKondisi = Kondisi::whereProposalId($proposal->id)->get();
 
 
         $data = [
             'proposal' => $proposal,
             'analisisKondisi' => SurveyKondisi::where('proposal_id', $proposal->id)->first(),
             'strategi' => Strategi::where('proposal_id', $proposal->id)->first(),
-            'indikatorTujuan' => IndikatorTujuan::where('proposal_id', $proposal->id)->get(),
-            'indikatorKegiatan' => Kegiatan::latest()->get(),
             'penentuanRencana' => PenetuanRencana::where('proposal_id', $proposal->id)->get(),
             'analisies' => $analisies,
             'repondenCount' => Responden::where('proposal_id', $proposal->id)->count(),
             'kondisis' => $kondisi,
             'opportunities' => $oppotunity,
-            'threats' => $threat,
             'weakness' => $weakness,
             'surveyKondisis' => SurveyKondisi::where('proposal_id', $proposal->id)->orderBy('pengaruh', 'asc')->get(),
             'jumlahTdiS' => $jumlahTdiS,
@@ -269,6 +267,9 @@ class ProposalController extends Controller
             'getMaxNilaiTarget' => $getMaxNilaiTarget,
             'indikatorKegiatan' => Kegiatan::where('proposal_id', $proposal->id)->latest()->get(),
             'getMaxNilaiTargetKegiatan' => $getMaxNilaiTargetKegiatan,
+            'dataKondisi' => $dataKondisi,
+            'dataPenentuanRencana' => PenetuanRencana::where('proposal_id', $proposal->id)->whereHas('dataSubKegiatan')->latest()->get(),
+            'semuaStrategi' => Strategi::where('proposal_id', $proposal->id)->get(),
         ];
 
         $pdf = PDF::loadView('livewire.proposal.download', $data);
