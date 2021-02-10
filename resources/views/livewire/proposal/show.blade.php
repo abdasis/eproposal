@@ -291,6 +291,62 @@
                     </div>
                     {{--swot terakhir--}}
 
+
+
+                    <div class="col-md-12 mt-4">
+                        <h5>Data Nilai</h5>
+                        <table class="table table-sm bg-white table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="align-middle" rowspan="4">No.</th>
+                                <th class="align-middle" rowspan="4">Tujuan Prioritas</th>
+                                <th class="align-middle" rowspan="4">No Kegiatan</th>
+                                <th class="align-middle" rowspan="4">Kegiatan</th>
+                                <th class="align-middle" rowspan="4">Indikator Kinerja</th>
+                                <th class="align-middle" colspan="{{ end($getMaxNilaiTargetKegiatan)+1 }}">Nilai
+                                    Indikator</th>
+                            </tr>
+                            <tr>
+                                <th class="align-middle" rowspan="2">Nilai Awal</th>
+                                <th class="align-middle" colspan="{{ end($getMaxNilaiTargetKegiatan) }}"> Nilai
+                                    Target
+                                </th>
+                            </tr>
+                            <tr>
+                                @foreach ($getMaxNilaiTargetKegiatan as $key => $item)
+                                    <th>Semester {{ $key }}</th>
+                                @endforeach
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($indikatorKegiatan->unique('nama_kegiatan') as $keyIndikator => $kegiatan)
+                                <tr>
+                                    <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}" scope="row">
+                                        {{ $keyIndikator+1 }}
+                                    </td>
+                                    <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}">
+                                        {{ $kegiatan->nama_kegiatan }}
+                                    </td>
+                                </tr>
+                                @foreach ($kegiatan->indikatorKegiatan as $keykegiatan => $dataKegiatan)
+                                    <tr>
+                                        <td>{{ $keykegiatan+1 }}</td>
+                                        <td>
+                                            {{ $dataKegiatan->kegiaatan }}
+                                        </td>
+                                        <td>
+                                            {{ $dataKegiatan->indikator_kinerja }}
+                                        </td>
+                                        <td>{{ $dataKegiatan->nilai_awal }}</td>
+                                        @foreach (json_decode($dataKegiatan->nilai_target) as $target)
+                                            <td>{{ $target }}</td>
+                                        @endforeach
+                                    </tr>
+                                @endforeach
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                     {{--data penentuan rencana--}}
                     @foreach ($dataPenentuanRencana->unique('sub_kegiatan') as $rencana)
                         <div class="col-md-12 mt-4">
@@ -353,61 +409,6 @@
                         </div>
                     @endforeach
                     {{--data penentuan rencana terakhir--}}
-
-                    <div class="col-md-12 mt-4">
-                        <h5>Data Nilai</h5>
-                        <table class="table table-sm bg-white table-bordered">
-                            <thead>
-                            <tr>
-                                <th class="align-middle" rowspan="4">No.</th>
-                                <th class="align-middle" rowspan="4">Tujuan Prioritas</th>
-                                <th class="align-middle" rowspan="4">No Kegiatan</th>
-                                <th class="align-middle" rowspan="4">Kegiatan</th>
-                                <th class="align-middle" rowspan="4">Indikator Kinerja</th>
-                                <th class="align-middle" colspan="{{ end($getMaxNilaiTargetKegiatan)+1 }}">Nilai
-                                    Indikator</th>
-                            </tr>
-                            <tr>
-                                <th class="align-middle" rowspan="2">Nilai Awal</th>
-                                <th class="align-middle" colspan="{{ end($getMaxNilaiTargetKegiatan) }}"> Nilai
-                                    Target
-                                </th>
-                            </tr>
-                            <tr>
-                                @foreach ($getMaxNilaiTargetKegiatan as $key => $item)
-                                    <th>Semester {{ $key }}</th>
-                                @endforeach
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($indikatorKegiatan->unique('nama_kegiatan') as $keyIndikator => $kegiatan)
-                                <tr>
-                                    <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}" scope="row">
-                                        {{ $keyIndikator+1 }}
-                                    </td>
-                                    <td rowspan="{{ count($kegiatan->indikatorKegiatan)+1 }}">
-                                        {{ $kegiatan->nama_kegiatan }}
-                                    </td>
-                                </tr>
-                                @foreach ($kegiatan->indikatorKegiatan as $keykegiatan => $dataKegiatan)
-                                    <tr>
-                                        <td>{{ $keykegiatan+1 }}</td>
-                                        <td>
-                                            {{ $dataKegiatan->kegiaatan }}
-                                        </td>
-                                        <td>
-                                            {{ $dataKegiatan->indikator_kinerja }}
-                                        </td>
-                                        <td>{{ $dataKegiatan->nilai_awal }}</td>
-                                        @foreach (json_decode($dataKegiatan->nilai_target) as $target)
-                                            <td>{{ $target }}</td>
-                                        @endforeach
-                                    </tr>
-                                @endforeach
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
