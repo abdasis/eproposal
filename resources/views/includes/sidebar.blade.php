@@ -80,7 +80,7 @@
                 <li>
                     <a href="{{ route('kondisi.daftar-proposal') }}">
                         <i class="fa fa-balance-scale-right"></i>
-                        <span> Analisis Prioritisasi </span>
+                        <span> Analisis Kondisi </span>
                     </a>
                 </li>
 

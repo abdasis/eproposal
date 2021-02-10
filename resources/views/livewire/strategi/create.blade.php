@@ -100,6 +100,9 @@
                         </tr>
                         @foreach($semuaStrategi as $key => $strategi)
                         <tr>
+                            <th>
+                                <i wire:click="delete({{$strategi->id}})" class="fa fa-trash-alt text-danger text-center" style="cursor: pointer"></i>
+                            </th>
                             <th>KW {{$key+1}} </th>
                             <th>{{$strategi->kw}}</th>
                             <th>Tujuan Prioritas {{$key+1}}</th>
@@ -111,6 +114,7 @@
                         </tr>
                         @foreach($semuaStrategi as $key => $strategi)
                             <tr>
+                                <th></th>
                                 <th>S-W {{$key+1}} </th>
                                 <th>{{$strategi->sw}}</th>
                                 <th>Tujuan Prioritas {{$key+1}}</th>

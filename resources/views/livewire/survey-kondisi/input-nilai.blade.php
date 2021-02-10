@@ -115,16 +115,6 @@
                             @endforeach
                         </tr>
 
-                        {{-- <tr>
-                            <td class="text-wrap">NO</td>
-                            <th>PENGARUH</th>
-                            <th>TERHADAP PENGURANGAN DAMPAK</th>
-                            <th>NILAI</th>
-                            <th>TERHADAP PEMANFAATAN</th>
-                            <th>NILAI</th>
-                            <th>TOTAL THREAT</th>
-                            <th>TOTAL STRENGHT</th>
-                        </tr> --}}
 
                     </thead>
                     <tbody>
@@ -193,11 +183,6 @@
                         @endif
                         <td>{{$totalW }}</td>
 
-
-
-
-
-
                         <tr>
                             @if (count($jumlahTdiW)>0 && count($jumlahTdiS)>0)
                             <td class="text-wrap bg-soft-danger">Total S-W</td>
@@ -212,50 +197,6 @@
                         @endif
                         <td>{{ $totalS-$totalW }}</td>
                         </tr>
-
-
-                                        {{-- @foreach ($totalPerkolomS as $kolomS)
-                        @if ($kolomS != 0)
-                        <td class="text-wrap">{{ $kolomS }}</td>
-                                        @endif
-                                        @endforeach
-                                        <td>{{ $totalSTonS }}</td>
-                                        </tr> --}}
-                                        {{-- <tr>
-
-
-
-
-                                <tr>
-                                    <td class="text-wrap bg-soft-success">Total Skor W</td>
-                                    @foreach ($totalPerkolomTonW as $kolomTonW)
-                                    @if ($kolomTonW != 0)
-                                    <td class="text-wrap">{{ $kolomTonW }}</td>
-                                        @endif
-                                        @endforeach
-                                        @foreach ($totalPerkolomOonW as $kolomOonW)
-                                        @if ($kolomOonW != 0)
-                                        <td class="text-wrap">{{ $kolomOonW }}</td>
-                                        @endif
-                                        @endforeach
-                                        <td>{{ $totalSTonW }}</td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <th>Total Skor S-W</th>
-                                            @foreach ($totalSW as $totalT)
-                                            @if ($totalT != 0)
-                                            <td class="text-wrap">{{ $totalT }}</td>
-                                            @endif
-                                            @endforeach
-                                            @foreach ($totalSwOnO as $totalO)
-                                            @if ($totalO != 0)
-                                            <td class="text-wrap">{{ $totalO }}</td>
-                                            @endif
-                                            @endforeach
-                                            <td>{{ $sumTotalSW }}</td>
-                                        </tr> --}}
                     </tbody>
                 </table>
             </div>

@@ -171,18 +171,16 @@ class Show extends Component
 
         $strategi = Strategi::where('proposal_id', $this->proposal->id)->get();
         $threat = Kondisi::where('proposal_id', $this->proposal->id)->where('swot', 'T')->latest()->get();
+        $dataKondisi = Kondisi::whereProposalId($this->proposal->id)->get();
 
         return view('livewire.proposal.show', [
             'analisisKondisi' => SurveyKondisi::where('proposal_id', $this->proposal->id)->first(),
             'strategi' => Strategi::where('proposal_id', $this->proposal->id)->first(),
-            'indikatorTujuan' => IndikatorTujuan::where('proposal_id', $this->proposal->id)->get(),
-            'indikatorKegiatan' => Kegiatan::latest()->get(),
             'penentuanRencana' => PenetuanRencana::where('proposal_id', $this->proposal->id)->get(),
             'analisies' => $analisies,
             'repondenCount' => Responden::where('proposal_id', $this->proposal->id)->count(),
             'kondisis' => $kondisi,
             'opportunities' => $oppotunity,
-            'threats' => $threat,
             'weakness' => $weakness,
             'surveyKondisis' => SurveyKondisi::where('proposal_id', $this->proposal->id)->orderBy('pengaruh', 'asc')->get(),
             'jumlahTdiS' => $jumlahTdiS,
@@ -198,6 +196,10 @@ class Show extends Component
             'getMaxNilaiTarget' => $getMaxNilaiTarget,
             'indikatorKegiatan' => Kegiatan::where('proposal_id', $this->proposal->id)->latest()->get(),
             'getMaxNilaiTargetKegiatan' => $getMaxNilaiTargetKegiatan,
+            'dataKondisi' => $dataKondisi,
+            'dataPenentuanRencana' => PenetuanRencana::where('proposal_id', $this->proposal->id)->whereHas('dataSubKegiatan')->latest()->get(),
+            'semuaStrategi' => Strategi::where('proposal_id', $this->proposal->id)->get(),
+
         ]);
     }
 }
