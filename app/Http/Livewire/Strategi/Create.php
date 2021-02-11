@@ -9,7 +9,7 @@ use Livewire\Component;
 class Create extends Component
 {
     public $proposal;
-    public $killerweakness_kw, $kw, $tujuan_kw, $killerweakness_sw, $sw, $tujuan_sw;
+    public $jenis, $kondisi, $tujuan;
     public $strategi_id;
 
     protected $listeners = [
@@ -24,13 +24,11 @@ class Create extends Component
     public function store()
     {
         $strategi = new Strategi();
-        $strategi->kw = $this->killerweakness_kw;
-        $strategi->tujuan_kw = $this->tujuan_kw;
-        $strategi->sw = $this->killerweakness_sw;
-        $strategi->tujuan_sw = $this->tujuan_sw;
+        $strategi->jenis = $this->jenis;
+        $strategi->kondisi = $this->kondisi;
+        $strategi->tujuan = $this->tujuan;
         $strategi->proposal_id = $this->proposal->id;
         $strategi->save();
-
         $this->alert('success', 'Data Berhasil Ditambahkan');
     }
 

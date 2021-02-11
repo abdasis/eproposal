@@ -34,56 +34,28 @@
                     <p>Berdasarkan hasil survei di atas dapat diketahui bahwa:</p>
                     <form wire:submit.prevent ='store'>
                         <h5>Killer weakness proyek “{{ $proposal->judul }}” adalah:</h5>
-                        <div class="form-group-custom form-row align-items-center">
-                            <div class="col my-1">
-                                <input wire:model='killerweakness_kw' type="text" class="form-control shadow-none">
-                            </div>
-                            <div class="col-auto my-1">
-                                <label class="form-check-label mx-auto">
-                                    KW
-                                </label>
-                            </div>
-                            <div class="col my-1">
-                                <input type="text" wire:model='kw' class="form-control shadow-none">
-                            </div>
-                            <div class="col-auto my-1">
-                                <label class="form-check-label mx-auto">
-                                    Tujuan Prioritas
-                                </label>
-                            </div>
-                            <div class="col my-1">
-                                <input type="text" wire:model='tujuan_kw' class="form-control shadow-none">
-                            </div>
-                        </div>
-
-                        <h5>
-                            Sementara itu, Skor Tertinggi Skor S-W
-                        </h5>
-
-                        <div class="form-group-custom form-row align-items-center">
-                            <div class="col my-1">
-                                <input wire:model='killerweakness_sw' type="text" class="form-control shadow-none">
-                            </div>
-                            <div class="col-auto my-1">
-                                <label class="form-check-label mx-auto">
-                                    SW
-                                </label>
-                            </div>
-                            <div class="col my-1">
-                                <input type="text" wire:model='sw' class="form-control shadow-none">
-                            </div>
-                            <div class="col-auto my-1">
-                                <label class="form-check-label mx-auto">
-                                    Tujuan Prioritas
-                                </label>
-                            </div>
-                            <div class="col my-1">
-                                <input type="text" wire:model='tujuan_sw' class="form-control shadow-none">
-                            </div>
-                        </div>
                         <div class="form-group">
-                            <button class="btn btn-blue float-right shadow-none">Simpan Strategi</button>
+                            <select wire:model="jenis" id="" class="custom-select shadow-none">
+                                <option value="">Pilih Kondisi</option>
+                                <option value="KW">KW</option>
+                                <option value="S-W">S-W</option>
+                            </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="">Kondisi</label>
+                            <input type="text" name="kondisi" wire:model="kondisi" class="form-control shadow-none" placeholder="Masukan Kondisi" id="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Tujuan</label>
+                            <input type="text" name="kondisi" wire:model="kondisi" class="form-control shadow-none" placeholder="Masukan Tujuan" id="">
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary shadow-none">Tambah Strategi</button>
+                        </div>
+
                     </form>
                 </div>
 
@@ -98,29 +70,33 @@
                         <tr>
                             <th colspan="5">Killer weakness proyek “{{ $proposal->judul }}” adalah:</th>
                         </tr>
-                        @foreach($semuaStrategi as $key => $strategi)
+                        @foreach($semuaStrategi->where('jenis', 'KW') as $key => $strategi)
                         <tr>
                             <th>
                                 <i wire:click="delete({{$strategi->id}})" class="fa fa-trash-alt text-danger text-center" style="cursor: pointer"></i>
                             </th>
                             <th>KW {{$key+1}} </th>
-                            <th>{{$strategi->kw}}</th>
+                            <th>{{$strategi->kondisi}}</th>
                             <th>Tujuan Prioritas {{$key+1}}</th>
-                            <th>{{$strategi->tujuan_kw}}</th>
+                            <th>{{$strategi->tujuan}}</th>
                         </tr>
                         @endforeach
-                        <tr>
-                            <th colspan="5">Semetara Skor Tertinggi S-W</th>
-                        </tr>
-                        @foreach($semuaStrategi as $key => $strategi)
+                        @if($semuaStrategi->where('jenis', 'S-W')->count() > 0)
                             <tr>
-                                <th></th>
-                                <th>S-W {{$key+1}} </th>
-                                <th>{{$strategi->sw}}</th>
-                                <th>Tujuan Prioritas {{$key+1}}</th>
-                                <th>{{$strategi->tujuan_sw}}</th>
+                                <th colspan="5">Semetara Skor Tertinggi S-W</th>
                             </tr>
-                        @endforeach
+                            @foreach($semuaStrategi->where('jenis', 'S-W') as $key => $strategi)
+                                <tr>
+                                    <th>
+                                        <i wire:click="delete({{$strategi->id}})" class="fa fa-trash-alt text-danger text-center" style="cursor: pointer"></i>
+                                    </th>
+                                    <th>S-W {{$key+1}} </th>
+                                    <th>{{$strategi->kondisi}}</th>
+                                    <th>Tujuan Prioritas {{$key+1}}</th>
+                                    <th>{{$strategi->tujuan}}</th>
+                                </tr>
+                            @endforeach
+                        @endif
                     </table>
                 </div>
             </div>

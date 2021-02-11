@@ -15,10 +15,9 @@ class CreateStrategisTable extends Migration
     {
         Schema::create('strategis', function (Blueprint $table) {
             $table->id();
-            $table->longText('kw')->nullable();
-            $table->longText('tujuan_kw')->nullable();
-            $table->longText('sw')->nullable();
-            $table->longText('tujuan_sw')->nullable();
+            $table->string('jenis');
+            $table->longText('kondisi')->nullable();
+            $table->longText('tujuan')->nullable();
             $table->foreignId('proposal_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
