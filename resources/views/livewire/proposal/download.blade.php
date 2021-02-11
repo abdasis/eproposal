@@ -529,7 +529,7 @@
                             @foreach($semuaStrategi->where('jenis', 'KW') as $key => $strategi)
                                 <tr>
                                     <th>KW {{$key+1}} </th>
-                                    <th>{{$strategi->kondisi}</th>
+                                    <th>{{$strategi->kondisi}}</th>
                                     <th>Tujuan Prioritas {{$key+1}}</th>
                                     <th>{{$strategi->tujuan}}</th>
                                 </tr>
