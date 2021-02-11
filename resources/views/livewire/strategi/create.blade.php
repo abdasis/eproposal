@@ -49,7 +49,7 @@
 
                         <div class="form-group">
                             <label for="">Tujuan</label>
-                            <input type="text" name="kondisi" wire:model="kondisi" class="form-control shadow-none" placeholder="Masukan Tujuan" id="">
+                            <input type="text" name="kondisi" wire:model="tujuan" class="form-control shadow-none" placeholder="Masukan Tujuan" id="">
                         </div>
 
                         <div class="form-group">
