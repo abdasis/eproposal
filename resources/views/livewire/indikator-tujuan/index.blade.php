@@ -27,7 +27,7 @@
                             <select class="custom-select shadow-none" wire:model='tujuan' name="" id="">
                                 <option selected>Pilih Tujuan</option>
                                 @foreach ($strategies as $key => $strategi)
-                                <option value="{{ $strategi->kw }}">{{ $strategi->kw }}</option>
+                                <option value="{{ $strategi->kondisi }}">{{ $strategi->kondisi }}</option>
                                 @endforeach
                             </select>
                         </div>
