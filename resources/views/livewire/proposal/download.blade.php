@@ -526,23 +526,23 @@
                             <tr>
                                 <th colspan="5">Killer weakness proyek “{{ $proposal->judul }}” adalah:</th>
                             </tr>
-                            @foreach($semuaStrategi as $key => $strategi)
+                            @foreach($semuaStrategi->where('jenis', 'KW') as $key => $strategi)
                                 <tr>
                                     <th>KW {{$key+1}} </th>
-                                    <th>{{$strategi->kw}}</th>
+                                    <th>{{$strategi->kondisi}</th>
                                     <th>Tujuan Prioritas {{$key+1}}</th>
-                                    <th>{{$strategi->tujuan_kw}}</th>
+                                    <th>{{$strategi->tujuan}}</th>
                                 </tr>
                             @endforeach
                             <tr>
                                 <th colspan="5">Semetara Skor Tertinggi S-W</th>
                             </tr>
-                            @foreach($semuaStrategi as $key => $strategi)
+                            @foreach($semuaStrategi->where('jenis', 'S-W') as $key => $strategi)
                                 <tr>
                                     <th>S-W {{$key+1}} </th>
-                                    <th>{{$strategi->sw}}</th>
+                                    <th>{{$strategi->kondisi}}</th>
                                     <th>Tujuan Prioritas {{$key+1}}</th>
-                                    <th>{{$strategi->tujuan_sw}}</th>
+                                    <th>{{$strategi->tujuan}}</th>
                                 </tr>
                             @endforeach
                         </table>
