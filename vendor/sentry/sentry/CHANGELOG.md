@@ -2,6 +2,53 @@
 
 ## Unreleased
 
+## 3.3.3 (2021-10-04)
+
+-  Fix fatal error in the `EnvironmentIntegration` integration if the `php_uname` function is disabled (#1243)
+
+## 3.3.2 (2021-07-19)
+
+- Allow installation of `guzzlehttp/psr7:^2.0` (#1225)
+- Allow installation of `psr/log:^1.0|^2.0|^3.0` (#1229)
+
+## 3.3.1 (2021-06-21)
+
+- Fix missing collecting of frames's arguments when using `captureEvent()` without expliciting a stacktrace or an exception (#1223)
+
+## 3.3.0 (2021-05-26)
+
+- Allow setting a custom timestamp on the breadcrumbs (#1193)
+- Add option `ignore_tags` to `IgnoreErrorsIntegration` in order to ignore exceptions by tags values. (#1201)
+
+## 3.2.2 (2021-05-06)
+
+- Fix missing handling of `EventHint` in the `HubAdapter::capture*()` methods (#1206)
+
+## 3.2.1 (2021-04-06)
+
+- Changes behaviour of `error_types` option when not set: before it defaulted to `error_reporting()` statically at SDK initialization; now it will be evaluated each time during error handling to allow silencing errors temporarily (#1196)
+
+## 3.2.0 (2021-03-03)
+
+- Make the HTTP headers sanitizable in the `RequestIntegration` integration instead of removing them entirely (#1161)
+- Deprecate the `logger` option (#1167)
+- Pass the event hint from the `capture*()` methods down to the `before_send` callback (#1138)
+- Deprecate the `tags` option, see the [docs](https://docs.sentry.io/platforms/php/guides/laravel/enriching-events/tags/) for other ways to set tags (#1174)
+- Make sure the `environment` field is set to `production` if it has not been overridden explicitly (#1116)
+
+## 3.1.5 (2021-02-18)
+
+- Fix incorrect detection of silenced errors (by the `@` operator) (#1183)
+
+## 3.1.4 (2021-02-02)
+
+- Allow jean85/pretty-package-versions 2.0 (#1170)
+
+## 3.1.3 (2021-01-25)
+
+- Fix the fetching of the version of the SDK (#1169)
+- Add the `$customSamplingContext` argument to `Hub::startTransaction()` and `HubAdapter::startTransaction()` to fix deprecations thrown in Symfony (#1176)
+
 ## 3.1.2 (2021-01-08)
 
 - Fix unwanted call to the `before_send` callback with transaction events, use `traces_sampler` instead to filter transactions (#1158)

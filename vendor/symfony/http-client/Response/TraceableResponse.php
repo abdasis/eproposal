@@ -44,6 +44,19 @@ class TraceableResponse implements ResponseInterface, StreamableInterface
         $this->event = $event;
     }
 
+    /**
+     * @return array
+     */
+    public function __sleep()
+    {
+        throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
+    }
+
+    public function __wakeup()
+    {
+        throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
+    }
+
     public function __destruct()
     {
         try {
@@ -83,6 +96,7 @@ class TraceableResponse implements ResponseInterface, StreamableInterface
             if (false === $this->content) {
                 return $this->response->getContent($throw);
             }
+
             return $this->content = $this->response->getContent(false);
         } finally {
             if ($this->event && $this->event->isStarted()) {
@@ -100,6 +114,7 @@ class TraceableResponse implements ResponseInterface, StreamableInterface
             if (false === $this->content) {
                 return $this->response->toArray($throw);
             }
+
             return $this->content = $this->response->toArray(false);
         } finally {
             if ($this->event && $this->event->isStarted()) {
@@ -190,7 +205,7 @@ class TraceableResponse implements ResponseInterface, StreamableInterface
         }
     }
 
-    private function checkStatusCode($code)
+    private function checkStatusCode(int $code)
     {
         if (500 <= $code) {
             throw new ServerException($this);

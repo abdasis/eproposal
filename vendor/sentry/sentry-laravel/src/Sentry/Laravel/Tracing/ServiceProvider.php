@@ -5,27 +5,39 @@ namespace Sentry\Laravel\Tracing;
 use Illuminate\Contracts\Http\Kernel as HttpKernelInterface;
 use Illuminate\Contracts\View\Engine;
 use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Queue\QueueManager;
 use Illuminate\View\Engines\EngineResolver;
 use Illuminate\View\Factory as ViewFactory;
+use InvalidArgumentException;
 use Laravel\Lumen\Application as Lumen;
 use Sentry\Laravel\BaseServiceProvider;
+use Sentry\Serializer\RepresentationSerializer;
 
 class ServiceProvider extends BaseServiceProvider
 {
+    public const DEFAULT_INTEGRATIONS = [
+        Integrations\LighthouseIntegration::class,
+    ];
+
     public function boot(): void
     {
-        if ($this->hasDsnSet()) {
-            $this->bindEvents($this->app);
+        if ($this->hasDsnSet() && $this->couldHavePerformanceTracingEnabled()) {
+            $tracingConfig = $this->getUserConfig()['tracing'] ?? [];
 
-            $this->bindViewEngine();
+            $this->bindEvents($tracingConfig);
+
+            $this->bindViewEngine($tracingConfig);
 
             if ($this->app instanceof Lumen) {
                 $this->app->middleware(Middleware::class);
             } elseif ($this->app->bound(HttpKernelInterface::class)) {
-                /** @var \Illuminate\Contracts\Http\Kernel $httpKernel */
+                /** @var \Illuminate\Foundation\Http\Kernel $httpKernel */
                 $httpKernel = $this->app->make(HttpKernelInterface::class);
 
-                $httpKernel->prependMiddleware(Middleware::class);
+                if ($httpKernel instanceof HttpKernel) {
+                    $httpKernel->prependMiddleware(Middleware::class);
+                }
             }
         }
     }
@@ -33,17 +45,46 @@ class ServiceProvider extends BaseServiceProvider
     public function register(): void
     {
         $this->app->singleton(Middleware::class);
+
+        $this->app->singleton(BacktraceHelper::class, function () {
+            /** @var \Sentry\State\Hub $sentry */
+            $sentry = $this->app->make(self::$abstract);
+
+            $options = $sentry->getClient()->getOptions();
+
+            return new BacktraceHelper($options, new RepresentationSerializer($options));
+        });
+
+        if (!$this->app instanceof Lumen) {
+            $this->app->booted(function () {
+                $this->app->make(Middleware::class)->setBootedTimestamp();
+            });
+        }
     }
 
-    private function bindEvents(): void
+    private function bindEvents(array $tracingConfig): void
     {
-        $handler = new EventHandler($this->app->events);
+        $handler = new EventHandler(
+            $this->app,
+            $this->app->make(BacktraceHelper::class),
+            $tracingConfig
+        );
 
         $handler->subscribe();
+
+        if ($this->app->bound(QueueManager::class)) {
+            $handler->subscribeQueueEvents(
+                $this->app->make(QueueManager::class)
+            );
+        }
     }
 
-    private function bindViewEngine(): void
+    private function bindViewEngine($tracingConfig): void
     {
+        if (($tracingConfig['views'] ?? true) !== true) {
+            return;
+        }
+
         $viewEngineWrapper = function (EngineResolver $engineResolver): void {
             foreach (['file', 'php', 'blade'] as $engineName) {
                 try {

@@ -42,3 +42,11 @@ All notable changes to `livewire-alert` will be documented in this file
 ## 2.1.3
 - Optimize blade component script code to utilize config
 - Added more default config to livewire-alert.php
+
+## 2.1.4
+- Fixed unable to install livewire alert in laravel 8.20.1
+
+## 2.1.5
+- Fixed flash null config issue #28
+
+

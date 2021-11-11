@@ -42,8 +42,8 @@ use function usort;
  * minimize the effort required to implement this interface
  *
  * @template T
- * @template-extends AbstractArray<T>
- * @template-implements CollectionInterface<T>
+ * @extends AbstractArray<T>
+ * @implements CollectionInterface<T>
  */
 abstract class AbstractCollection extends AbstractArray implements CollectionInterface
 {
@@ -204,13 +204,7 @@ abstract class AbstractCollection extends AbstractArray implements CollectionInt
 
     public function map(callable $callback): CollectionInterface
     {
-        /** @var array<array-key, T> $data */
-        $data = array_map($callback, $this->data);
-
-        $collection = clone $this;
-        $collection->data = $data;
-
-        return $collection;
+        return new Collection('mixed', array_map($callback, $this->data));
     }
 
     public function diff(CollectionInterface $other): CollectionInterface
@@ -264,7 +258,6 @@ abstract class AbstractCollection extends AbstractArray implements CollectionInt
             $temp[] = $collection->toArray();
         }
 
-        /** @var array<array-key, T> $merge */
         $merge = array_merge(...$temp);
 
         $collection = clone $this;

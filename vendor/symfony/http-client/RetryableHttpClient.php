@@ -43,7 +43,7 @@ class RetryableHttpClient implements HttpClientInterface
         $this->client = $client;
         $this->strategy = $strategy ?? new GenericRetryStrategy();
         $this->maxRetries = $maxRetries;
-        $this->logger = $logger ?: new NullLogger();
+        $this->logger = $logger ?? new NullLogger();
     }
 
     public function request(string $method, string $url, array $options = []): ResponseInterface
@@ -127,7 +127,7 @@ class RetryableHttpClient implements HttpClientInterface
 
             $context->getResponse()->cancel();
 
-            $delay = $this->getDelayFromHeader($context->getHeaders()) ?? $this->strategy->getDelay($context, $chunk->isLast() ? $content : null, $exception);
+            $delay = $this->getDelayFromHeader($context->getHeaders()) ?? $this->strategy->getDelay($context, !$exception && $chunk->isLast() ? $content : null, $exception);
             ++$retryCount;
 
             $this->logger->info('Try #{count} after {delay}ms'.($exception ? ': '.$exception->getMessage() : ', status code: '.$context->getStatusCode()), [

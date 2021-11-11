@@ -2,6 +2,66 @@
 
 ## Unreleased
 
+## 2.8.0
+
+- Update phpdoc on facade for better IDE autocompletion (#504)
+- Exceptions captured using log channels (Monolog) will now have the correct severity set (#505)
+- Tags passed through log channels (Monolog) context are cast as string to prevent type errors (#507)
+- Add options to the `artisan sentry:publish` command to better support `--no-interaction` mode (#509) 
+
+## 2.7.0
+
+- Replace type hint of concrete type (`Sentry\State\Hub`) with interface (`Sentry\State\HubInterface`) in `SentryHandler` constructor (#496)
+- Use latest version of the Sentry PHP SDK (#499)
+
+## 2.6.0
+
+- Add all log context as `log_context` to events when using the log channel (#489)
+- Add integration to improve performance tracing for [Laravel Lighthouse](https://github.com/nuwave/lighthouse) (#490)
+
+## 2.5.3
+
+- Correctly call flush on the PHP SDK client (#484)
+- Fix errors on Laravel `5.x` caused by Laravel not using `nyholm/psr7` to generate PSR-7 request but older `zendframework/zend-diactoros` package which might not be available
+
+## 2.5.2
+
+- Fix problem with parsing uploaded files from request after they have been moved (#487)
+
+## 2.5.1
+
+- Fix problem with queue tracing when triggered from unit tests or when missing a queue name in the event
+
+## 2.5.0
+
+- Add `sql.origin` to SQL query spans with the file and line where the SQL query originated from (#398)
+- Remove wrapper around the context of log entry breadcrumbs (#405)
+- Ensure user integrations are always executed after SDK integrations (#474)
+- Fix repeated booted callback registration from performance tracing middleware (#475)
+- Add tracing support for queue jobs, enable with `SENTRY_TRACE_QUEUE_ENABLED=true` (#478)
+- Add options to disable parts of performance tracing (#478)
+- Remove string representation of exception from exceptions logged through log channels (#482)
+- Use message from Monolog record to prevent bloating the log message being recorded with timestamps and log log level (#482)
+- Add `report_exceptions` option to the Sentry log channel that can be set to `false` to not report exceptions (#482)
+
+## 2.4.2
+
+- Avoid collision if another package has bound `sentry` in the Laravel container (#467)
+
+## 2.4.1
+
+- Fix type hints incompatible with Laravel Lumen (#462)
+
+## 2.4.0
+
+- Read the request IP from the Laravel request to make it more accurate when behind a reverse proxy (requires [trusted proxies](https://laravel.com/docs/8.x/requests#configuring-trusted-proxies) to be setup correctly) (#419)
+- Get request information (like the URL) from the Laravel request instead of constructing it from the global state (#419)
+- Fix generated route name not correctly ignored when using prefix (#441)
+- Fix overwriting the transaction name if it's set by the user (#442)
+- Add result from optional `context(): array` method on captured exception to the event sent to Sentry (#457)
+- Fix not overwriting the event transaction name if it was an empty string (#460)
+- Bump Sentry SDK to `3.2.*`
+
 ## 2.3.1
 
 - Fix problems when enabling tracing on Laravel Lumen (#416)

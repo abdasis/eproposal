@@ -1,8 +1,11 @@
 <p align="center">
-    <a href="https://sentry.io" target="_blank" align="center">
-        <img src="https://sentry-brand.storage.googleapis.com/sentry-logo-black.png" width="280">
-    </a>
+  <a href="https://sentry.io" target="_blank" align="center">
+    <img src="https://sentry-brand.storage.googleapis.com/sentry-logo-black.png" width="280">
+  </a>
+  <br />
 </p>
+
+_Bad software is everywhere, and we're tired of it. Sentry is on a mission to help developers write better software faster, so we can get back to enjoying technology. If you want to join us [<kbd>**Check out our open positions**</kbd>](https://sentry.io/careers/)_
 
 # Sentry SDK for PHP
 
@@ -76,14 +79,18 @@ The following integrations are fully supported and maintained by the Sentry team
 The following integrations are available and maintained by members of the Sentry community.
 
 - [Drupal](https://www.drupal.org/project/raven)
-- [Flow Framework](https://github.com/networkteam/Networkteam.SentryClient)
-- [OXID eShop](https://github.com/OXIDprojects/sentry)
+- [Neos Flow](https://github.com/flownative/flow-sentry)
 - [WordPress](https://wordpress.org/plugins/wp-sentry-integration/)
 - [ZendFramework](https://github.com/facile-it/sentry-module)
-- [SilverStripe](https://github.com/phptek/silverstripe-sentry)
-- [TYPO3](https://github.com/networkteam/sentry_client)
 - [Yii2](https://github.com/notamedia/yii2-sentry)
+- [Silverstripe](https://github.com/phptek/silverstripe-sentry)
 - ... feel free to be famous, create a port to your favourite platform!
+
+### 3rd party integrations using old SDK 2.x
+
+- [Neos Flow](https://github.com/networkteam/Networkteam.SentryClient)
+- [OXID eShop](https://github.com/OXIDprojects/sentry)
+- [TYPO3](https://github.com/networkteam/sentry_client)
 
 ### 3rd party integrations using old SDK 1.x
 

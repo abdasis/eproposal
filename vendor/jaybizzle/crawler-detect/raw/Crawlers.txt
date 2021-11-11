@@ -7,17 +7,21 @@
 ^DangDang
 ^DavClnt
 ^DHSH
+^Expanse
 ^FDM 
 ^git\/
 ^Goose\/
 ^Grabber
 ^HTTPClient\/
+^HTTPing
 ^Java\/
 ^Jeode\/
 ^Jetty\/
 ^Mail\/
 ^Mget
 ^Microsoft URL Control
+^Mikrotik\/
+^Netlab360
 ^NG\/[0-9\.]
 ^NING\/
 ^Nuclei
@@ -25,6 +29,7 @@
 ^RMA\/
 ^Ruby|Ruby\/[0-9]
 ^Swurl 
+^TLS tester 
 ^VSE\/[0-9]
 ^WordPress\.com
 ^XRL\/[0-9]
@@ -148,6 +153,7 @@ BingPreview
 binlar
 biNu image cacher
 Bitacle
+Bitrix link preview
 biz_Directory
 BKCTwitterUnshortener\/
 Black Hole
@@ -207,6 +213,7 @@ chkme\.com
 Chlooe
 Chromaxa
 CirrusExplorer
+CISPA Web Analyser
 CISPA Vulnerability Notification
 Citoid
 CJNetworkQuality
@@ -411,6 +418,7 @@ Go [\d\.]* package http
 Go http package
 Go-Ahead-Got-It
 Go-http-client
+go-mtasts\/
 Go!Zilla
 gobyus
 Gofeed
@@ -428,12 +436,14 @@ Google-Podcast
 Google PP Default
 Google Search Console
 Google Web Preview
+Google-Ads-Creatives-Assistant
 Google-Ads-Overview
 Google-Adwords
 Google-Apps-Script
 Google-Calendar-Importer
 Google-HotelAdsVerifier
 Google-HTTP-Java-Client
+Google-SMTP-STS
 Google-Publisher-Plugin
 Google-Read-Aloud
 Google-SearchByImage
@@ -473,6 +483,7 @@ Haansoft
 hackney\/
 Hadi Agent
 HappyApps-WebCheck
+Hardenize
 Hatena
 Havij
 HaxerMen
@@ -598,6 +609,7 @@ JolokiaPwn
 Joomla
 Jorgee
 JS-Kit
+JungleKeyThumbnail
 JustView
 Kaspersky Lab CFR link resolver
 Kelny\/
@@ -619,6 +631,7 @@ KumKie
 L\.webis
 Larbin
 Lavf\/
+leakix\.net
 LeechFTP
 LeechGet
 letsencrypt
@@ -669,6 +682,7 @@ MacOutlook\/
 Mag-Net
 MagpieRSS
 Mail\.Ru
+Mail::STS
 MailChimp
 Majestic12
 makecontact\/
@@ -789,6 +803,7 @@ nWormFeedFinder
 nyawc\/
 Nymesis
 NYU
+Observatory\/
 Ocelli\/
 Octopus
 oegp
@@ -825,6 +840,7 @@ PageFreezer
 PageGrabber
 PagePeeker
 PageScorer
+PageThing
 Pagespeed\/
 Panopta
 panscient
@@ -861,6 +877,7 @@ pinterest\.com
 Pixray
 Pizilla
 Plagger\/
+Pleroma 
 Ploetz \+ Zeller
 Plukkie
 plumanalytics
@@ -874,18 +891,21 @@ Pompos
 Porkbun
 Port Monitor
 postano
+postfix-mta-sts-resolver
 PostmanRuntime
 postplanner\.com
 PostPost
 postrank
 PowerPoint\/
 Prebid
+Prerender
 Priceonomics Analysis Engine
 PrintFriendly
 PritTorrent
 Prlog
 probethenet
 Project ?25499
+Project-Resonance
 prospectb2b
 Protopage
 ProWebWalker
@@ -906,6 +926,7 @@ Qseero
 Qualidator
 QueryN Metasearch
 queuedriver
+quic-go-HTTP\/
 QuiteRSS
 Quora Link Preview
 Qwantify
@@ -1094,6 +1115,7 @@ tAkeOut
 Tarantula\/
 Taringa UGC
 TarmotGezgin
+tchelebi\.io
 techiaith\.cymru
 Teleport
 Telesoft
@@ -1245,6 +1267,7 @@ WebSniffer
 Webster
 WebStripper
 WebSucker
+webtech\/
 Webthumb\/
 WebThumbnail
 WebWhacker
