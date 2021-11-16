@@ -7,7 +7,7 @@
                     sistem informasi ini dimaksudkan untuk membantu fasilitator pemberdayaan masyarakat (fmp) beserta pihak terkait lainnya dalam menyusun dokumen rencana aksi strategis (ras) pembangunan/pengembangan ekonomi masyarakat di tingkat lokal (rukun tangga/rukun warga, dusum atau desa/kelurahan). pembangunan ekonomi lokal (pel) bercirikan pemanfaatan sumberdaya (manusia, modal, alam dan sosial) lokal/setempat dan partisipatif. dengan mengikuti tahapan/proses penyusunan ras yang diarahkan oleh sistem informasi ini, tim perencana (fpm dan pihak terkait lainnya) diharapkan dapat menyusun sebuah dokumen ras sebuah topik pel yang dirumuskan dan disepakati secara partisipatif (bersama).
                 </p>
                 <a href="{{route('register')}}">
-                    <button class="btn btn-secondary btn-lg px-5">Daftar Menjadi</button>
+                    <button class="btn btn-success btn-lg px-5">Daftar Menjadi</button>
                 </a>
             </div>
 

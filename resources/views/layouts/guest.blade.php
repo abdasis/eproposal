@@ -50,9 +50,9 @@
             </button>
             <div class="collapse navbar-collapse ml-auto" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Tentang</a>
-                    <a class="nav-link" href="#">Bantuan</a>
+                    <a class="nav-link active" aria-current="page" href="{{url('/')}}">Beranda</a>
+                    <a class="nav-link" href="{{route('tentang')}}">Tentang</a>
+                    <a class="nav-link" href="{{route('contact-us')}}">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -63,6 +63,11 @@
         {{$slot}}
     </div>
 </section>
+<footer class="footer p-3 bg-light shadow-sm mt-5">
+    <div class="container text-center">
+        <span class="text-muted ">{{\Carbon\Carbon::now()->format('Y')}}  Allright Reserved</span>
+    </div>
+</footer>
 
 <!-- Optional JavaScript; choose one of the two! -->
 

@@ -53,10 +53,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('tentang', \App\Http\Livewire\Tentang::class)->name('tentang');
+Route::get('contact-us', \App\Http\Livewire\ContactUs::class)->name('contact-us');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'proposal'], function () {
         Route::get('/', Index::class)->name('proposal.index');
