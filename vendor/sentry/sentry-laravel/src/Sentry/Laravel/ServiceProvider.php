@@ -11,6 +11,8 @@ use RuntimeException;
 use Sentry\ClientBuilder;
 use Sentry\ClientBuilderInterface;
 use Sentry\Integration as SdkIntegration;
+use Sentry\Laravel\Console\PublishCommand;
+use Sentry\Laravel\Console\TestCommand;
 use Sentry\Laravel\Http\LaravelRequestFetcher;
 use Sentry\Laravel\Http\SetRequestIpMiddleware;
 use Sentry\Laravel\Http\SetRequestMiddleware;
@@ -102,6 +104,10 @@ class ServiceProvider extends BaseServiceProvider
 
         $handler->subscribe();
 
+        if ($this->app->bound('octane')) {
+            $handler->subscribeOctaneEvents();
+        }
+
         if ($this->app->bound('queue')) {
             $handler->subscribeQueueEvents($this->app->queue);
         }
@@ -118,7 +124,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->commands([
             TestCommand::class,
-            PublishConfigCommand::class,
+            PublishCommand::class,
         ]);
     }
 
@@ -163,7 +169,7 @@ class ServiceProvider extends BaseServiceProvider
             return $clientBuilder;
         });
 
-        $this->app->singleton(HubInterface::class, function () {
+        $this->app->singleton(HubInterface::class, function ($app) {
             /** @var \Sentry\ClientBuilderInterface $clientBuilder */
             $clientBuilder = $this->app->make(ClientBuilderInterface::class);
 
@@ -171,7 +177,7 @@ class ServiceProvider extends BaseServiceProvider
 
             $userIntegrations = $this->resolveIntegrationsFromUserConfig();
 
-            $options->setIntegrations(function (array $integrations) use ($options, $userIntegrations) {
+            $options->setIntegrations(function (array $integrations) use ($options, $userIntegrations, $app) {
                 if ($options->hasDefaultIntegrations()) {
                     // Remove the default error and fatal exception listeners to let Laravel handle those
                     // itself. These event are still bubbling up through the documented changes in the users
@@ -200,7 +206,7 @@ class ServiceProvider extends BaseServiceProvider
                     });
 
                     $integrations[] = new SdkIntegration\RequestIntegration(
-                        new LaravelRequestFetcher($this->app)
+                        new LaravelRequestFetcher($app)
                     );
                 }
 

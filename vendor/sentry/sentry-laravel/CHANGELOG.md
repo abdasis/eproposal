@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## 2.10.1
+
+- Fix compatibility with Laravel <= 6 of the `sentry:test` and `sentry:publish` commands
+
+## 2.10.0
+
+- Improve output and DX for `sentry:test` and `sentry:publish` commands (#522)
+
+## 2.9.0
+
+- Add support for Laravel Octane (#495)
+- Fix bug in Sentry log channel handler checking an undefined variable resulting in an error (#515)
+- Add `action_level` configuration option for Sentry log channel which configures a Monolog `FingersCrossedHandler` (#516)
+
 ## 2.8.0
 
 - Update phpdoc on facade for better IDE autocompletion (#504)
