@@ -47,13 +47,13 @@
             <ul id="side-menu">
                 <li class="menu-title">Admin Panel</li>
                 <li>
-                    <a href="{{ route('tentang') }}">
+                    <a href="{{ route('dashboard.tentang') }}">
                         <i class="fa fa-info-circle"></i>
                         <span> Tentang Sirasti </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('dashboard.instrumen')}}">
                         <i class="fa fa-file-csv"></i>
                         <span> Instrumen </span>
                     </a>

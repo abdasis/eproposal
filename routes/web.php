@@ -61,6 +61,9 @@ Route::get('/', function () {
 Route::get('tentang', \App\Http\Livewire\Tentang::class)->name('tentang');
 Route::get('contact-us', \App\Http\Livewire\ContactUs::class)->name('contact-us');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    Route::get('tentang', Dashboard\Tentang::class)->name('dashboard.tentang');
+    Route::get('instrument', Dashboard\Instrumen::class)->name('dashboard.instrumen');
     Route::group(['prefix' => 'proposal'], function () {
         Route::get('/', Index::class)->name('proposal.index');
         Route::get('ubah-proposal/{id}', Update::class)->name('proposal.update-proposal');
