@@ -22,6 +22,7 @@ class Create extends Component
         $proposal->desa = $this->desa;
         $proposal->dusun = $this->dusun;
         $proposal->rtrw = $this->rtrw;
+        $proposal->dibuat_oleh = \Auth::id();
         $proposal->save();
         $this->emit('success', $proposal);
         $this->reset();

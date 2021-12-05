@@ -3,11 +3,14 @@
 namespace App\Http\Livewire\Proposal;
 
 use App\Models\Proposal;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Prophecy\Prophet;
 
 class Index extends Component
 {
+    use LivewireAlert;
+
     protected $listeners = [
         'confirmed',
         'cancelled',
@@ -41,7 +44,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.proposal.index', [
-            'proposals' => Proposal::latest()->get()
+            'proposals' => Proposal::where('dibuat_oleh', \Auth::id())->latest()->get()
         ]);
     }
 }

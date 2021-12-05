@@ -23,4 +23,9 @@ class Proposal extends Model
     {
         return $this->hasOne(Strategi::class);
     }
+
+    public function pembuat()
+    {
+        return $this->belongsTo(User::class, 'dibuat_oleh');
+    }
 }

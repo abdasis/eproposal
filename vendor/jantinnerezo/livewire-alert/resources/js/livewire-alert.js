@@ -31,6 +31,7 @@ window.addEventListener('alert', async (event) => {
 
 window.flashAlert = async (flash) => {
     var events = flash.events;
+    var data = flash.events.data;
     var flashAlert = await Swal.fire({
         title: flash.message ?? '',
         icon: flash.type ?? null,
@@ -55,13 +56,35 @@ window.flashAlert = async (flash) => {
 
 function afterAlertInteraction(interaction) {
     if (interaction.confirmed) {
-        Livewire.emit(interaction.onConfirmed, interaction.result);
-        
+        if (interaction.onConfirmed.component === 'self') {
+            Livewire.find(interaction.onConfirmed.id)
+                .emitSelf(interaction.onConfirmed.listener, interaction.result);
+
+            return;
+        } 
+
+        Livewire.emitTo(
+            interaction.onConfirmed.component,
+            interaction.onConfirmed.listener,
+            interaction.result
+        );
+
         return;
     }
 
     if (interaction.isDenied) {
-        Livewire.emit(interaction.onDenied, interaction.result);
+        if (interaction.onDenied.component === 'self') {
+            Livewire.find(interaction.onDenied.id)
+                .emitSelf(interaction.onDenied.listener, interaction.result);
+
+            return;
+        }
+
+        Livewire.emitTo(
+            interaction.onDenied.component,
+            interaction.onDenied.listener,
+            interaction.result
+        );
 
         return;
     }
@@ -70,12 +93,34 @@ function afterAlertInteraction(interaction) {
         interaction.onProgressFinished &&
         interaction.dismiss === Swal.DismissReason.timer
     ) {
-        Livewire.emit(interaction.onProgressFinished, interaction.result);
+        if (interaction.onProgressFinished.component === 'self') {
+            Livewire.find(interaction.onProgressFinished.id)
+                .emitSelf(interaction.onProgressFinished.listener, interaction.result);
+
+            return;
+        }
+
+        Livewire.emitTo(
+            interaction.onProgressFinished.component,
+            interaction.onProgressFinished.listener,
+            interaction.result
+        );
 
         return;
     }
 
     if (interaction.onDismissed) {
-        Livewire.emit(interaction.onDismissed, interaction.result);
+        if (interaction.onDismissed.component === 'self') {
+            Livewire.find(interaction.onDismissed.id)
+                .emit(interaction.onDismissed.listener, interaction.result);
+            
+            return;
+        } 
+
+        Livewire.emitTo(
+            interaction.onDismissed.component,
+            interaction.onDismissed.listener,
+            interaction.result
+        );
     }
 }

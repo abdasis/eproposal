@@ -3,10 +3,12 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\User;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class Index extends Component
 {
+    use LivewireAlert;
     public $pengguna_id;
     protected  $listeners = [
         'confirmed',

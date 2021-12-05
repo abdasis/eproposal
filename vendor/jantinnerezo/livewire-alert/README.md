@@ -8,10 +8,11 @@
 
 ![Tux, the Linux mascot](https://banners.beyondco.de/Livewire%20Alert.jpeg?theme=light&packageManager=composer+require&packageName=jantinnerezo%2Flivewire-alert&pattern=polkaDots&style=style_1&description=A+simple+alert+utility+for+your+livewire+components&md=1&showWatermark=0&fontSize=100px&images=bell)
 
-### Check live demo: https://livewire-alert.jantinnerezo.com
-
 This package provides a simple alert utility for your livewire components. Currently using [SweetAlert2](https://sweetalert2.github.io/) under-the-hood.
 You can now use SweetAlert2 without writing any custom Javascript. Looking forward to integrate other Javascript alert libraries, feel free to contribute or suggest any libraries.
+
+## Demo
+Check the interactive demo here:  https://livewire-alert.jantinnerezo.com
 
 ## Installation
 
@@ -247,6 +248,15 @@ $this->alert('warning', 'Alert with deny and cancel button', [
     'onDenied' => 'denied',
     'onDismissed' => 'cancelled'
 ]);
+```
+
+Emit events to only specific component. Instead of passing the listener directly to the event, pass an array with `component` and `listeners` keys. 
+
+``` PHP
+'onConfirmed' => [
+   'component' => 'livewire-component',
+   'listener' => 'confirmed'
+];
 ```
 
 Don't want to define extra button configuration every time you show alert confirmation? Use the confirm method instead. 

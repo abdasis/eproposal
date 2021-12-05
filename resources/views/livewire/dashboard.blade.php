@@ -28,7 +28,9 @@
                         <tr>
                             <th class="text-center">No</th>
                             <th>Projek</th>
-                            <th>Dibuat</th>
+                            <th>Dibuat Oleh</th>
+                            <th>Tanggal Dibuat</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +38,7 @@
                         <tr>
                             <td class="text-center align-middle" scope="row">{{ $key+1 }}</td>
                             <td class="align-middle">{{ Str::upper($proposal->judul) }}</td>
+                            <td class="align-middle">{{ Str::upper($proposal->pembuat->name) }}</td>
                             <td class="align-middle">
                                 <div class="badge badge-success shadow-none">
                                     {{ Carbon\Carbon::parse($proposal->created_at)->format('d-m-y') }}</div>

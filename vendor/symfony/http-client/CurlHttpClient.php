@@ -37,7 +37,7 @@ final class CurlHttpClient implements HttpClientInterface, LoggerAwareInterface,
     use HttpClientTrait;
     use LoggerAwareTrait;
 
-    private $defaultOptions = self::OPTIONS_DEFAULTS + [
+    private array $defaultOptions = self::OPTIONS_DEFAULTS + [
         'auth_ntlm' => null, // array|string - an array containing the username as first value, and optionally the
                              //   password as the second one; or string like username:password - enabling NTLM auth
         'extra' => [
@@ -47,12 +47,10 @@ final class CurlHttpClient implements HttpClientInterface, LoggerAwareInterface,
 
     /**
      * An internal object to share state between the client and its responses.
-     *
-     * @var CurlClientState
      */
-    private $multi;
+    private CurlClientState $multi;
 
-    private static $curlVersion;
+    private static array $curlVersion;
 
     /**
      * @param array $defaultOptions     Default request's options
@@ -88,12 +86,12 @@ final class CurlHttpClient implements HttpClientInterface, LoggerAwareInterface,
         }
 
         // Skip configuring HTTP/2 push when it's unsupported or buggy, see https://bugs.php.net/77535
-        if (0 >= $maxPendingPushes || \PHP_VERSION_ID < 70217 || (\PHP_VERSION_ID >= 70300 && \PHP_VERSION_ID < 70304)) {
+        if (0 >= $maxPendingPushes) {
             return;
         }
 
         // HTTP/2 push crashes before curl 7.61
-        if (!\defined('CURLMOPT_PUSHFUNCTION') || 0x073d00 > self::$curlVersion['version_number'] || !(\CURL_VERSION_HTTP2 & self::$curlVersion['features'])) {
+        if (!\defined('CURLMOPT_PUSHFUNCTION') || 0x073D00 > self::$curlVersion['version_number'] || !(\CURL_VERSION_HTTP2 & self::$curlVersion['features'])) {
             return;
         }
 
@@ -188,7 +186,7 @@ final class CurlHttpClient implements HttpClientInterface, LoggerAwareInterface,
             $this->multi->dnsCache->evictions = [];
             $port = parse_url($authority, \PHP_URL_PORT) ?: ('http:' === $scheme ? 80 : 443);
 
-            if ($resolve && 0x072a00 > self::$curlVersion['version_number']) {
+            if ($resolve && 0x072A00 > self::$curlVersion['version_number']) {
                 // DNS cache removals require curl 7.42 or higher
                 // On lower versions, we have to create a new multi handle
                 curl_multi_close($this->multi->handle);
@@ -323,15 +321,13 @@ final class CurlHttpClient implements HttpClientInterface, LoggerAwareInterface,
     /**
      * {@inheritdoc}
      */
-    public function stream($responses, float $timeout = null): ResponseStreamInterface
+    public function stream(ResponseInterface|iterable $responses, float $timeout = null): ResponseStreamInterface
     {
         if ($responses instanceof CurlResponse) {
             $responses = [$responses];
-        } elseif (!is_iterable($responses)) {
-            throw new \TypeError(sprintf('"%s()" expects parameter 1 to be an iterable of CurlResponse objects, "%s" given.', __METHOD__, get_debug_type($responses)));
         }
 
-        if (\is_resource($this->multi->handle) || $this->multi->handle instanceof \CurlMultiHandle) {
+        if ($this->multi->handle instanceof \CurlMultiHandle) {
             $active = 0;
             while (\CURLM_CALL_MULTI_PERFORM === curl_multi_exec($this->multi->handle, $active));
         }
@@ -345,10 +341,7 @@ final class CurlHttpClient implements HttpClientInterface, LoggerAwareInterface,
         $this->multi->reset();
     }
 
-    /**
-     * @return array
-     */
-    public function __sleep()
+    public function __sleep(): array
     {
         throw new \BadMethodCallException('Cannot serialize '.__CLASS__);
     }

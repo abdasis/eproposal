@@ -18,7 +18,7 @@ class Index extends Component
 
     public function render()
     {
-        $analisies = Analisys::where('proposal_id', $this->proposal_id)->groupBy('anggota_id')->groupBy('nama_anggota')
+        $analisies = Analisys::where('dibuat_oleh', \Auth::id())->where('proposal_id', $this->proposal_id)->groupBy('anggota_id')->groupBy('nama_anggota')
             ->selectRaw('sum(tingkat_pengaruh) as tingkat_pengaruh, sum(tingkat_kepentingan) as tingkat_kepentingan, sum(tingkat_pengaruh+tingkat_kepentingan) as total,anggota_id,nama_anggota')
             ->get();
 

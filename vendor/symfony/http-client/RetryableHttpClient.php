@@ -21,19 +21,20 @@ use Symfony\Contracts\HttpClient\ChunkInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
+use Symfony\Contracts\Service\ResetInterface;
 
 /**
  * Automatically retries failing HTTP requests.
  *
  * @author Jérémy Derussé <jeremy@derusse.com>
  */
-class RetryableHttpClient implements HttpClientInterface
+class RetryableHttpClient implements HttpClientInterface, ResetInterface
 {
     use AsyncDecoratorTrait;
 
-    private $strategy;
-    private $maxRetries;
-    private $logger;
+    private RetryStrategyInterface $strategy;
+    private int $maxRetries;
+    private LoggerInterface $logger;
 
     /**
      * @param int $maxRetries The maximum number of times to retry
@@ -72,7 +73,7 @@ class RetryableHttpClient implements HttpClientInterface
                 if ('' !== $context->getInfo('primary_ip')) {
                     $shouldRetry = $this->strategy->shouldRetry($context, null, $exception);
                     if (null === $shouldRetry) {
-                        throw new \LogicException(sprintf('The "%s::shouldRetry()" method must not return null when called with an exception.', \get_class($this->decider)));
+                        throw new \LogicException(sprintf('The "%s::shouldRetry()" method must not return null when called with an exception.', \get_class($this->strategy)));
                     }
 
                     if (false === $shouldRetry) {

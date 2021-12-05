@@ -4,7 +4,7 @@
             <img src="{{asset('assets/images/Emails-bro.png')}}" class="img-fluid" alt="gambar-register">
         </div>
         <div class="col-md-5 my-auto">
-            <div class="card shadow-sm border-0">
+            <div class="card shadow-sm border-0 p-2">
                 <div class="card-body">
                     <div class="card-title">
                         <h5 class="text-center">Register</h5>
@@ -14,7 +14,7 @@
 
                         <div class="form-group">
                             <x-jet-label for="name" value="{{ __('Nama Lengkap') }}" />
-                            <x-jet-input id="name" class="form-control border-0 shadow-none bg-light" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                            <x-jet-input  id="name" class="form-control border-0 shadow-none bg-light" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                         </div>
 
                         <div class="mt-4 form-group">

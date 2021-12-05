@@ -10,7 +10,7 @@ class DaftarProposal extends Component
     public function render()
     {
         return view('livewire.analisys.daftar-proposal', [
-            'proposals' => Proposal::latest()->get()
+            'proposals' => Proposal::where('dibuat_oleh', \Auth::id())->latest()->get()
         ]);
     }
 }

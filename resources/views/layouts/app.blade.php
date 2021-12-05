@@ -17,6 +17,8 @@
     <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
         body {
             background: #F0F2F5 !important;
         }
@@ -27,6 +29,13 @@
 
         .navbar-custom {
             background: #19b5fe !important;
+        }
+        .title-menu {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: 'Pacifico', cursive;
+            margin-top: 20px;
+            color: #fff;
         }
     </style>
     <!-- App css -->
