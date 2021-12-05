@@ -20,7 +20,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
         body {
-            background: #F0F2F5 !important;
+            background: #F7F7F7 !important;
         }
 
         .footer {

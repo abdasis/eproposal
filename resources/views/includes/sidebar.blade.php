@@ -1,6 +1,6 @@
-<div class="left-side-menu">
+<div class="left-side-menu bg-white shadow-sm">
 
-    <div class="h-100" data-simplebar>
+    <div class="h-100 " data-simplebar>
 
         @auth
         <!-- User box -->
@@ -31,7 +31,7 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{route('keluar')}}" class="dropdown-item notify-item">
                         <i class="fe-log-out mr-1"></i>
                         <span>Logout</span>
                     </a>
@@ -45,79 +45,61 @@
         <div id="sidebar-menu">
 
             <ul id="side-menu">
-                <li class="menu-title">Navigation</li>
+                <li class="menu-title">Admin Panel</li>
+                <li>
+                    <a href="{{ route('tentang') }}">
+                        <i class="fa fa-info-circle"></i>
+                        <span> Tentang Sirasti </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-file-csv"></i>
+                        <span> Instrumen </span>
+                    </a>
+                </li>
                 <li>
                     <a href="#sidebarDashboards" data-toggle="collapse">
                         <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span> Proyek PEL </span>
+                        <span> Proses Sirasti </span>
                     </a>
+
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('proposal.tambah-proposal') }}">Tambah</a>
+                                <a href="{{ route('proposal.index') }}">Proyek PEL</a>
                             </li>
                             <li>
-                                <a href="{{ route('proposal.index') }}">Semua</a>
+                                <a href="{{ route('anggota.index') }}">Daftar Stakeholders</a>
                             </li>
+                            <li>
+                                <a href="{{ route('daftar-proposal') }}">Analisis Stakeholders</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('kondisi.daftar-proposal') }}">Analisis Kondisi</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('survey-kondisi.daftar-proposal') }}">Survey Kondisi</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('strategi.daftar-proposal') }}">Tujuan/Strategi Prioritas </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('indikator.daftar-proposal') }}">Indikator Tujuan </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('indikator-kegiatan.daftar-proposal') }}">Indikator Kegiatan </a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('rencana.daftar-proposal') }}">Penentuan Rencana </a>
+                            </li>
+
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a href="{{ route('anggota.index') }}">
-                        <i class="fa fa-user-friends"></i>
-                        <span> Daftar Stakeholders </span>
-                    </a>
-                </li>
 
-
-                <li>
-                    <a href="{{ route('daftar-proposal') }}">
-                        <i class="fa fa-user-check"></i>
-                        <span> Analisis Stakeholders </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('kondisi.daftar-proposal') }}">
-                        <i class="fa fa-balance-scale-right"></i>
-                        <span> Analisis Kondisi </span>
-                    </a>
-                </li>
-
-
-                <li>
-                    <a href="{{ route('survey-kondisi.daftar-proposal') }}">
-                        <i class="fa fa-sitemap"></i>
-                        <span> Survey Kondisi </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('strategi.daftar-proposal') }}">
-                        <i class="fa fa-project-diagram"></i>
-                        <span> Tujuan/Strategi Prioritas </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('indikator.daftar-proposal') }}">
-                        <i class="fa fa-compass"></i>
-                        <span> Indicator Tujuan </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('indikator-kegiatan.daftar-proposal') }}">
-                        <i class="fa fa-chart-line"></i>
-                        <span> Indikator Kegiatan </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{ route('rencana.daftar-proposal') }}">
-                        <i class="fa fa-calendar-check"></i>
-                        <span> Penentuan Rencana </span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="{{ route('pengguna.index') }}">

@@ -15,21 +15,27 @@
                         <div class="form-group">
                             <x-jet-label for="name" value="{{ __('Nama Lengkap') }}" />
                             <x-jet-input  id="name" class="form-control border-0 shadow-none bg-light" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                            <x-error-message error="name"/>
                         </div>
 
                         <div class="mt-4 form-group">
                             <x-jet-label for="email" value="{{ __('Email') }}" />
                             <x-jet-input id="email" class="form-control border-0 shadow-none bg-light" type="email" name="email" :value="old('email')" required />
+                            <x-error-message error="email"/>
+
                         </div>
 
                         <div class="mt-4 form-group">
                             <x-jet-label for="password" value="{{ __('Password') }}" />
                             <x-jet-input id="password" class="form-control border-0 shadow-none bg-light" type="password" name="password" required autocomplete="new-password" />
+                            <x-error-message error="password"/>
+
                         </div>
 
                         <div class="mt-4 form-group">
                             <x-jet-label for="password_confirmation" value="{{ __('Password Konfirmasi') }}" />
                             <x-jet-input id="password_confirmation" class="form-control border-0 shadow-none bg-light" type="password" name="password_confirmation" required autocomplete="new-password" />
+                            <x-error-message error="password_confirmation"/>
                         </div>
 
                         <div class="form-group mt-4  d-grid">
