@@ -9,13 +9,14 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $password, $nama, $email, $password_confirmation;
+    public $password, $nama, $email, $password_confirmation, $roles;
     public function rules()
     {
         return [
             'nama' => 'required',
             'email' => 'email',
-            'password' => 'required|confirmed|min:8'
+            'password' => 'required|confirmed|min:8',
+            'roles' => 'required'
         ];
     }
     public function store()
@@ -25,7 +26,7 @@ class Create extends Component
         $pengguna->name = $this->nama;
         $pengguna->email = $this->email;
         $pengguna->password = Hash::make($this->password);
-        $pengguna->roles = 'fpm';
+        $pengguna->roles = $this->roles;
         $pengguna->save();
         $this->alert('success', 'Pengguna Baru Berhasil Ditambahkan');
     }

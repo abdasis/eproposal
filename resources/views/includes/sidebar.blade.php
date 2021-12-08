@@ -101,20 +101,14 @@
                 </li>
 
 
-                <li>
-                    <a href="{{ route('pengguna.index') }}">
-                        <i class="fa fa-users"></i>
-                        <span> Pengguna </span>
-                    </a>
-                </li>
-
-
-                {{-- <li>
-                    <a href="apps-calendar.html">
-                        <i class="mdi mdi-cog"></i>
-                        <span> Pengaturan </span>
-                    </a>
-                </li> --}}
+                @if(Auth::user()->roles == 'admin')
+                    <li>
+                        <a href="{{ route('pengguna.index') }}">
+                            <i class="fa fa-users"></i>
+                            <span> Pengguna </span>
+                        </a>
+                    </li>
+                @endif
             </ul>
 
         </div>

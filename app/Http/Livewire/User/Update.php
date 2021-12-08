@@ -9,14 +9,15 @@ use Livewire\Component;
 class Update extends Component
 {
 
-    public $password, $nama, $email, $password_confirmation, $pengguna_id;
+    public $password, $nama, $email, $password_confirmation, $pengguna_id, $roles;
 
     public function rules()
     {
         return [
             'nama' => 'required',
             'email' => 'email',
-            'password' => 'confirmed'
+            'password' => 'confirmed',
+            'roles' => 'required'
         ];
     }
 
@@ -26,6 +27,7 @@ class Update extends Component
         $this->nama = $pengguna->name;
         $this->email = $pengguna->email;
         $this->pengguna_id = $pengguna->id;
+        $this->roles = $pengguna->roles;
     }
 
     public function update()
@@ -34,6 +36,7 @@ class Update extends Component
         $pengguna->name = $this->nama;
         $pengguna->email = $this->email;
         $pengguna->password = $this->password == null ? $pengguna->password : Hash::make($this->password);
+        $pengguna->roles = $this->roles;
         $pengguna->save();
         $this->alert('success', 'Data Berhasil Diupdate');
     }

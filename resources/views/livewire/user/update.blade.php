@@ -65,6 +65,19 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="password_confirmation">Roles</label>
+                            <select name="" class="form-select" wire:model="roles" id="">
+                                <option value="">Pilih Roles</option>
+                                <option value="admin">ADMINISTRATOR</option>
+                                <option value="fpm">FPM</option>
+                            </select>
+                            @error('roles')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+
+                        <div class="form-group">
                             <button class="btn btn-primary shadow-none">Tambah Pengguna</button>
                         </div>
                     </form>
