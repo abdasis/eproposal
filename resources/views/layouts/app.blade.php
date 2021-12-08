@@ -15,39 +15,17 @@
     <!-- Plugins css -->
     <link href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap');
-        body {
-            background: #F7F7F7 !important;
-        }
-
-        .footer {
-            background: #fff !important;
-        }
-
-        .navbar-custom {
-            background: #19b5fe !important;
-        }
-        .title-menu {
-            font-size: 28px;
-            font-weight: 800;
-            font-family: 'Pacifico', cursive;
-            margin-top: 20px;
-            color: #fff;
-        }
-    </style>
     <!-- App css -->
     <link href="{{ asset('assets/css/bootstrap-material.min.css') }}" rel="stylesheet" type="text/css"
         id="bs-default-stylesheet" />
     <link href="{{ asset('assets/css/app-material.min.css') }}" rel="stylesheet" type="text/css"
         id="app-default-stylesheet" />
+    <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}" type="text/css">
+
 
     <!-- icons -->
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     @stack('css')
-    @livewireStyles
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
 </head>
@@ -98,14 +76,13 @@
 
     <!-- Vendor js -->
     @livewireScripts
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <x-livewire-alert::scripts />
     <script src="https://cdn.tiny.cloud/1/3kubek8r1p1mz4kvit7hc1z2mxd8wgg551cbeu82qkmenprf/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
     <!-- App js-->
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
+    <x-livewire-alert::scripts />
     @stack('js')
 
 </body>

@@ -24,7 +24,7 @@
                     <form wire:submit.prevent='store'>
                         <div class="form-group">
                             <label for="golongan">Golongan</label>
-                            <select class="custom-select @error('golongan') is-invalid @enderror" wire:model="golongan" id="golongan">
+                            <select class="form-select @error('golongan') is-invalid @enderror" wire:model="golongan" id="golongan">
                                 <option selected>Pilih Golongan</option>
                                 <option value="Pihak Pemerintah">Pihak Pemerintah</option>
                                 <option value="Pihak Pengusaha / Swasta">Pihak Pengusaha / Swasta</option>
