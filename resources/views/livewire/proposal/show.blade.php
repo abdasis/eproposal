@@ -403,7 +403,7 @@
                                     <div class="mb-5">
                                         Ketua Penyusun
                                     </div>
-                                    ............................
+                                    {{\App\Models\Site::first()->ttd}}
                                 </div>
                             </div>
                         </div>
