@@ -108,6 +108,12 @@
                             <span> Pengguna </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('pengaturan.general') }}">
+                            <i class="fa fa-cogs"></i>
+                            <span> Pengaturan </span>
+                        </a>
+                    </li>
                 @endif
             </ul>
 

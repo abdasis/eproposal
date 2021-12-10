@@ -133,6 +133,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('tambah', UserCreate::class)->name('pengguna.create');
         Route::get('ubah/{id}', UserUpdate::class)->name('pengguna.update');
     });
+
+    Route::group(['prefix' => 'pengaturan'],function (){
+        Route::get('general', \App\Http\Livewire\Pengaturan\General::class)->name('pengaturan.general');
+    });
 });
 Route::get('/keluar', function () {
     Auth::logout();

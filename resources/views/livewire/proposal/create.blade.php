@@ -35,7 +35,7 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <h5 class="card-header bg-white border-bottom">
+                <h5 class="card-header bg-white border-light border-bottom">
                     Tambah Proposal
                 </h5>
                 <div class="card-body">
