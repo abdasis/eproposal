@@ -16,7 +16,6 @@
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "jantinnerezo/livewire-alert": "^2.0",
-        "knplabs/knp-snappy": "^1.2",
         "laravel/framework": "^8.0",
         "laravel/jetstream": "^1.5",
         "laravel/sanctum": "^2.6",
